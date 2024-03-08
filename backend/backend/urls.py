@@ -14,9 +14,27 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path
+from rest_framework import routers
+from django.conf import settings
+
+from dj_rest_auth.registration.views import VerifyEmailView
+
+from accounts.api.viewsets import UserViewSet
+from accounts.api.views import GetMe
+
+router = routers.DefaultRouter()
+router.register(r"users", UserViewSet, "users")
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("api/me", GetMe.as_view(), name="current-user"),
+    path(
+        "auth/verify-email/",
+        VerifyEmailView.as_view(),
+        name="account_email_verification_sent",
+    ),
 ]
