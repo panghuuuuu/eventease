@@ -25,21 +25,30 @@ SECRET_KEY = "django-insecure-xkd=%iz0zd$wp$#swtm_)k-!bp%yjz+=xa95%5m1b8b9ue9*#4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '188.166.76.163',
+    '127.0.0.1',
+    'localhost:8000',
+    'localhost'
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "accounts",
-    "rest_framework",
-    "rest_framework.authtoken",
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'corsheaders',
+    'authentication',
+    'accounts',
+    'rest_framework',
+    'rest_framework.authtoken', 
+    'rest_framework_jwt',
+    'rest_framework_jwt.blacklist',
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -50,17 +59,16 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
     'allauth.account.middleware.AccountMiddleware',
-    "drf_api_logger.middleware.api_logger_middleware.APILoggerMiddleware", # Add here
 ]
 
 ROOT_URLCONF = "backend.urls"
