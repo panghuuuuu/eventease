@@ -19,15 +19,15 @@ class User(AbstractUser):
         validators=[UnicodeUsernameValidator(), MinLengthValidator(6)],
         error_messages={"unique": _("A user with that username already exists."),},
     )    
+    email = models.EmailField(_("email address"), unique=True)
+    first_name = models.CharField(_("first name"), max_length=150)
+    last_name = models.CharField(_("last name"), max_length=150)
+    birthday = models.DateField(_("birthday"))
     password = models.CharField(
         _("password"),
         max_length=128,
         validators=[validate_password],
     )
-    email = models.EmailField(_("email address"), unique=True)
-    first_name = models.CharField(_("first name"), max_length=150)
-    last_name = models.CharField(_("last name"), max_length=150)
-    birthday = models.DateField(null=True, blank=True)
 
     def __str__(self):
         if(self.first_name == "" and self.last_name == ""):

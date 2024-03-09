@@ -10,6 +10,7 @@ class CustomUserAdmin(UserAdmin):
         "email",
         "first_name",
         "last_name",
+        "birthday",
         "is_staff",
         "is_active",
     )
@@ -55,6 +56,7 @@ class CustomUserAdmin(UserAdmin):
                     "first_name",
                     "last_name",
                     "email",
+                    "birthday",
                     "is_active",
                     "is_staff",
                     "is_superuser",
