@@ -17,10 +17,9 @@ export default function Registration() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleRegistration = async () => {
+  const submitForm = async () => {
     try {
-      const response = await axiosInstance.post("/api/register/", formData);
-      console.log(response.data); // Do something with the response
+      await axiosInstance.post("/api/register/", formData);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -42,11 +41,34 @@ export default function Registration() {
           <h3>Sign Up</h3>
           <div className="input">
             <p className="input_label">
+              First Name<span>*</span>
+            </p>
+            <input
+              type="text"
+              name="first_name"
+              value={formData.first_name}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="input">
+            <p className="input_label">
+              Last Name<span>*</span>
+            </p>
+            <input
+              type="text"
+              name="last_name"
+              value={formData.last_name}
+              onChange={handleInputChange}
+            />
+          </div>
+
+          <div className="input">
+            <p className="input_label">
               Username<span>*</span>
             </p>
             <input
               type="text"
-              name="text"
+              name="username"
               value={formData.username}
               onChange={handleInputChange}
             />
@@ -86,28 +108,6 @@ export default function Registration() {
           </div>
           <div className="input">
             <p className="input_label">
-              First Name<span>*</span>
-            </p>
-            <input
-              type="text"
-              name="first_name"
-              value={formData.first_name}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="input">
-            <p className="input_label">
-              Last Name<span>*</span>
-            </p>
-            <input
-              type="text"
-              name="last_name"
-              value={formData.last_name}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="input">
-            <p className="input_label">
               Birthday<span>*</span>
             </p>
             <input
@@ -122,7 +122,7 @@ export default function Registration() {
               <span>* Required fields</span>
               <p className="login_btn">I already have an account</p>
             </div>
-            <div className="signup_btn" onClick={handleRegistration}>
+            <div className="signup_btn" onClick={submitForm}>
               Sign Up
             </div>
           </div>

@@ -8,14 +8,15 @@ from allauth.account.models import EmailAddress
 User = get_user_model()
 
 class RegistrationSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(max_length=150, required=True)
     email = serializers.EmailField(required=True)
     password1 = serializers.CharField(write_only=True)
     password2 = serializers.CharField(write_only=True)
     birthday = serializers.DateField()
-
+    
     class Meta:
         model = User
-        fields = ['username', 'email', 'first_name', 'last_name', 'birthday', 'password1', 'password2']
+        fields = ['first_name', 'last_name', 'username', 'password1', 'password2', 'email', 'birthday']
 
     def validate_email(self, email):
         email = get_adapter().clean_email(email)
