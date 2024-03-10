@@ -16,25 +16,27 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from rest_framework import routers
 from django.conf import settings
 
 from dj_rest_auth.registration.views import VerifyEmailView
 
-from accounts.api.viewsets import UserViewSet
-from accounts.api.views import GetMe
+from accounts.api.viewsets import RegisterViewSet
+# from accounts.api.views import GetMe
 
 router = routers.DefaultRouter()
-router.register(r"users", UserViewSet, "users")
+
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/me", GetMe.as_view(), name="current-user"),
+    # path("api/me", GetMe.as_view(), name="current-user"),
     path(
         "auth/verify-email/",
         VerifyEmailView.as_view(),
         name="account_email_verification_sent",
     ),
+    path('api/register/', RegisterViewSet.as_view({'post': 'register'}), name='register'),
+
 ]

@@ -6,10 +6,11 @@ from .models import User
 # Register your models here.
 class CustomUserAdmin(UserAdmin):
     list_display = (
-        "username",
-        "email",
         "first_name",
         "last_name",
+        "username",
+        "email",
+        "birthday",
         "is_staff",
         "is_active",
     )
@@ -49,12 +50,13 @@ class CustomUserAdmin(UserAdmin):
             {
                 "classes": ("wide",),
                 "fields": (
-                    "username",
-                    "password1",
-                    "password2",
                     "first_name",
                     "last_name",
+                    "username",
                     "email",
+                    "password1",
+                    "password2",
+                    "birthday",
                     "is_active",
                     "is_staff",
                     "is_superuser",
