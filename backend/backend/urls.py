@@ -16,13 +16,17 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from rest_framework import routers
 from django.conf import settings
+
+from eventboard.api import views, viewsets
 
 from dj_rest_auth.registration.views import VerifyEmailView
 
 from accounts.api.viewsets import UserViewSet
+
+from eventboard.api.viewsets import EventViewSet, ServiceViewSet, PackageViewSet
 from accounts.api.views import GetMe
 
 router = routers.DefaultRouter()
@@ -37,4 +41,18 @@ urlpatterns = [
         VerifyEmailView.as_view(),
         name="account_email_verification_sent",
     ),
+
+    path('event', views.getEventData),
+    path('event/add-event', EventViewSet.as_view({'post': 'create_event'}), name='create_event'),
+    path('event/edit-event/<int:pk>/', EventViewSet.as_view({'put': 'edit_event'}), name='edit_event'),
+    path('event/delete-event/<int:pk>/', EventViewSet.as_view({'delete': 'delete_event'}), name='delete_event'),
+
+    path('service', views.getServiceData),
+    path('service/add-service', ServiceViewSet.as_view({'post': 'service'}), name='service'),
+    path('service/edit-service/<int:pk>/', views.edit_service),
+    path('service/delete-service/<int:pk>/', views.delete_service),
+    
+    path('package', views.getPackagesData),
+    path('package/add-package', PackageViewSet.as_view({'post': 'package'}), name='package'),
 ]
+
