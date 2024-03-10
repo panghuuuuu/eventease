@@ -16,14 +16,14 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, include
 from rest_framework import routers
 from django.conf import settings
 
+from eventboard.api import views, viewsets
 from dj_rest_auth.registration.views import VerifyEmailView
-
-from accounts.api.viewsets import RegisterViewSet
-# from accounts.api.views import GetMe
+from accounts.api.viewsets import RegisterViewSet 
+from eventboard.api.viewsets import EventViewSet, ServiceViewSet, PackageViewSet
 
 router = routers.DefaultRouter()
 
@@ -39,4 +39,18 @@ urlpatterns = [
     ),
     path('api/register/', RegisterViewSet.as_view({'post': 'register'}), name='register'),
 
+
+    path('event', views.getEventData),
+    path('event/add-event', EventViewSet.as_view({'post': 'create_event'}), name='create_event'),
+    path('event/edit-event/<int:pk>/', EventViewSet.as_view({'put': 'edit_event'}), name='edit_event'),
+    path('event/delete-event/<int:pk>/', EventViewSet.as_view({'delete': 'delete_event'}), name='delete_event'),
+
+    path('service', views.getServiceData),
+    path('service/add-service', ServiceViewSet.as_view({'post': 'service'}), name='service'),
+    path('service/edit-service/<int:pk>/', views.edit_service),
+    path('service/delete-service/<int:pk>/', views.delete_service),
+    
+    path('package', views.getPackagesData),
+    path('package/add-package', PackageViewSet.as_view({'post': 'package'}), name='package'),
 ]
+
