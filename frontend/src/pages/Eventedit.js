@@ -1,43 +1,49 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import axiosInstance from "../axiosApi";
 import "../stylesheets/eventedit.css";
 import SaveEdits from "../assets/SaveEdits.png";
 export const Eventedit = () => {
-    const [formData, setFormData] = useState({
-      event_name: "",
-      event_type: "",
-      event_start_date: "",
-      event_end_date: "",
-      budget: "",
-      pax: "",
-      services: "Venue",
-    });
-  
-    const handleInputChange = (e) => {
-      const { name, value } = e.target;
-      console.log("Name:", name, "Value:", value);
-      let formattedValue = value;
- 
-      setFormData({ ...formData, [name]: formattedValue });
-    };
-    
-  
-    const submitForm = async () => {
-      console.log(formData);
-      try {
-        await axiosInstance.post("/event/add-event/", formData);
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-  
+  const [formData, setFormData] = useState({
+    event_name: "",
+    event_type: "WEDDING",
+    event_start_date: "",
+    event_end_date: "",
+    budget: "",
+    pax: "",
+    services: [1],
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    let formattedValue = value;
+
+    // Convert budget and pax to integers
+    if (name === "budget" || name === "pax") {
+      formattedValue = parseInt(value);
+    }
+
+    setFormData({ ...formData, [name]: formattedValue });
+  };
+
+  const submitForm = async () => {
+    console.log(formData);
+    try {
+      await axiosInstance.post("/event/add-event", formData);
+      console.log("success");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <div className="eventedit_container">
       <div className="eventedit__left_container">
         <p className="eventedit_header">Create your dream event</p>
         <h1 className="eventedit_title">What event are you planning?</h1>
         <p className="eventedit_text">* Required fields</p>
-        <p className="eventedit_text"><i>Unsure?</i> Responses can be edited later.</p>
+        <p className="eventedit_text">
+          <i>Unsure?</i> Responses can be edited later.
+        </p>
       </div>
       <div className="eventedit__right_container">
         <div className="eventedit_fields">
@@ -46,20 +52,31 @@ export const Eventedit = () => {
               <p className="input_label">
                 Event Name<span>*</span>
               </p>
-              <input type="text" name="event_name" value={formData.event_name} onChange={handleInputChange}/>
+              <input
+                type="text"
+                name="event_name"
+                value={formData.event_name}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="input">
               <p className="input_label">
                 Event Type<span>*</span>
               </p>
-              <select className="dropdown" id="dropdown" name="event_type" value={formData.event_type} onChange={handleInputChange}>
+              <select
+                className="dropdown"
+                id="dropdown"
+                name="event_type"
+                value={formData.event_type}
+                onChange={handleInputChange}
+              >
                 <option value="Wedding">Wedding</option>
                 <option value="Birthday">Birthday</option>
                 <option value="Prom">Prom</option>
                 <option value="Corporate Meeting">Corporate Meeting</option>
                 <option value="Party">Party</option>
-            </select>           
-              </div>
+              </select>
+            </div>
           </div>
 
           <div className="dates_container">
@@ -68,14 +85,24 @@ export const Eventedit = () => {
             </p>
             <div className="eventedit__event_details">
               <div className="input">
-              <input type="date" name="event_start_date" value={formData.event_start_date} onChange={handleInputChange}/>
+                <input
+                  type="date"
+                  name="event_start_date"
+                  value={formData.event_start_date}
+                  onChange={handleInputChange}
+                />
               </div>
               <div className="to">
                 {" "}
                 <p>TO</p>{" "}
               </div>
               <div className="input">
-              <input type="date" name="event_end_date" value={formData.event_end_date} onChange={handleInputChange}/>
+                <input
+                  type="date"
+                  name="event_end_date"
+                  value={formData.event_end_date}
+                  onChange={handleInputChange}
+                />
               </div>
             </div>
           </div>
@@ -105,7 +132,13 @@ export const Eventedit = () => {
                 <p className="input_label">
                   How much is your budget?<span>*</span>
                 </p>
-                <input type="float" name="budget" placeholder="PHP" value={formData.budget} onChange={handleInputChange}/>
+                <input
+                  type="float"
+                  name="budget"
+                  placeholder="PHP"
+                  value={formData.budget}
+                  onChange={handleInputChange}
+                />
               </div>
               <div className="slidecontainer">
                 <input
@@ -129,7 +162,13 @@ export const Eventedit = () => {
                 <p className="input_label">
                   How big is your event?<span>*</span>
                 </p>
-                <input type="float" name="pax" placeholder="PAX" value={formData.pax} onChange={handleInputChange}/>
+                <input
+                  type="float"
+                  name="pax"
+                  placeholder="PAX"
+                  value={formData.pax}
+                  onChange={handleInputChange}
+                />
               </div>
               <div className="slidecontainer">
                 <input

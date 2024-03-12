@@ -20,6 +20,7 @@ export default function Registration() {
   };
 
   const submitForm = async () => {
+    console.log(formData);
     try {
       await axiosInstance.post("/api/register/", formData);
     } catch (error) {

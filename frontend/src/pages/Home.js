@@ -4,14 +4,6 @@ import Navbar from "../components/Navbar";
 import Eventedit from "./Eventedit";
 
 export const Home = () => {
-  useEffect(() => {
-    document.querySelectorAll(".service_btn").forEach((button) => {
-      button.addEventListener("click", () => {
-        button.classList.add("clicked");
-      });
-    });
-  }, []);
-
   return (
     <div>
       <div className="home_container">
