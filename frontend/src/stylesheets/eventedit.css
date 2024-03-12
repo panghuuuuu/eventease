@@ -209,3 +209,39 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.dropdown  {
+  height: 60px;
+  padding: 10px; 
+  border-radius: 12px;
+  font-size: 12px;
+  border: 1px solid #474747;
+}
+
+/* Style the dropdown arrow */
+.dropdown select::-ms-expand {
+  display: none;
+}
+
+.dropdown select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Style the dropdown options */
+.dropdown select option {
+  background-color: white; /* Background color of options */
+  color: black; /* Text color of options */
+}
+
+/* Style the dropdown when hovered */
+.dropdown select:hover {
+  border-color: #333; /* Change border color on hover */
+}
+
+/* Style the dropdown when focused */
+.dropdown select:focus {
+  outline: none; /* Remove focus outline */
+  border-color: #333; /* Change border color on focus */
+}
