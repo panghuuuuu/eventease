@@ -1,17 +1,19 @@
-import React, { Component } from "react";
-import history from "./history";
-import "./stylesheets/App.css";
-
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import Eventedit from "./pages/Eventedit";
+
 const App = () => (
-  <div>
-    <Home />
-    <Eventedit />
-  </div>
+  <Router>
+    <div>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Signup />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </div>
+  </Router>
 );
 
 export default App;

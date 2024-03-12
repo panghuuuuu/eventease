@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 import axiosInstance from "../axiosApi";
 import signupHeader from "../assets/logo_header.png";
 import "../stylesheets/signup.css";
@@ -56,7 +58,9 @@ export default function Login() {
           </div>
           <div className="bottom_links">
             <div className="bottom_text">
-              <p className="login_btn">Don’t have an account yet?</p>
+              <Link to="/register" className="login_btn">
+                Don’t have an account yet?
+              </Link>
             </div>
             <div className="signup_btn" onClick={submitForm}>
               Login
