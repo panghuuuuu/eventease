@@ -35,19 +35,21 @@ export const Eventedit = () => {
             </div>
           </div>
 
-          <div className="eventedit__event_details">
-            <div className="input">
-              <p className="input_label">
-                When do you want to celebrate?<span>*</span>
-              </p>
-              <input type="date" name="from" />
-            </div>
-            <p className="to"> TO </p>
-            <div className="input">
-              <p className="input_label">
-                <span>*</span>
-              </p>
-              <input type="date" name="to" />
+          <div className="dates_container">
+            <p className="input_label">
+              When do you want to celebrate?<span>*</span>
+            </p>
+            <div className="eventedit__event_details">
+              <div className="input">
+                <input type="date" name="from" />
+              </div>
+              <div className="to">
+                {" "}
+                <p>TO</p>{" "}
+              </div>
+              <div className="input">
+                <input type="date" name="to" />
+              </div>
             </div>
           </div>
 

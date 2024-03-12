@@ -84,6 +84,10 @@
   width: 100%;
 }
 
+.dates_container {
+  width: 100%;
+}
+
 .eventedit_fields input[type="date"] {
   display: flex;
   padding: 30px;
@@ -93,11 +97,15 @@
 }
 
 .to {
+  display: flex;
+  flex-direction: column;
   color: rgba(30, 30, 30, 0.3);
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
-  line-height: normal;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .eventedit_buttons {
