@@ -1,13 +1,26 @@
 import React from "react";
 import "../stylesheets/eventboard.css";
+
 export const Eventboard = () => {
   return (
     <div className="eventboard__container">
+        
+        {/* NAV BAR */}
         <div className="eventboard__navbar">
-
+            <h1>EventEase</h1>
+            <div className="navbar_middle">
+                Search
+            </div>
+            <div className="navbar_right">
+                <div>Browse</div> 
+                <div>My Events</div> 
+            </div>
         </div>
 
+        {/* EVENT BOARD FRAME */}
         <div className="eventboard__frame">
+
+            {/* EVENT DETAILS */}
             <div className="eventboard__details">
                 <h1>EVENT DETAILS</h1>
                 <div className="details_frame">
@@ -28,8 +41,103 @@ export const Eventboard = () => {
 
                 {/* add the selection of requirements */}
             </div>
+
+            {/* EVENT PINS */}
             <div className="eventboard__pins">
-                <h1>VENUES</h1>
+                <div className="pins_section">
+                    <div className="cards">
+                        <h1>VENUES</h1>
+                        <div className="cards_container">
+                            <div className="spcard">
+                                <img className="spcard_img" alt="insert img" />
+                                <div className="event_details_1"> 
+                                    <div className="details_front">
+                                        <div className="front">
+                                            <svg alt="insert svg" />
+                                            <h2 className="front_name"> Madre de Dios Chapel</h2>
+                                        </div>
+                                        <div className="front">
+                                            <svg alt="insert svg" />
+                                            <h2> Tagaytay Highlands, Talisay, Batangas</h2>
+                                        </div>
+                                        <div className="front">
+                                            <svg alt="insert svg" />
+                                            <h2> PHP 30,000</h2>
+                                            <svg alt="insert svg" />
+                                        </div>
+                                    </div>
+                                    <div className="details_showmore">
+                                        <div className="showmore-div">
+                                            <p>More Details</p>
+                                            <svg alt="insert svg" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* <div className="spcard">
+                                <img className="spcard_img" alt="insert img" />
+                                <div className="event_details_2"> 
+                                    <div className="details_front">
+                                        <div className="front">
+                                            <svg alt="insert svg" />
+                                            <h2 className="front_name"> Madre de Dios Chapel</h2>
+                                        </div>
+                                        <div className="front">
+                                            <svg alt="insert svg" />
+                                            <h2> Tagaytay Highlands, Talisay, Batangas</h2>
+                                        </div>
+                                        <div className="front">
+                                            <svg alt="insert svg" />
+                                            <h2> PHP 30,000</h2>
+                                            <svg alt="insert svg" />
+                                        </div>
+                                    </div>
+                                    <div className="details_showmore">
+                                        <div className="showmore-div">
+                                            <p>More Details</p>
+                                            <svg alt="insert svg" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> */}
+                        </div>
+                    </div>
+                </div>
+
+                {/* <div className="pins_section">
+                    <div className="cards">
+                        <h1>CATERER</h1>
+                        <div className="cards_container">
+                            <div className="spcard">
+                                <img className="spcard_img" alt="insert img" />
+                                <div className="event_details_3"> 
+                                    <div className="details_front">
+                                        <div className="front">
+                                            <svg alt="insert svg" />
+                                            <h2 className="front_name"> Madre de Dios Chapel</h2>
+                                        </div>
+                                        <div className="front">
+                                            <svg alt="insert svg" />
+                                            <h2> Tagaytay Highlands, Talisay, Batangas</h2>
+                                        </div>
+                                        <div className="front">
+                                            <svg alt="insert svg" />
+                                            <h2> PHP 30,000</h2>
+                                            <svg alt="insert svg" />
+                                        </div>
+                                    </div>
+                                    <div className="details_showmore">
+                                        <div className="showmore-div">
+                                            <p>More Details</p>
+                                            <svg alt="insert svg" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
                 <h1>CATERERS</h1>
                 <h1>HOSTS</h1>
                 <p> Aw. You haven’t found any hosts yet. <span>Click here to browse.</span></p>
@@ -39,11 +147,12 @@ export const Eventboard = () => {
                 <p> Aw. You haven’t found any hosts yet. <span>Click here to browse.</span></p>
                 <h1>GOWNS OR SUITS</h1>
                 <p> Aw. You haven’t found any hosts yet. <span>Click here to browse.</span></p>
-
             </div>
+
+            {/* EVENT BUDGET */}
             <div className="eventboard__budget">
                 <h1>BUDGET</h1>
-                <p>Interact with the check boxes to see your total cost.</p>
+                <p className="budget_interact">Interact with the check boxes to see your total cost.</p>
                 <p className="budget_php">PHP</p>
                 <div className="budget_receipt">
                     <h2>Venue</h2>
@@ -66,16 +175,12 @@ export const Eventboard = () => {
             </div>
         </div>
 
+        {/* EVENT FOOTER */}
         <div className="eventboard__footer">
 
         </div>
     </div>
-
-
-    
   );
 };
-
-
 
 export default Eventboard;
