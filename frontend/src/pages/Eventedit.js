@@ -1,11 +1,11 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import "../stylesheets/eventedit.css";
 import SaveEdits from "../assets/SaveEdits.png";
 export const Eventedit = () => {
   useEffect(() => {
-    document.querySelectorAll('.service_btn').forEach(button => {
-      button.addEventListener('click', () => {
-        button.classList.add('clicked');
+    document.querySelectorAll(".service_btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        button.classList.add("clicked");
       });
     });
   }, []);
@@ -19,9 +19,9 @@ export const Eventedit = () => {
         <p className="eventedit_text">Unsure? Responses can be edited later.</p>
       </div>
       <div className="eventedit__right_container">
-      <div className="eventedit_fields">
-        <div className="eventedit__event_details">
-          <div className="input">
+        <div className="eventedit_fields">
+          <div className="eventedit__event_details">
+            <div className="input">
               <p className="input_label">
                 Event Name<span>*</span>
               </p>
@@ -33,75 +33,100 @@ export const Eventedit = () => {
               </p>
               <input type="text" name="event_type" />
             </div>
-        </div>
-        <div className="eventedit__event_details">
-        <div className="input">
+          </div>
+
+          <div className="eventedit__event_details">
+            <div className="input">
               <p className="input_label">
                 When do you want to celebrate?<span>*</span>
               </p>
               <input type="date" name="from" />
             </div>
             <p className="to"> TO </p>
-        <div className="input">
-          <p className="input_label">
-            <span>*</span>
-          </p>
-          <input type="date" name="to" />
-        </div>
-        </div>
-        <div className="eventedit__event_details">
-        <div className="input">
+            <div className="input">
+              <p className="input_label">
+                <span>*</span>
+              </p>
+              <input type="date" name="to" />
+            </div>
+          </div>
+
+          <div className="eventedit__event_details">
+            <div className="input">
               <p className="input_label">
                 What services are you looking for?<span>*</span>
               </p>
-              <div className="buttons">
-                <p className="service_btn">Venues</p>
-                <p className="service_btn">Caterers</p>
-                <p className="service_btn">Party Suppliers</p>
-                <p className="service_btn">Hosts</p>
-                <p className="service_btn">Entertainers</p>
-                <p className="service_btn">Photographers</p>
-                <p className="service_btn">Formal Attire</p>
-                <p className="service_btn">Costumes</p>
-                <p className="service_btn">Makeup Artists</p>
+              <div className="services_buttons">
+                <div className="service_btn">Venues</div>
+                <div className="service_btn">Caterers</div>
+                <div className="service_btn">Party Suppliers</div>
+                <div className="service_btn">Hosts</div>
+                <div className="service_btn">Entertainers</div>
+                <div className="service_btn">Photographers</div>
+                <div className="service_btn">Formal Attire</div>
+                <div className="service_btn">Costumes</div>
+                <div className="service_btn">Makeup Artists</div>
               </div>
-             
             </div>
-        </div>
-        <div className="eventedit__event_details">
-          <div className="input">
+          </div>
+
+          <div className="eventedit__event_details">
+            <div className="range_container">
+              <div className="input">
                 <p className="input_label">
                   How much is your budget?<span>*</span>
                 </p>
-                <input type="float" name="budget" />
+                <input type="float" name="budget" placeholder="PHP" />
               </div>
-          <div className="slidecontainer">
-          <p className="range_text">0 PHP</p>
-            <input type="range" min="1" max="250" className="slider" id="myRange"/>
-            <p className="range_text">500000+ PHP</p>          </div>
-        </div>
-        <div className="eventedit__event_details">
-        <div className="input">
-          <p className="input_label"> How many attendees?<span>*</span></p>
-          <input type="integer" name="pax" />
+              <div className="slidecontainer">
+                <input
+                  type="range"
+                  min="1"
+                  max="250"
+                  className="slider"
+                  id="myRange"
+                />
+                <div className="range_text">
+                  <p>0 PHP</p>
+                  <p>500000+ PHP</p>{" "}
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="slidecontainer">
-          <p className="range_text">0 PAX</p>
-            <input type="range" min="1" max="250" className="slider" id="myRange"/>
-            <p className="range_text">250+ PAX</p>
+
+          <div className="eventedit__event_details">
+            <div className="range_container">
+              <div className="input">
+                <p className="input_label">
+                  How big is your event?<span>*</span>
+                </p>
+                <input type="float" name="attendees" placeholder="PAX" />
+              </div>
+              <div className="slidecontainer">
+                <input
+                  type="range"
+                  min="1"
+                  max="250"
+                  className="slider"
+                  id="myRange"
+                />
+                <div className="range_text">
+                  <p>0 PAX</p>
+                  <p>250+ PAX</p>{" "}
+                </div>
+              </div>
+            </div>
           </div>
-        
-        </div>
-        
-        <div className="eventedit__event_details">
-          <div className="buttons">
-            <p className="cancel_btn">Cancel</p>
-            <p className="save_btn">
-              <img src={SaveEdits} alt="SaveEdits"></img>
-              Save Edits</p>
+
+          <div className="eventedit__event_details">
+            <div className="eventedit_buttons">
+              <div className="cancel_btn">Cancel</div>
+              <div className="save_btn">
+                <img src={SaveEdits} alt="SaveEdits"></img>
+                Save Edits
+              </div>
+            </div>
           </div>
-            
-        </div>
         </div>
       </div>
     </div>

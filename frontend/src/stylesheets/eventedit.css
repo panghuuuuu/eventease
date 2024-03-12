@@ -7,14 +7,20 @@
   gap: 130px;
   overflow-x: hidden;
   overflow-y: auto;
-  background: radial-gradient(215.69% 121.33% at -17.89% 50%, #BEAEE2 10.8%, #F7DBF0 36.72%, rgba(247, 219, 240, 0.00) 54.53%), #FFF;
+  background: radial-gradient(
+      215.69% 121.33% at -17.89% 50%,
+      #beaee2 10.8%,
+      #f7dbf0 36.72%,
+      rgba(247, 219, 240, 0) 54.53%
+    ),
+    #fff;
 }
 
 .eventedit__left_container {
   flex: 2;
   display: flex;
   flex-direction: column;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .eventedit__right_container {
@@ -35,11 +41,13 @@
 .eventedit__event_details {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  width: 100%;
+  justify-content: space-between;
+  gap: 40px;
 }
 
 .eventedit_title {
-  color: #282E3D;
+  color: #282e3d;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 48px;
   font-style: normal;
@@ -47,17 +55,18 @@
   line-height: normal;
 }
 
-.eventedit_text {color: #EA3AB9;
-font-family: Arial, Helvetica, sans-serif;
-font-size: 15px;
-font-weight: 500;
-line-height: normal;
+.eventedit_text {
+  color: #ea3ab9;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .eventedit_fields {
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
+  flex-direction: column;
+  align-items: center;
   gap: 20px;
   display: flex;
   width: 700px;
@@ -66,13 +75,13 @@ line-height: normal;
 }
 
 .eventedit_fields input {
-  width: 300px;
   height: 50px;
   padding: 30px;
   align-items: center;
   gap: 10px;
   border-radius: 12px;
   border: 1px solid #474747;
+  width: 100%;
 }
 
 .eventedit_fields input[type="date"] {
@@ -84,17 +93,22 @@ line-height: normal;
 }
 
 .to {
-  color: rgba(30, 30, 30, 0.30);
+  color: rgba(30, 30, 30, 0.3);
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
 }
 
-.buttons {
+.eventedit_buttons {
   display: flex;
-  align-items: center;
-  align-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.services_buttons {
+  display: flex;
   gap: 20px;
   flex-wrap: wrap;
 }
@@ -106,19 +120,18 @@ line-height: normal;
   align-items: center;
   gap: 10px;
   border-radius: 12px;
-  border: 1px solid rgba(30, 30, 30, 0.30);
+  border: 1px solid rgba(30, 30, 30, 0.3);
   background: white;
 }
 
 .service_btn.clicked {
-  background: #9FC9F3;
+  background: #9fc9f3;
 }
 
 .slidecontainer {
-  display: flex;
   stroke-width: 2px;
-  stroke: rgba(71, 71, 71, 0.30);
-  
+  stroke: rgba(71, 71, 71, 0.3);
+  width: 100%;
 }
 
 .slider::-webkit-slider-thumb {
@@ -127,7 +140,7 @@ line-height: normal;
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #A460ED;
+  background: #a460ed;
   cursor: pointer;
 }
 
@@ -135,7 +148,7 @@ line-height: normal;
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #A460ED;
+  background: #a460ed;
   cursor: pointer;
 }
 
@@ -146,8 +159,8 @@ line-height: normal;
   align-items: center;
   gap: 10px;
   border-radius: 12px;
-  border: 1px solid rgba(30, 30, 30, 0.30);
-  background: #F7DBF0;
+  border: 1px solid rgba(30, 30, 30, 0.3);
+  background: #f7dbf0;
 }
 .save_btn {
   display: inline-flex;
@@ -156,17 +169,35 @@ line-height: normal;
   align-items: center;
   gap: 10px;
   border-radius: 12px;
-  border: 1px solid rgba(30, 30, 30, 0.30);
-  background: #A460ED;
-  color: #FFF;
-  font-family: Arial, Helvetica, sans-serif;;
+  border: 1px solid rgba(30, 30, 30, 0.3);
+  background: #a460ed;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
 }
 
+.range_container input[type="float"] {
+  width: 50%;
+}
+
+.range_container input[type="float"]::placeholder {
+  text-align: right;
+}
+
+.range_container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+
 .range_text {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
