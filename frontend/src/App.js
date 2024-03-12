@@ -3,10 +3,11 @@ import history from "./history";
 import "./stylesheets/App.css";
 
 import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 const App = () => (
   <div>
-    <Signup />
+    <Login />
   </div>
 );
 
