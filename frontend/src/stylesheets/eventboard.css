@@ -1,6 +1,100 @@
-.eventboard_container {
+.eventboard___container {
+    display: flex;
+    width: 1656px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 27px;
+}   
+
+
+/* FOR NAVBAR */
+
+.eventboard__navbar {
+    display: flex;
     width: 1920px;
-    height: 2096px;
-    top: -1345px;
-    left: 4897px
+    padding: 40px 132px 20px 132px;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFF;
 }
+
+
+/* FOR EVENTBOARD FRAME */
+
+.eventboard__frame {
+    display: flex;
+    width: 1656px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 27px;  
+}
+
+
+/* EVENTBOARD DETAILS */
+
+.eventboard__details {
+    display: flex;
+    width: 340px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.details_frame {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.details_head {
+    color: #A460ED;
+}
+
+.eventboard__pins {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+
+/* FOR BUDGET */
+.eventboard__budget {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    flex: 1 0 0;
+}
+
+.budget_receipt {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+}
+
+.budget_php {
+    text-align: right;
+}
+
+.receipt_frame {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+
+/* FOR FOOTER */
+
+.eventboard__footer {
+    display: flex;
+    width: 1920px;
+    padding: 20px 132px;
+    justify-content: space-between;
+    align-items: center;
+}
+
