@@ -16,7 +16,7 @@ export const Eventedit = () => {
         <p className="eventedit_header">Create your dream event</p>
         <h1 className="eventedit_title">What event are you planning?</h1>
         <p className="eventedit_text">* Required fields</p>
-        <p className="eventedit_text">Unsure? Responses can be edited later.</p>
+        <p className="eventedit_text"><i>Unsure?</i> Responses can be edited later.</p>
       </div>
       <div className="eventedit__right_container">
       <div className="eventedit_fields">
@@ -73,7 +73,7 @@ export const Eventedit = () => {
                 <p className="input_label">
                   How much is your budget?<span>*</span>
                 </p>
-                <input type="float" name="budget" />
+                <input type="float" name="budget" placeholder="PHP"/>
               </div>
           <div className="slidecontainer">
           <p className="range_text">0 PHP</p>
@@ -83,14 +83,13 @@ export const Eventedit = () => {
         <div className="eventedit__event_details">
         <div className="input">
           <p className="input_label"> How many attendees?<span>*</span></p>
-          <input type="integer" name="pax" />
+          <input type="integer" name="pax" placeholder="PAX"/>
           </div>
           <div className="slidecontainer">
           <p className="range_text">0 PAX</p>
             <input type="range" min="1" max="250" className="slider" id="myRange"/>
             <p className="range_text">250+ PAX</p>
-          </div>
-        
+          </div>  
         </div>
         
         <div className="eventedit__event_details">
