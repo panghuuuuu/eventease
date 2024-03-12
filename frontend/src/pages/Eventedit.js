@@ -1,15 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
+import axiosInstance from "../axiosApi";
 import "../stylesheets/eventedit.css";
 import SaveEdits from "../assets/SaveEdits.png";
 export const Eventedit = () => {
-  useEffect(() => {
-    document.querySelectorAll(".service_btn").forEach((button) => {
-      button.addEventListener("click", () => {
-        button.classList.add("clicked");
-      });
+    const [formData, setFormData] = useState({
+      event_name: "",
+      event_type: "",
+      event_start_date: "",
+      event_end_date: "",
+      budget: "",
+      pax: "",
+      services: "Venue",
     });
-  }, []);
-
+  
+    const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      console.log("Name:", name, "Value:", value);
+      let formattedValue = value;
+ 
+      setFormData({ ...formData, [name]: formattedValue });
+    };
+    
+  
+    const submitForm = async () => {
+      console.log(formData);
+      try {
+        await axiosInstance.post("/event/add-event/", formData);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+  
   return (
     <div className="eventedit_container">
       <div className="eventedit__left_container">
@@ -25,14 +46,20 @@ export const Eventedit = () => {
               <p className="input_label">
                 Event Name<span>*</span>
               </p>
-              <input type="text" name="event_name" />
+              <input type="text" name="event_name" value={formData.event_name} onChange={handleInputChange}/>
             </div>
             <div className="input">
               <p className="input_label">
                 Event Type<span>*</span>
               </p>
-              <input type="text" name="event_type" />
-            </div>
+              <select className="dropdown" id="dropdown" name="event_type" value={formData.event_type} onChange={handleInputChange}>
+                <option value="Wedding">Wedding</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Prom">Prom</option>
+                <option value="Corporate Meeting">Corporate Meeting</option>
+                <option value="Party">Party</option>
+            </select>           
+              </div>
           </div>
 
           <div className="dates_container">
@@ -41,14 +68,14 @@ export const Eventedit = () => {
             </p>
             <div className="eventedit__event_details">
               <div className="input">
-                <input type="date" name="from" />
+              <input type="date" name="event_start_date" value={formData.event_start_date} onChange={handleInputChange}/>
               </div>
               <div className="to">
                 {" "}
                 <p>TO</p>{" "}
               </div>
               <div className="input">
-                <input type="date" name="to" />
+              <input type="date" name="event_end_date" value={formData.event_end_date} onChange={handleInputChange}/>
               </div>
             </div>
           </div>
@@ -78,34 +105,7 @@ export const Eventedit = () => {
                 <p className="input_label">
                   How much is your budget?<span>*</span>
                 </p>
-<<<<<<< HEAD
-                <input type="float" name="budget" placeholder="PHP"/>
-              </div>
-          <div className="slidecontainer">
-          <p className="range_text">0 PHP</p>
-            <input type="range" min="1" max="250" className="slider" id="myRange"/>
-            <p className="range_text">500000+ PHP</p>          </div>
-        </div>
-        <div className="eventedit__event_details">
-        <div className="input">
-          <p className="input_label"> How many attendees?<span>*</span></p>
-          <input type="integer" name="pax" placeholder="PAX"/>
-          </div>
-          <div className="slidecontainer">
-          <p className="range_text">0 PAX</p>
-            <input type="range" min="1" max="250" className="slider" id="myRange"/>
-            <p className="range_text">250+ PAX</p>
-          </div>  
-        </div>
-        
-        <div className="eventedit__event_details">
-          <div className="buttons">
-            <p className="cancel_btn">Cancel</p>
-            <p className="save_btn">
-              <img src={SaveEdits} alt="SaveEdits"></img>
-              Save Edits</p>
-=======
-                <input type="float" name="budget" placeholder="PHP" />
+                <input type="float" name="budget" placeholder="PHP" value={formData.budget} onChange={handleInputChange}/>
               </div>
               <div className="slidecontainer">
                 <input
@@ -129,7 +129,7 @@ export const Eventedit = () => {
                 <p className="input_label">
                   How big is your event?<span>*</span>
                 </p>
-                <input type="float" name="attendees" placeholder="PAX" />
+                <input type="float" name="pax" placeholder="PAX" value={formData.pax} onChange={handleInputChange}/>
               </div>
               <div className="slidecontainer">
                 <input
@@ -150,12 +150,11 @@ export const Eventedit = () => {
           <div className="eventedit__event_details">
             <div className="eventedit_buttons">
               <div className="cancel_btn">Cancel</div>
-              <div className="save_btn">
+              <div className="save_btn" onClick={submitForm}>
                 <img src={SaveEdits} alt="SaveEdits"></img>
                 Save Edits
               </div>
             </div>
->>>>>>> a26ca4680f8242f2f2aee6c45bf2cf353f3d17ed
           </div>
         </div>
       </div>
