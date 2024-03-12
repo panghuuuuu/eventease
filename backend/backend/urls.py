@@ -22,7 +22,7 @@ from django.conf import settings
 
 from dj_rest_auth.registration.views import VerifyEmailView
 
-from accounts.api.viewsets import RegisterViewSet
+from accounts.api.viewsets import RegisterViewSet, LoginViewSet
 # from accounts.api.views import GetMe
 
 router = routers.DefaultRouter()
@@ -38,5 +38,6 @@ urlpatterns = [
         name="account_email_verification_sent",
     ),
     path('api/register/', RegisterViewSet.as_view({'post': 'register'}), name='register'),
+    path('api/login/', LoginViewSet.as_view({'post': 'login'}), name='login'),
 
 ]
