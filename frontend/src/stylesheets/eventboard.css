@@ -69,31 +69,16 @@
 
 
 /* FOR PINS */
+
 .eventboard__pins {
     display: flex;
-    flex: 0 0 40%;
     flex-direction: column;
     align-items: flex-start;
     gap: 40px;
 }
 
-.pins_section {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-}
 
-.pins_section {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 40px; /* This adds vertical spacing between pins_sections */
-    align-self: stretch;
-    
-} 
-
-.cards {
+.pin_section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -103,17 +88,17 @@
 .cards_container {
     display: flex;
     align-items: flex-start;
-    gap: 20px;
+    gap: 20px;    
+    max-width: 50%;
+    overflow-x: scroll;
 }
 
 .spcard {
     display: flex;
-    height: 500px;
     flex-direction: column;
     align-items: flex-start;
-    border-radius: 12px;
-    border: 2px solid #F07DEA;
-    padding: 20px; /* Adjust as needed */
+    border: 2px solid black; 
+    max-height: fit-content;
 }
 
 .spcard_img {
@@ -122,49 +107,17 @@
     flex-shrink: 0;
 }
 
-.event_details_1 {
+.spcard_details {
     display: flex;
     padding: 40px;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    flex: 
-        1 0 0
-        0 0 0;
+    flex: 1 0 0;
     align-self: stretch;
-    border: 2px solid #F07DEA;
-    background: #FFF;
 }
 
-.event_details_2 {
-    display: flex;
-    padding: 40px;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex: 
-        0 1 0
-        0 0 0;
-    align-self: stretch;
-    border: 2px solid #F07DEA;
-    background: #FFF;
-}
-.event_details_3 {
-    display: flex;
-    padding: 40px;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex: 
-        0 0 0
-        1 0 0;
-    align-self: stretch;
-    border: 2px solid #F07DEA;
-    background: #FFF;
-}
-
-
-.details_front {
+.front-details {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -173,33 +126,26 @@
     align-self: stretch;
 }
 
-.front {
+.details_name {
     display: flex;
     align-items: center;
     gap: 10px;
     align-self: stretch;
 }
 
-.front_name{
-    color: #A460ED;
-}
-
-.details_showmore {
-    display: flex;
-    height: 41px;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    gap: 10px;
-    align-self: stretch;
-}
-
-.showmore-div {
+.details_other {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
+.spname {
+    flex: 1 0 0;
+}
+
+.show-more {
+
+}
 
 /* FOR BUDGET */
 .eventboard__budget {
