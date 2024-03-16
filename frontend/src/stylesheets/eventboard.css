@@ -38,11 +38,10 @@
 /* FOR EVENTBOARD FRAME */
 
 .eventboard__frame {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    padding: 154px 132px 202px 132px; 
+    display: grid;
+    grid-template-columns: 15% 65% 20%;
     gap: 27px;
-    padding: 154px 132px 202px 132px;
 }
 
 
@@ -82,39 +81,42 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
+    grid-gap: 10px;
     gap: 10px;
+    overflow-x: scroll;
 }
 
 .cards_container {
     display: flex;
     align-items: flex-start;
     gap: 20px;    
-    max-width: 50%;
-    overflow-x: scroll;
+    max-width: 75%;
+    /* overflow-x: scroll; */
 }
 
 .spcard {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 35% 65% ;
     align-items: flex-start;
     border: 2px solid black; 
-    max-height: fit-content;
+    height: 100%;
+    max-width: fit-content;
+
 }
 
 .spcard_img {
-    width: 420px;
-    height: 260px;
-    flex-shrink: 0;
+    width: 100%;
+    /* flex: 1 1 auto; */
 }
 
 .spcard_details {
     display: flex;
-    padding: 40px;
-    flex-direction: column;
+    padding: 0px;
+    flex-direction: column; 
     justify-content: space-between;
     align-items: flex-start;
-    flex: 1 0 0;
-    align-self: stretch;
+    /* align-self: stretch; */
 }
 
 .front-details {
@@ -123,28 +125,20 @@
     justify-content: center;
     align-items: flex-start;
     gap: 10px;
-    align-self: stretch;
+    /* align-self: stretch; */
 }
 
 .details_name {
     display: flex;
     align-items: center;
     gap: 10px;
-    align-self: stretch;
+    /* align-self: stretch; */
 }
 
 .details_other {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.spname {
-    flex: 1 0 0;
-}
-
-.show-more {
-
 }
 
 /* FOR BUDGET */
