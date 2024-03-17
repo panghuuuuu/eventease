@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+
 import "../stylesheets/home.css";
+
 import Navbar from "../components/Navbar";
 import Eventedit from "./Eventedit";
 
 export const Home = () => {
   return (
-    <div>
+    <section id="home">
       <div className="home_container">
         <Navbar />
         <div className="hero">
@@ -45,21 +48,23 @@ export const Home = () => {
                 </svg>
                 <a href="#">Look for Venues</a>
               </button>
-              <button>
-                <svg
-                  width="24"
-                  height="25"
-                  viewBox="0 0 24 25"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M9.90456 20.1239C11.9056 20.1239 13.7808 19.5255 15.3414 18.5031L20.8537 23.9764C21.2187 24.3255 21.6843 24.5 22.1877 24.5C23.2323 24.5 24 23.6896 24 22.6673C24 22.1935 23.8364 21.7322 23.484 21.3831L18.0094 15.9348C19.1421 14.339 19.8091 12.4065 19.8091 10.3119C19.8091 4.91351 15.354 0.5 9.90456 0.5C4.46775 0.5 0 4.91351 0 10.3119C0 15.7104 4.45517 20.1239 9.90456 20.1239ZM9.90456 17.5057C5.91505 17.5057 2.64289 14.2642 2.64289 10.3119C2.64289 6.35974 5.91505 3.11818 9.90456 3.11818C13.8941 3.11818 17.1662 6.35974 17.1662 10.3119C17.1662 14.2642 13.8941 17.5057 9.90456 17.5057Z"
-                    fill="white"
-                  />
-                </svg>
-                <a href="#">Browse Suppliers</a>
-              </button>
+              <Link to="/browse">
+                <button>
+                  <svg
+                    width="24"
+                    height="25"
+                    viewBox="0 0 24 25"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.90456 20.1239C11.9056 20.1239 13.7808 19.5255 15.3414 18.5031L20.8537 23.9764C21.2187 24.3255 21.6843 24.5 22.1877 24.5C23.2323 24.5 24 23.6896 24 22.6673C24 22.1935 23.8364 21.7322 23.484 21.3831L18.0094 15.9348C19.1421 14.339 19.8091 12.4065 19.8091 10.3119C19.8091 4.91351 15.354 0.5 9.90456 0.5C4.46775 0.5 0 4.91351 0 10.3119C0 15.7104 4.45517 20.1239 9.90456 20.1239ZM9.90456 17.5057C5.91505 17.5057 2.64289 14.2642 2.64289 10.3119C2.64289 6.35974 5.91505 3.11818 9.90456 3.11818C13.8941 3.11818 17.1662 6.35974 17.1662 10.3119C17.1662 14.2642 13.8941 17.5057 9.90456 17.5057Z"
+                      fill="white"
+                    />
+                  </svg>
+                  Browse Suppliers
+                </button>
+              </Link>
             </div>
             <div className="hero_continue">
               <p>Start Planning</p>
@@ -85,7 +90,7 @@ export const Home = () => {
         </div>
       </div>
       <Eventedit />
-    </div>
+    </section>
   );
 };
 

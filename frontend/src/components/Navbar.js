@@ -8,7 +8,9 @@ function Navbar() {
   return (
     <nav className="navbar_container">
       <div className="nav_left">
-        <img className="eventease_logo" src={logo} alt="EventEase logo" />
+        <Link to="/">
+          <img className="eventease_logo" src={logo} alt="EventEase logo" />
+        </Link>
       </div>
       <div className="searchbar">
         <svg
@@ -26,7 +28,7 @@ function Navbar() {
       </div>
       <div className="nav_right">
         <button className="browse">
-          <a href="/api/register">Browse</a>
+          <Link to="/browse">Browse</Link>
         </button>
         <button className="login">
           <Link to="/login">Log In</Link>

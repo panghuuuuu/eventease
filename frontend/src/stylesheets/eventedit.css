@@ -1,3 +1,5 @@
+@import "../constants/colors.css";
+
 .eventedit_container {
   display: flex;
   flex-direction: row;
@@ -10,7 +12,7 @@
   background: radial-gradient(
       215.69% 121.33% at -17.89% 50%,
       #beaee2 10.8%,
-      #f7dbf0 36.72%,
+      var(--color-primary-variant) 36.72%,
       rgba(247, 219, 240, 0) 54.53%
     ),
     #fff;
@@ -148,7 +150,7 @@
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #a460ed;
+  background: var(--color-primary);
   cursor: pointer;
 }
 
@@ -156,7 +158,7 @@
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #a460ed;
+  background: var(--color-primary);
   cursor: pointer;
 }
 
@@ -168,7 +170,7 @@
   gap: 10px;
   border-radius: 12px;
   border: 1px solid rgba(30, 30, 30, 0.3);
-  background: #f7dbf0;
+  background: var(--color-primary-variant);
 }
 .save_btn {
   display: inline-flex;
@@ -178,7 +180,7 @@
   gap: 10px;
   border-radius: 12px;
   border: 1px solid rgba(30, 30, 30, 0.3);
-  background: #a460ed;
+  background: var(--color-primary);
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -210,9 +212,9 @@
   justify-content: space-between;
 }
 
-.dropdown  {
+.dropdown {
   height: 60px;
-  padding: 10px; 
+  padding: 10px;
   border-radius: 12px;
   font-size: 12px;
   border: 1px solid #474747;

@@ -1,8 +1,9 @@
+@import "../constants/colors.css";
+
 .home_container {
   background-image: url(../assets/home_hero.png);
   background-repeat: no-repeat;
   background-position: right 0px center;
-  font-family: "Inter";
 }
 
 .hero {
@@ -18,7 +19,6 @@
   font-size: 96px;
   width: 60%;
   font-weight: 900;
-  font-family: "Inter";
   line-height: 120%;
 }
 
@@ -27,7 +27,7 @@
   background: linear-gradient(
     95deg,
     #9fc9f3 -5.21%,
-    #a460ed 38.84%,
+    var(--color-primary) 38.84%,
     #f07dea 94.89%
   );
   background-clip: text;
@@ -37,7 +37,7 @@
 
 .hero_details {
   font-weight: 500;
-  color: #a460ed;
+  color: var(--color-primary);
   font-size: 16px;
 }
 
@@ -51,13 +51,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: #a460ed;
+  background-color: var(--color-primary);
   gap: 10px;
   padding: 10px 20px;
   border: 1px solid rgba(30, 30, 30, 1);
   border-radius: 8px;
-  font-family: "Inter";
   font-weight: 500;
+  color: white;
 }
 
 .hero_details .home_buttons_container button a {
