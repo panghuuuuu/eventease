@@ -37,10 +37,32 @@
   cursor: pointer;
 }
 
+.filters_container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
 .browse_panel {
   flex: 4;
   display: flex;
   align-items: flex-start;
   gap: 20px;
   align-self: stretch;
+  flex-wrap: wrap;
+}
+
+.input input[type="float"] {
+  display: flex;
+  padding: 20px;
+  gap: 10px;
+  border-radius: 12px;
+  border: 1px solid #474747;
+  background: #fff;
+  margin-bottom: 10px;
+}
+
+select {
+  display: flex;
+  width: 100%;
 }
