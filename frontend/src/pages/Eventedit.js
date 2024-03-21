@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axiosInstance from "../axiosApi";
 import "../stylesheets/eventedit.css";
 import SaveEdits from "../assets/SaveEdits.png";
