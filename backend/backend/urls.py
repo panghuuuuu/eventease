@@ -19,11 +19,15 @@ from django.contrib import admin
 from django.urls import path, include, include
 from rest_framework import routers
 from django.conf import settings
+from django.conf.urls.static import static
 
-from eventboard.api import views, viewsets
+from events.api import views as event_views
+from services.api import views as service_views
+
 from dj_rest_auth.registration.views import VerifyEmailView
 from accounts.api.viewsets import RegisterViewSet, LoginViewSet 
-from eventboard.api.viewsets import EventViewSet, ServiceViewSet, PackageViewSet
+from events.api.viewsets import EventViewSet
+from services.api.viewsets import ServiceViewSet, PackageViewSet
 
 router = routers.DefaultRouter()
 
@@ -41,17 +45,16 @@ urlpatterns = [
     path('api/login/', LoginViewSet.as_view({'post': 'login'}), name='login'),
 
 
-    path('event', views.getEventData),
+    path('event', event_views.getEventData),
     path('event/add-event', EventViewSet.as_view({'post': 'create_event'}), name='create_event'),
     path('event/edit-event/<int:pk>/', EventViewSet.as_view({'put': 'edit_event'}), name='edit_event'),
     path('event/delete-event/<int:pk>/', EventViewSet.as_view({'delete': 'delete_event'}), name='delete_event'),
-
-    path('service', views.getServiceData),
-    path('service/add-service', ServiceViewSet.as_view({'post': 'service'}), name='service'),
-    path('service/edit-service/<int:pk>/', views.edit_service),
-    path('service/delete-service/<int:pk>/', views.delete_service),
     
-    path('package', views.getPackagesData),
+    path('services', service_views.get_all_services),
+    path('service/add-service', ServiceViewSet.as_view({'post': 'service'}), name='service'),
+    path('service/edit-service/<int:pk>/', service_views.edit_service),
+    path('service/delete-service/<int:pk>/', service_views.delete_service),
+    
+    path('package', service_views.getPackagesData),
     path('package/add-package', PackageViewSet.as_view({'post': 'package'}), name='package'),
 ]
-

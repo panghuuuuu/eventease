@@ -5,6 +5,7 @@
   height: fit-content;
   border-radius: 12px;
   border: 2px solid #f07dea;
+  max-width: 30%;
 }
 
 .card p {
@@ -13,7 +14,6 @@
 }
 
 .card_details {
-  background: var(--color-white);
   display: flex;
   padding: 40px;
   flex-direction: column;
@@ -29,4 +29,8 @@
   align-items: center;
   gap: 10px;
   margin-left: auto;
+}
+
+.card ul {
+  list-style: none;
 }

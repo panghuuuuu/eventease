@@ -31,9 +31,10 @@
   margin-bottom: 10px;
 }
 
-.filter_panel li:hover {
+.filter_panel li:hover,
+.active {
   background-color: var(--color-primary);
-  color: var(--color-white);
+  color: var(--color-white) !important;
   cursor: pointer;
 }
 
