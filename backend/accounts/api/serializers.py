@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import get_user_model, authenticate, login
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
@@ -62,8 +62,16 @@ class LoginSerializer(serializers.Serializer):
         if username and password:
             user = authenticate(request=self.context.get('request'), username=username, password=password)
             if user:
+                login(self.context.get('request'), user)  
                 return user
             else:
                 raise serializers.ValidationError("Invalid username or password.")
         else:
             raise serializers.ValidationError("Both username and password are required.")
+
+
+class UserDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'username', 'email']
+

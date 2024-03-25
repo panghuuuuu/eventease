@@ -21,6 +21,7 @@ from rest_framework import routers
 from django.conf import settings
 from django.conf.urls.static import static
 
+from accounts.api.views import GetMe
 from events.api import views as event_views
 from services.api import views as service_views
 
@@ -35,7 +36,7 @@ router = routers.DefaultRouter()
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # path("api/me", GetMe.as_view(), name="current-user"),
+    path("api/me", GetMe.as_view(), name="current-user"),
     path(
         "auth/verify-email/",
         VerifyEmailView.as_view(),
@@ -43,7 +44,6 @@ urlpatterns = [
     ),
     path('api/register/', RegisterViewSet.as_view({'post': 'register'}), name='register'),
     path('api/login/', LoginViewSet.as_view({'post': 'login'}), name='login'),
-
 
     path('event', event_views.getEventData),
     path('event/add-event', EventViewSet.as_view({'post': 'create_event'}), name='create_event'),
