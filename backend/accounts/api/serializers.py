@@ -50,7 +50,6 @@ class RegistrationSerializer(serializers.ModelSerializer):
         user.set_password(cleaned_data.get("password1"))
         user.save()
         return user
-
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(required=True)
     password = serializers.CharField(required=True, write_only=True)
@@ -63,7 +62,7 @@ class LoginSerializer(serializers.Serializer):
             user = authenticate(request=self.context.get('request'), username=username, password=password)
             if user:
                 login(self.context.get('request'), user)  
-                return user
+                return {'username': username, 'password': password}  
             else:
                 raise serializers.ValidationError("Invalid username or password.")
         else:

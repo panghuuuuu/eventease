@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate, login
 
 from rest_framework import mixins, viewsets, status
 from rest_framework.decorators import action
@@ -6,7 +6,6 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.response import Response
 from rest_framework.status import HTTP_401_UNAUTHORIZED
-from rest_framework.authtoken.models import Token
 
 from .serializers import RegistrationSerializer, LoginSerializer, UserDetailSerializer
 from .permissions import IsSelf
@@ -47,6 +46,14 @@ class LoginViewSet(viewsets.ViewSet):
     def login(self, request):
         serializer = LoginSerializer(data=request.data, context={'request': self.request})
         serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data
-        # Generate and return token (implementation not shown for brevity)
-        return Response({'message': 'Login successful'}, status=status.HTTP_200_OK)
+        username = serializer.validated_data['username']
+        password = serializer.validated_data['password']
+        
+        # Authenticate the user
+        user = authenticate(request=request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return Response({'message': 'Login successful'}, status=status.HTTP_200_OK)
+        else:
+            # Return an error response if authentication fails
+            raise serializers.ValidationError("Invalid username or password.")

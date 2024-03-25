@@ -4,35 +4,25 @@ import axiosInstance from "../axiosApi";
 import signupHeader from "../assets/logo_header.png";
 import "../stylesheets/signup.css";
 
-export default function Login() {
+const Login = () => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Check if user is already logged in when component mounts
     const checkLoggedIn = async () => {
-      try {
-        const response = await axiosInstance.get("/api/checkLoggedIn");
-        if (response.status === 200) {
-          setIsLoggedIn(true);
-        }
-      } catch (error) {
-        console.error("Error:", error);
+      const token = localStorage.getItem("token");
+      if (token) {
+        navigate("/myevents");
       }
     };
     checkLoggedIn();
-  }, []);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate("/myevents");
-    }
-  }, [isLoggedIn, navigate]);
+  }, [navigate]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -46,7 +36,8 @@ export default function Login() {
     try {
       const response = await axiosInstance.post("/api/login/", formData);
       if (response.status === 200) {
-        setIsLoggedIn(true);
+        localStorage.setItem("token", response.data.token); // Store token in local storage
+        navigate("/myevents");
       }
     } catch (error) {
       setError("Invalid username or password.");
@@ -65,6 +56,7 @@ export default function Login() {
         </div>
         <div className="signup_fields">
           <h3>Login</h3>
+
           <div className="input">
             <p className="input_label">
               Username<span>*</span>
@@ -87,6 +79,7 @@ export default function Login() {
               onChange={handleInputChange}
             />
           </div>
+          {error && <p className="error">{error}</p>}
           <div className="bottom_links">
             <div className="bottom_text">
               <Link to="/register" className="login_btn">
@@ -94,11 +87,13 @@ export default function Login() {
               </Link>
             </div>
             <div className="signup_btn" onClick={submitForm}>
-              Login
+              {loading ? "Loading..." : "Login"}
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default Login;
