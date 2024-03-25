@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 import axiosInstance from "../axiosApi";
 import signupHeader from "../assets/logo_header.png";
 import "../stylesheets/signup.css";
@@ -18,6 +20,7 @@ export default function Registration() {
   };
 
   const submitForm = async () => {
+    console.log(formData);
     try {
       await axiosInstance.post("/api/register/", formData);
     } catch (error) {
@@ -120,7 +123,9 @@ export default function Registration() {
           <div className="bottom_links">
             <div className="bottom_text">
               <span>* Required fields</span>
-              <p className="login_btn">I already have an account</p>
+              <Link to="/login" className="login_btn">
+                I already have an account
+              </Link>
             </div>
             <div className="signup_btn" onClick={submitForm}>
               Sign Up

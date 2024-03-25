@@ -1,15 +1,19 @@
-import React, { Component } from "react";
-import history from "./history";
-import "./stylesheets/App.css";
-
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
 import Signup from "./pages/Signup";
-import Eventedit from "./pages/Eventedit";
-import Eventboard from "./pages/eventboard";
+import Login from "./pages/Login";
 
 const App = () => (
-  <div>
-    <Eventboard/>
-  </div>
+  <Router>
+    <div>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Signup />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </div>
+  </Router>
 );
 
 export default App;
