@@ -4,12 +4,18 @@ import "../stylesheets/myevents.css";
 import Navbar from "../components/Navbar";
 import MyEventsCard from "../components/MyEventsCard";
 
-
-
 export const MyEvents = () => {
-  const [formData, setFormData] = useState({
-    // Your state initialization goes here
-  });
+  const [formData, setFormData] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('event'); 
+      const data = await response.json();
+      setFormData(response.formData)
+    } catch (error) {
+      console.error('There was a problem fetching the data:', error);
+    }
+  };
 
   return (
     <section id="myevents">
@@ -19,15 +25,7 @@ export const MyEvents = () => {
             <button className="addevent">+ Add Your Dream Event</button>
         </div>
         <div className="myevents_panel">
-          {Object.entries(MyEvents).map(
-            ([eventName, eventDetails], index) => (
-              <MyEventsCard
-                key={index}
-                event={eventName}
-                eventDetails={eventDetails}
-              />
-            )
-          )}{" "}
+          <MyEventsCard/>
         </div>
         <h4>That's all your events!</h4>
     </section>

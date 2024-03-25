@@ -9,13 +9,11 @@ function EventCard(props) {
       <div key={event}>
         <div className="myevent_details">
           <h3>{event}</h3>
-          <p> {eventDetails.event_type}
+          <p> type
           </p>
-          <p>
-              Services: {eventDetails.services}
+          <p> Services:
           </p>
-          <p>
-              {eventDetails.event_start_date} to {eventDetails.event_end_date}
+          <p> date
           </p>
           // when arrow is clicked, should be led to eventboard page, aka what ross is doing
           <h4>
