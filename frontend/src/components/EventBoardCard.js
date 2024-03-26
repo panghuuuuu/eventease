@@ -3,7 +3,7 @@ import "../stylesheets/eventboard.css";
 
 function EventBoardCard(props) {
   const { service, serviceDetails } = props;
-  console.log("service: ", serviceDetails);
+  console.log("service: ", service);
   return (
     <div className="spcard">
       <img
