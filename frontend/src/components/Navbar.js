@@ -1,10 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import "../stylesheets/navbar.css";
 import logo from "../assets/logo_header.png";
 
 function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkLoggedIn = async () => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        setIsLoggedIn(true);
+      } else {
+        navigate("/login");
+      }
+    };
+    checkLoggedIn();
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    navigate("/login");
+  };
+
   return (
     <nav className="navbar_container">
       <div className="nav_left">
@@ -30,12 +51,78 @@ function Navbar() {
         <button className="browse">
           <Link to="/browse">Browse</Link>
         </button>
-        <button className="login">
-          <Link to="/login">Log In</Link>
-        </button>
-        <button className="register">
-          <Link to="/register">Register</Link>
-        </button>
+        {isLoggedIn ? (
+          <>
+            <button className="logout" onClick={handleLogout}>
+              Logout
+            </button>
+            <button className="browse">
+              <Link to="/myevents">My Events</Link>{" "}
+            </button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 64 65"
+              fill="none"
+            >
+              <g clip-path="url(#clip0_122_368)">
+                <rect
+                  y="0.233032"
+                  width="64"
+                  height="64"
+                  fill="url(#paint0_linear_122_368)"
+                />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M37.991 33.6329C41.5828 31.5593 44 27.6785 44 23.233C44 16.6056 38.6274 11.233 32 11.233C25.3726 11.233 20 16.6056 20 23.233C20 27.6785 22.4172 31.5593 26.009 33.6329C19.1849 38.737 15 46.8345 15 55.6176V64.2328H49V55.6176C49 46.8345 44.8151 38.737 37.991 33.6329Z"
+                  fill="white"
+                />
+              </g>
+              <rect
+                x="0.5"
+                y="0.733032"
+                width="63"
+                height="63"
+                rx="31.5"
+                stroke="#1E1E1E"
+                stroke-opacity="0.3"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_122_368"
+                  x1="8"
+                  y1="-11.267"
+                  x2="50.5"
+                  y2="72.733"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop offset="0.0354981" stop-color="#9FC9F3" />
+                  <stop offset="1" stop-color="#A460ED" />
+                </linearGradient>
+                <clipPath id="clip0_122_368">
+                  <rect
+                    y="0.233032"
+                    width="64"
+                    height="64"
+                    rx="32"
+                    fill="white"
+                  />
+                </clipPath>
+              </defs>
+            </svg>
+          </>
+        ) : (
+          <>
+            <button className="login">
+              <Link to="/login">Log In</Link>
+            </button>
+            <button className="register">
+              <Link to="/register">Register</Link>
+            </button>
+          </>
+        )}
       </div>
     </nav>
   );

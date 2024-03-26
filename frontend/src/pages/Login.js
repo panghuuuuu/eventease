@@ -14,7 +14,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is already logged in when component mounts
     const checkLoggedIn = async () => {
       const token = localStorage.getItem("token");
       if (token) {
@@ -36,7 +35,7 @@ const Login = () => {
     try {
       const response = await axiosInstance.post("/api/login/", formData);
       if (response.status === 200) {
-        localStorage.setItem("token", response.data.token); // Store token in local storage
+        localStorage.setItem("token", response.data.token);
         navigate("/myevents");
       }
     } catch (error) {

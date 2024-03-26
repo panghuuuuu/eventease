@@ -9,13 +9,11 @@ function EventCard(props) {
       <div key={event}>
         <div className="myevent_details">
           <h3>{event}</h3>
-          <p> type
-          </p>
-          <p> Services:
-          </p>
-          <p> date
-          </p>
-          // when arrow is clicked, should be led to eventboard page, aka what ross is doing
+          <p> type</p>
+          <p> Services:</p>
+          <p> date</p>
+          // when arrow is clicked, should be led to eventboard page, aka what
+          ross is doing
           <h4>
             More Details{" "}
             <svg
