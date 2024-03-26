@@ -1,10 +1,28 @@
-#myevents h1,
-h4 {
+#myevents h1 {
+  text-align: center;
+  margin-bottom: 1em;
   text-align: center;
   color: #1e1e1e;
   text-align: center;
-  font-family: Inter;
-  font-size: 48px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.addevent {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-radius: 12px;
+  border: 2px solid #f07dea;
+  background-color: white;
+  color: #a460ed;
+  font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -15,27 +33,25 @@ h4 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.addevent {
-  display: flex;
-  align-items: center;
-  width: 1100px;
-  padding: 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  border-radius: 12px;
-  border: 2px solid #f07dea;
-  background-color: white;
-  color: #a460ed;
-  font-family: Inter;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+  margin: 0px 64px;
 }
 
 .myevents_panel {
   display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 10px;
+  align-self: stretch;
+  flex-wrap: wrap;display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 20px;
+  align-self: stretch;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.myevents_end {
+  margin-top: 2em;
+  font-size: 12px;
 }

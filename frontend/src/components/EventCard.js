@@ -21,7 +21,7 @@ function EventCard(props) {
       <div key={event}></div>
       <h3>{event}</h3>
       <p className="event_type">{eventDetails.event_type}</p>
-      <p>{formattedStartDate}</p>
+      <p className="event_date">{formattedStartDate}</p>
       <ul>
         {eventDetails.services.map((service, index) => (
           <li key={index}>{service.service_type}</li>
@@ -29,9 +29,8 @@ function EventCard(props) {
       </ul>
       <Link to={`/eventboard/${eventId}`}>
         {" "}
-        <div className="more_details_btn">
-          <p>More Details</p>
-          <div>
+          <button className="more_btn">
+            More Details{" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -47,8 +46,7 @@ function EventCard(props) {
                 stroke-linejoin="round"
               />
             </svg>
-          </div>
-        </div>
+          </button>
       </Link>
     </div>
   );

@@ -1,19 +1,19 @@
 .event_card {
   display: flex;
+  gap: 5px;
   flex: 1;
-  padding: 40px;
+  padding: 20px;
   flex-direction: column;
   align-items: flex-start;
   flex: 1 0 0;
   border-radius: 12px;
   border: 2px solid #f07dea;
-  margin-top: 55px;
+  min-width: 200px;
 }
 
 .event_card h3 {
   color: #a460ed;
-  font-family: Inter;
-  font-size: 24px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -21,13 +21,16 @@
 
 .event_type {
   color: #a460ed;
-  font-family: Inter;
-  font-size: 16px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   letter-spacing: 0.8px;
   text-transform: uppercase;
+}
+
+.event_date {
+  font-size: 12px;
 }
 
 .event_card ul {
@@ -37,26 +40,31 @@
 
 .event_card li {
   display: flex;
-  padding: 12px;
+  padding: 8px;
+  font-size: 12px;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  border-radius: 12px;
+  border-radius: 8px;
   border: 1px solid rgba(30, 30, 30, 0.3);
   background: #fff;
 }
 
-.more_details_btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  margin-left: auto;
-  margin-top: 30px;
-  gap: 10px;
+.event_card a {
+  display: block;
+  width: max-content;
 }
 
-.more_details_btn p {
-  color: #a460ed;
-  margin-top: auto;
+.event_card a, .more_btn {
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  color: #A460ED;
+  margin-left: auto;
 }

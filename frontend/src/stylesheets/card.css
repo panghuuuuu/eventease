@@ -63,7 +63,9 @@
 }
 
 .more_btn {
+  cursor: pointer;
   border: none;
+  text-decoration: none;
   background: transparent;
   display: flex;
   flex-direction: row;
