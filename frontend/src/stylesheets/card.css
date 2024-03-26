@@ -10,11 +10,12 @@
   min-width: 300px;
   max-width: 25%;
   overflow: hidden;
+  height: 80%;
 }
 
 .card .service_image {
   height: 180px;
-  background: linear-gradient(117deg, #F07DEA -9.77%, #A460ED 106.39%);
+  background: linear-gradient(117deg, #f07dea -9.77%, #a460ed 106.39%);
 }
 
 .card_details {
@@ -30,7 +31,7 @@
 
 .card_details .service_name {
   overflow: hidden;
-  color: #A460ED;
+  color: #a460ed;
   text-overflow: ellipsis;
   font-family: Inter;
   font-size: 18px;
@@ -48,13 +49,13 @@
   width: 100%;
 }
 
-.card_details .service_location, 
+.card_details .service_location,
 .card_details .service_packages {
   font-size: 12px;
   display: flex;
   flex-direction: row;
-  gap: 10px
-} 
+  gap: 10px;
+}
 
 .card_details ul {
   font-size: 12px;
@@ -72,6 +73,6 @@
   align-items: center;
   gap: 10px;
   font-weight: bold;
-  color: #A460ED;
+  color: #a460ed;
   margin-left: auto;
 }

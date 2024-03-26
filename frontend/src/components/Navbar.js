@@ -57,7 +57,8 @@ function Navbar() {
             <button className="logout_btn" onClick={handleLogout}>
               Logout
             </button>
-            <svg className="acct_icon"
+            <svg
+              className="acct_icon"
               xmlns="http://www.w3.org/2000/svg"
               width="auto"
               height="42"
