@@ -48,6 +48,7 @@ export const Eventboard = () => {
                     <div className="cards">
                         <h1>VENUES</h1>
                         <div className="cards_container">
+                            
                             <div className="spcard">
                                 <img className="spcard_img" alt="insert img" />
                                 <div className="event_details_1"> 
@@ -75,7 +76,7 @@ export const Eventboard = () => {
                                 </div>
                             </div>
 
-                            {/* <div className="spcard">
+                            <div className="spcard">
                                 <img className="spcard_img" alt="insert img" />
                                 <div className="event_details_2"> 
                                     <div className="details_front">
@@ -100,7 +101,7 @@ export const Eventboard = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
                 </div>

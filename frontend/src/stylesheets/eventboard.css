@@ -68,7 +68,7 @@
 }
 
 
-/* FOR PINS */
+/* EVENTBOARD PINS */
 .eventboard__pins {
     display: flex;
     flex: 0 0 40%;
@@ -201,7 +201,7 @@
 }
 
 
-/* FOR BUDGET */
+/* EVENTBOARD BUDGET */
 .eventboard__budget {
     display: flex;
     flex-direction: column;
