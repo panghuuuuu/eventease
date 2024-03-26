@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../stylesheets/card.css";
+import axios from "../axiosApi.js";
 
-function EventCard(props) {
-  const { event, eventDetails } = props;
+const EventCard = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  useEffect(() => {
+    const checkLoggedIn = async () => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        setIsLoggedIn(true);
+        console.log("Token: " + token);
+      }
+    };
+    checkLoggedIn();
+  }, []);
   return (
     <div className="myeventcard">
-      <div key={event}>
+      <div>
         <div className="myevent_details">
-          <h3>{event}</h3>
+          <h3></h3>
           <p> type</p>
           <p> Services:</p>
           <p> date</p>
@@ -36,6 +47,6 @@ function EventCard(props) {
       </div>
     </div>
   );
-}
+};
 
 export default EventCard;

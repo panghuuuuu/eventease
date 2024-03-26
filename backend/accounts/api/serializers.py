@@ -1,9 +1,11 @@
 from django.contrib.auth import get_user_model, authenticate, login
+from django.contrib.auth.models import Group
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
 from allauth.account.adapter import get_adapter
 from allauth.account.models import EmailAddress
+from django.utils.translation import gettext_lazy as _
 
 User = get_user_model()
 
@@ -41,7 +43,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
     def save(self, **kwargs):
         cleaned_data = self.validated_data
-        user = User(
+        user = User.objects.create_user(
             username=cleaned_data.get("username"),
             email=cleaned_data.get("email"),
             first_name=cleaned_data.get("first_name"),
@@ -49,6 +51,9 @@ class RegistrationSerializer(serializers.ModelSerializer):
         )
         user.set_password(cleaned_data.get("password1"))
         user.save()
+        default_group, created = Group.objects.get_or_create(name='Default Group')
+        user.groups.add(default_group)
+
         return user
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(required=True)

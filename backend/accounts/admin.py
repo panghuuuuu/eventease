@@ -1,16 +1,17 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from .models import User, Event
 
-from .models import User    
+class EventInline(admin.TabularInline):
+    model = User.events.through
+    extra = 0
 
-# Register your models here.
 class CustomUserAdmin(UserAdmin):
     list_display = (
         "first_name",
         "last_name",
         "username",
         "email",
-        "birthday",
         "is_staff",
         "is_active",
     )
@@ -65,6 +66,6 @@ class CustomUserAdmin(UserAdmin):
             },
         ),
     )
-
+    inlines = [EventInline]
 
 admin.site.register(User, CustomUserAdmin)

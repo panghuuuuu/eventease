@@ -16,12 +16,15 @@ class EventViewSet(viewsets.ViewSet):
     def create_event(self, request):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
+            user = request.user 
             event = serializer.save()
+            user.events.add(event)
             serialized_event = self.serializer_class(event)
             return Response(serialized_event.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    @action(detail=True, methods=['put'], permission_classes=[AllowAny])
+
+    @action(detail=False, methods=['put'], permission_classes=[IsAuthenticated])
     def edit_event(self, request, pk=None):
         event = Event.objects.get(pk=pk)
         serializer = self.serializer_class(instance=event, data=request.data)

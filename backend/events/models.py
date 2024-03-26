@@ -19,3 +19,6 @@ class Event(models.Model):
     pax = models.IntegerField()
     created = models.DateTimeField(auto_now_add=True)
     services = models.ManyToManyField(Service, related_name='service')
+
+    def __str__(self):
+        return self.event_name

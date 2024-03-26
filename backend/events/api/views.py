@@ -1,12 +1,18 @@
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from events.models import Event
 from .serializers import EventSerializer, EventGETSerializer
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
-@api_view(['GET'])  
+@api_view(['GET'])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+@permission_classes([IsAuthenticated])
 def getEventData(request):
-    events = Event.objects.all()
+    user = request.user
+    print('i am', request.user)
+    events = Event.objects.filter(participants=user)
     serializer = EventGETSerializer(events, many=True)
     return Response(serializer.data)
 
