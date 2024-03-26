@@ -13,6 +13,7 @@
 
 .filter_panel {
   flex: 1;
+  max-width: 250px;
 }
 
 .filter_panel h2 {
