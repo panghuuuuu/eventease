@@ -3,6 +3,7 @@ import "../stylesheets/browse.css";
 import axios from "../axiosApi.js";
 import ServiceCard from "../components/ServiceCard.js";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const BrowsePage = () => {
   const [services, setServices] = useState([]);
@@ -70,6 +71,7 @@ const BrowsePage = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </section>
   );
 };
