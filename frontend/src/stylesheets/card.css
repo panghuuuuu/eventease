@@ -1,36 +1,74 @@
 @import "../constants/colors.css";
 
 .card {
+  width: 30%;
   display: flex;
+  flex-direction: column;
   height: fit-content;
   border-radius: 12px;
   border: 2px solid #f07dea;
   max-width: 30%;
+  overflow: hidden;
 }
 
-.card p {
-  display: flex;
-  gap: 10px;
+.card .service_image {
+  height: 180px;
+  background: linear-gradient(117deg, #F07DEA -9.77%, #A460ED 106.39%);
 }
 
 .card_details {
   display: flex;
-  padding: 40px;
+  padding: 20px;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
   flex: 1 0 0;
   align-self: stretch;
+  gap: 10px;
 }
 
-.card_details h4 {
-  color: var(--color-primary);
+.card_details .service_name {
+  overflow: hidden;
+  color: #A460ED;
+  text-overflow: ellipsis;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.card_details .service_rating {
   display: flex;
+  flex-direction: row;
+  align-items: start;
+  font-size: 12px;
+  gap: 10px;
+  width: 100%;
+}
+
+.card_details .service_location, 
+.card_details .service_packages {
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px
+} 
+
+.card_details ul {
+  font-size: 12px;
+  margin-left: 2em;
+  list-style: none;
+}
+
+.more_btn {
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 10px;
+  font-weight: bold;
+  color: #A460ED;
   margin-left: auto;
-}
-
-.card ul {
-  list-style: none;
 }
