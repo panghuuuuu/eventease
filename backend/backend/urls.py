@@ -21,7 +21,6 @@ from rest_framework import routers
 from django.conf import settings
 from django.conf.urls.static import static
 
-from accounts.api.views import GetMe
 from events.api import views as event_views
 from services.api import views as service_views
 
@@ -36,7 +35,7 @@ router = routers.DefaultRouter()
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/me", GetMe.as_view(), name="current-user"),
+    # path("api/me", GetMe.as_view(), name="current-user"),
     path(
         "auth/verify-email/",
         VerifyEmailView.as_view(),

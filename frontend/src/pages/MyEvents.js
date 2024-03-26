@@ -1,33 +1,52 @@
-import React, { useState } from "react";
-import axiosInstance from "../axiosApi";
+import React, { useState, useEffect } from "react";
 import "../stylesheets/myevents.css";
+import axios from "../axiosApi.js";
 import Navbar from "../components/Navbar";
-import MyEventsCard from "../components/MyEventsCard";
+import EventCard from "../components/EventCard.js";
 
-export const MyEvents = () => {
-  const [formData, setFormData] = useState([]);
+const MyEvents = () => {
+  const [events, setEvents] = useState([]);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch('event'); 
-      const data = await response.json();
-      setFormData(response.formData)
-    } catch (error) {
-      console.error('There was a problem fetching the data:', error);
-    }
-  };
+  useEffect(() => {
+    const fetchEventData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        console.log(token);
+        if (!token) {
+          console.error("Token not found in localStorage");
+          return;
+        }
+        const response = await axios.get("/events", {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        });
+        console.log("Response:", response.data);
+        setEvents(response.data);
+      } catch (error) {
+        console.error("Error fetching event data:", error);
+      }
+    };
+    fetchEventData();
+  }, []);
 
   return (
     <section id="myevents">
-        <Navbar />
-        <h1>Your Events</h1>
-        <div className="myevents_container">
-            <button className="addevent">+ Add Your Dream Event</button>
-        </div>
+      <Navbar />
+      <h1>Your Events</h1>
+      <div className="myevents_container">
+        <button className="addevent">+ Add Your Dream Event</button>
         <div className="myevents_panel">
-          <MyEventsCard/>
+          {events.map((event, index) => (
+            <EventCard
+              key={event}
+              event={event.event_name}
+              eventDetails={event}
+            />
+          ))}
         </div>
         <h4>That's all your events!</h4>
+      </div>
     </section>
   );
 };

@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model, authenticate, login
+from rest_framework.authtoken.models import Token
 
 from rest_framework import mixins, viewsets, status
 from rest_framework.decorators import action
@@ -16,17 +17,17 @@ from django.db.models import Q
 User = get_user_model()
 
 
-class UserViewSet(
-    mixins.ListModelMixin,
-    mixins.RetrieveModelMixin, 
-    mixins.UpdateModelMixin, 
-    GenericViewSet):
-    serializer_class = UserDetailSerializer
-    queryset = User.objects.all()
-    permission_classes = [IsAuthenticated, IsSelf]
+# class UserViewSet(
+#     mixins.ListModelMixin,
+#     mixins.RetrieveModelMixin, 
+#     mixins.UpdateModelMixin, 
+#     GenericViewSet):
+#     serializer_class = UserDetailSerializer
+#     queryset = User.objects.all()
+#     permission_classes = [IsAuthenticated, IsSelf]
 
-    def get_queryset(self):
-        queryset = User.objects.all().annotate(full_name=Concat('first_name', Value(' '), 'last_name'))
+#     def get_queryset(self):
+#         queryset = User.objects.all().annotate(full_name=Concat('first_name', Value(' '), 'last_name'))
 
 
 class RegisterViewSet(viewsets.ViewSet):
@@ -44,16 +45,18 @@ class LoginViewSet(viewsets.ViewSet):
 
     @action(detail=False, methods=['post'], permission_classes=[AllowAny])
     def login(self, request):
-        serializer = LoginSerializer(data=request.data, context={'request': self.request})
+        serializer = LoginSerializer(data=request.data, context={'request': request})  # Pass request to serializer context
         serializer.is_valid(raise_exception=True)
         username = serializer.validated_data['username']
         password = serializer.validated_data['password']
         
         # Authenticate the user
-        user = authenticate(request=request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return Response({'message': 'Login successful'}, status=status.HTTP_200_OK)
-        else:
-            # Return an error response if authentication fails
-            raise serializers.ValidationError("Invalid username or password.")
+        user = authenticate(request=request, username=username, password=password)  # Pass request to authenticate
+        user_serializer = UserDetailSerializer(user)
+        if user:
+            # Log in the user
+            login(request, user)  # Pass request to login
+            token, _ = Token.objects.get_or_create(user=user)
+            return Response({'message': 'Login successful', 'token': token.key, 'user': user_serializer.data}, status=status.HTTP_200_OK)
+        else:   
+            return Response({'error': 'Invalid username or password'}, status=status.HTTP_401_UNAUTHORIZED)

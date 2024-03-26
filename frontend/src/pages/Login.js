@@ -13,16 +13,6 @@ const Login = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const checkLoggedIn = async () => {
-      const token = localStorage.getItem("token");
-      if (token) {
-        navigate("/myevents");
-      }
-    };
-    checkLoggedIn();
-  }, [navigate]);
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -36,6 +26,7 @@ const Login = () => {
       const response = await axiosInstance.post("/api/login/", formData);
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
+        console.log(response.data.token);
         navigate("/myevents");
       }
     } catch (error) {
