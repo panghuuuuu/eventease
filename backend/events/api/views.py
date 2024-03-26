@@ -3,16 +3,32 @@ from rest_framework import status
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from events.models import Event
 from .serializers import EventSerializer, EventGETSerializer
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
 
 @api_view(['GET'])
-@authentication_classes([TokenAuthentication]) 
+@authentication_classes([TokenAuthentication, SessionAuthentication]) 
 @permission_classes([IsAuthenticated])
-def getEventData(request):
+def get_events(request):
     user = request.user
     events = Event.objects.filter(participants=user)
     serializer = EventGETSerializer(events, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@authentication_classes([SessionAuthentication, TokenAuthentication]) 
+@permission_classes([IsAuthenticated])
+def get_event_details(request, pk):
+    try:
+        event = Event.objects.get(pk=pk)
+    except Event.DoesNotExist:
+        return Response({"error": "Event not found"}, status=status.HTTP_404_NOT_FOUND)
+
+    # Ensure the current user is among the participants of the event
+    if request.user not in event.participants.all():
+        return Response({"error": "You are not authorized to access this event"}, status=status.HTTP_403_FORBIDDEN)
+
+    serializer = EventGETSerializer(event)
     return Response(serializer.data)
 
 @api_view(['POST'])

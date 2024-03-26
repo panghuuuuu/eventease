@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosApi";
 import signupHeader from "../assets/logo_header.png";
@@ -26,7 +26,6 @@ const Login = () => {
       const response = await axiosInstance.post("/api/login/", formData);
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
-        console.log(response.data.token);
         navigate("/myevents");
       }
     } catch (error) {

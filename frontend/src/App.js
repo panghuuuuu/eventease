@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Browse from "./pages/BrowsePage";
 import MyEvents from "./pages/MyEvents";
+import Eventboard from "./pages/Eventboard";
 
 const App = () => (
   <Router>
@@ -16,6 +17,7 @@ const App = () => (
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Signup />} />
       <Route path="/myevents" element={<MyEvents />} />
+      <Route path="/eventboard/:eventId" element={<Eventboard />} />{" "}
       <Route path="/" element={<Home />} />
     </Routes>
   </Router>

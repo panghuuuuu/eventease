@@ -13,12 +13,10 @@ function Navbar() {
       const token = localStorage.getItem("token");
       if (token) {
         setIsLoggedIn(true);
-      } else {
-        navigate("/login");
       }
     };
     checkLoggedIn();
-  }, []);
+  }, [navigate]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");

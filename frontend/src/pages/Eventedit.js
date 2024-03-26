@@ -26,10 +26,8 @@ export const Eventedit = () => {
   };
 
   const submitForm = async () => {
-    console.log(formData);
     try {
       await axiosInstance.post("/event/add-event", formData);
-      console.log("success");
     } catch (error) {
       console.error("Error:", error);
     }

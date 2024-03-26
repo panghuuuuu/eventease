@@ -11,7 +11,6 @@ const MyEvents = () => {
     const fetchEventData = async () => {
       try {
         const token = localStorage.getItem("token");
-        console.log(token);
         if (!token) {
           console.error("Token not found in localStorage");
           return;
@@ -21,7 +20,6 @@ const MyEvents = () => {
             Authorization: `Token ${token}`,
           },
         });
-        console.log("Response:", response.data);
         setEvents(response.data);
       } catch (error) {
         console.error("Error fetching event data:", error);
