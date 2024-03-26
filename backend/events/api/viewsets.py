@@ -6,12 +6,13 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from events.models import Event
 from .serializers import EventSerializer
+from rest_framework.permissions import IsAuthenticated
 
 User = get_user_model()
 
 class EventViewSet(viewsets.ViewSet):
     serializer_class = EventSerializer
-    @action(detail=False, methods=['post'], permission_classes=[AllowAny])
+    @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated])
     def create_event(self, request):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
@@ -29,7 +30,7 @@ class EventViewSet(viewsets.ViewSet):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    @action(detail=True, methods=['delete'], permission_classes=[AllowAny])
+    @action(detail=True, methods=['delete'], permission_classes=[IsAuthenticated])
     def delete_event(self, request, pk=None):
         event = Event.objects.get(pk=pk)
         event.delete()

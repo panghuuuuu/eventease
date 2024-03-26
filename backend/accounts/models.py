@@ -7,6 +7,8 @@ from django.contrib.auth.password_validation import validate_password
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import Group, Permission
 
+from events.models import Event
+
 # Create your models here.
 class User(AbstractUser):
     first_name = models.CharField(_("first name"), max_length=150)
@@ -28,6 +30,7 @@ class User(AbstractUser):
         max_length=128,
         validators=[validate_password],
     )
+    events = models.ManyToManyField(Event)
 
     def __str__(self):
         if(self.first_name == "" and self.last_name == ""):
