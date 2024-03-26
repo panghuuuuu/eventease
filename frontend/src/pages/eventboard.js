@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "../axiosApi.js";
 
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar.js";
 import "../stylesheets/eventboard.css";
 
 export const Eventboard = () => {
