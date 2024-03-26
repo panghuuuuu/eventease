@@ -6,7 +6,8 @@ footer {
     display: flex;
     flex-direction: row;
     padding: 20px 64px;
-    height: 72px;
+    height: 80px;
+    justify-content: space-between;
 } 
 
 .footer_left {
@@ -24,4 +25,29 @@ footer {
     height: 100%;
     border-left: 1px solid #ffffff;
     margin: 0px 40px;
+}
+
+.footer_left .aboutus_btn {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    font-family: 'Inter';
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.footer_right .socmed_container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.footer_right p {
+    font-size: 11px;
+    color: white;
 }
