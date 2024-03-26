@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "../axiosApi.js";
 
 import Navbar from "../components/Navbar.js";
-import ServiceCard from "../components/ServiceCard.js";
+import EventBoardCard from "../components/EventBoardCard.js";
 
 import "../stylesheets/eventboard.css";
 
@@ -156,7 +156,7 @@ export const Eventboard = () => {
                 services
                   .filter((service) => service.service_type === "VENUES")
                   .map((service, index) => (
-                    <ServiceCard
+                    <EventBoardCard
                       key={index}
                       service={service.service_name}
                       serviceDetails={service}
@@ -178,7 +178,7 @@ export const Eventboard = () => {
                 services
                   .filter((service) => service.service_type === "CATERERS")
                   .map((service, index) => (
-                    <ServiceCard
+                    <EventBoardCard
                       key={index}
                       service={service.service_name}
                       serviceDetails={service}
@@ -201,7 +201,7 @@ export const Eventboard = () => {
                 services
                   .filter((service) => service.service_type === "HOSTS")
                   .map((service, index) => (
-                    <ServiceCard
+                    <EventBoardCard
                       key={index}
                       service={service.service_name}
                       serviceDetails={service}
@@ -225,7 +225,7 @@ export const Eventboard = () => {
                 services
                   .filter((service) => service.service_type === "PHOTOGRAPHERS")
                   .map((service, index) => (
-                    <ServiceCard
+                    <EventBoardCard
                       key={index}
                       service={service.service_name}
                       serviceDetails={service}
@@ -249,7 +249,7 @@ export const Eventboard = () => {
                 services
                   .filter((service) => service.service_type === "ENTERTAINERS")
                   .map((service, index) => (
-                    <ServiceCard
+                    <EventBoardCard
                       key={index}
                       service={service.service_name}
                       serviceDetails={service}
@@ -273,7 +273,7 @@ export const Eventboard = () => {
                 services
                   .filter((service) => service.service_type === "FORMAL ATTIRE")
                   .map((service, index) => (
-                    <ServiceCard
+                    <EventBoardCard
                       key={index}
                       service={service.service_name}
                       serviceDetails={service}
