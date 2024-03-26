@@ -40,7 +40,8 @@ class Event(models.Model):
 
     event_name = models.CharField(max_length=200, default='Default Event Name')
     event_type = models.CharField(max_length=20, choices=EVENT_TYPE, default='Party')
-    event_date = models.DateField(auto_now_add=False, auto_now=False, blank=True)
+    event_start_date = models.DateField(auto_now_add=False, auto_now=False, blank=True)
+    event_end_date = models.DateField(auto_now_add=False, auto_now=False, blank=True)
     budget = models.FloatField()
     pax = models.IntegerField()
     created = models.DateTimeField(auto_now_add=True)

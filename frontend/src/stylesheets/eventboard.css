@@ -6,9 +6,9 @@
 
 /* FOR NAVBAR */
 
-.eventboard__navbar {
+.NAVBAR {
     display: flex;
-    padding: 40px 132px 20px 132px;
+    padding: 40px 50px 0 50px;
     justify-content: space-between;
     align-items: center;
     background: #FFF;
@@ -34,17 +34,86 @@
     align-self: stretch;
 }
 
+/* !MAIN FRAME! */
 
-/* FOR EVENTBOARD FRAME */
-
-.eventboard__frame {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 27px;
-    padding: 154px 132px 202px 132px;
+.MAINFRAME {
+    padding: 50px; 
+    display: grid;
+    grid-template-rows: 5% 10% 85%;
+    gap: 10px;
+    width: 100vw;
+    /* margin-bottom: 50px; */
 }
 
+/* EVENTBOARD GO-BACK BUTTON */
+
+.eventboard__back {
+    grid-row: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 27px;
+    align-self: stretch;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.button-svg {
+    width: 27px;
+    height: 15px;
+    stroke-width: 4px;
+    stroke: #A460ED;
+}
+
+/* EVENT HEADER */
+
+.event__header {
+    grid-row: 2;
+    display: flex;
+    height: 129px;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+}
+
+.event__title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+}
+
+.header__buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.button-edit {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    gap: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(30, 30, 30, 0.30);
+    background: #F7DBF0;
+}
+
+/* EVENTBOARD FRAME */
+
+.eventboard__frame {
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: 15% 65% 20%;
+    gap: 40px;
+    width: 90vw;
+    margin-bottom: 150px;
+}
 
 /* EVENTBOARD DETAILS */
 
@@ -69,136 +138,104 @@
 
 
 /* EVENTBOARD PINS */
+<<<<<<< HEAD
+=======
+
+>>>>>>> fe3638b2ef065202937a2ebd3d84f925873b8509
 .eventboard__pins {
     display: flex;
-    flex: 0 0 40%;
     flex-direction: column;
     align-items: flex-start;
     gap: 40px;
 }
 
-.pins_section {
+
+.pin_section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
     gap: 10px;
+    overflow-x: scroll;
+    scrollbar-width: none;
 }
 
-.pins_section {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 40px; /* This adds vertical spacing between pins_sections */
-    align-self: stretch;
-    
-} 
-
-.cards {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+.pin-name{
+    color: #A460ED;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
 }
+
+.browse-link{
+    color: #EA3AB9;
+    text-decoration-line: underline;
+}
+
 
 .cards_container {
     display: flex;
     align-items: flex-start;
-    gap: 20px;
+    gap: 20px;       
+    max-height: 100%;
 }
 
 .spcard {
-    display: flex;
-    height: 500px;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 35% 50% 15% ;
     align-items: flex-start;
-    border-radius: 12px;
-    border: 2px solid #F07DEA;
-    padding: 20px; /* Adjust as needed */
+    border: 2px solid black; 
+    max-width: fit-content;
+
 }
 
 .spcard_img {
-    width: 420px;
-    height: 260px;
-    flex-shrink: 0;
-}
-
-.event_details_1 {
-    display: flex;
-    padding: 40px;
-    flex-direction: column;
-    justify-content: space-between;
+    width: 100%;
     align-items: flex-start;
-    flex: 
-        1 0 0
-        0 0 0;
-    align-self: stretch;
-    border: 2px solid #F07DEA;
-    background: #FFF;
+    grid-row: 1;
+    margin: 10px 10px 0 10px;
 }
 
-.event_details_2 {
+.spcard_details {
     display: flex;
-    padding: 40px;
-    flex-direction: column;
+    flex-direction: column; 
     justify-content: space-between;
-    align-items: flex-start;
-    flex: 
-        0 1 0
-        0 0 0;
-    align-self: stretch;
-    border: 2px solid #F07DEA;
-    background: #FFF;
+    grid-row: 2;
+    padding: 0px;
+    margin-left: 10px;
 }
-.event_details_3 {
-    display: flex;
-    padding: 40px;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex: 
-        0 0 0
-        1 0 0;
-    align-self: stretch;
-    border: 2px solid #F07DEA;
-    background: #FFF;
+
+.show-more {
+    grid-row: 3;
+    align-self: flex-end; 
+    text-align: right;
+    margin-right: 10px; /* Adjust margin for spacing */
+    margin-bottom: 10px;
 }
 
 
-.details_front {
+/* under spcard_details */
+.front-details {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
     gap: 10px;
-    align-self: stretch;
 }
 
-.front {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    align-self: stretch;
-}
-
-.front_name{
-    color: #A460ED;
-}
-
-.details_showmore {
-    display: flex;
-    height: 41px;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    gap: 10px;
-    align-self: stretch;
-}
-
-.showmore-div {
+.details_name {
     display: flex;
     align-items: center;
     gap: 10px;
 }
+
+.details_other {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}   
 
 
 /* EVENTBOARD BUDGET */
@@ -237,10 +274,92 @@
 
 /* FOR FOOTER */
 
-.eventboard__footer {
+.FOOTER {
     display: flex;
-    padding: 20px 132px;
     justify-content: space-between;
     align-items: center;
+    background: #A460ED;
+    padding: 20px 132px;
 }
 
+.footer__left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 90px;
+}
+
+.footer__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 90px;
+}
+
+.footer-logo {
+    width: 164px;
+    height: 39.406px;
+}
+
+.separator {
+    stroke-width: 1px;
+    stroke: #FFF;
+    width: 0px;
+    align-self: stretch;
+}
+
+.footer__about-us {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    gap: 15px;
+    border-radius: 12px;
+    border: 1px solid #FFF;
+    background: #A460ED;
+}
+
+.footer__about-us p {
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: white;
+}
+
+.about-us__logo {
+    fill: #FFF;
+    width: 17px;
+    height: 17px;
+}
+
+.footer__right {
+    display: flex;
+    padding-top: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.socmed-logos {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.socmed-logos svg {
+    width: 25px;
+    height: 24px;
+}
+
+.madeby {
+    display: flex;
+    padding-top: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.madeby p {
+    color: white;
+}
