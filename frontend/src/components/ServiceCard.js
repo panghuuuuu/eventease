@@ -1,6 +1,7 @@
 import React from "react";
 import "../stylesheets/card.css";
 import StarRating from "./StarRating";
+import placeholderImage from "../assets/logo_header.png";
 
 function ServiceCard(props) {
   const { service, serviceDetails } = props;
@@ -11,19 +12,19 @@ function ServiceCard(props) {
         <img
           src={serviceDetails.service_image}
           alt={serviceDetails.service_name}
+          onerror="this.style.display='none';"
         />
         <div className="card_details">
-          <h3>{service}</h3>
-          <div>
+          <h3 className="service_name">{service}</h3>
+          <p className="service_rating">
             <StarRating rating={serviceDetails.service_rating} />
             {serviceDetails.service_rating}
-          </div>
-
-          <p>
+          </p>
+          <p className="service_location">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
+              width="20"
+              height="20"
               viewBox="0 0 19 19"
               fill="none"
             >
@@ -34,11 +35,11 @@ function ServiceCard(props) {
             </svg>
             Location: {serviceDetails.service_address}
           </p>
-          <p>
+          <p className="service_packages">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="19"
-              height="19"
+              width="15"
+              height="15"
               viewBox="0 0 19 19"
               fill="none"
             >
@@ -50,14 +51,11 @@ function ServiceCard(props) {
             Packages:{" "}
           </p>
           <ul>
-            {serviceDetails.service_packages.map((packageItem, index) => (
-              <li key={index}>
-                {packageItem.package_name}: ${packageItem.package_price}
-              </li>
+            {serviceDetails.service_packages.map((package_name, index) => (
+              <li key={index}>{package_name}</li>
             ))}
           </ul>
-
-          <h4>
+          <button className="more_btn">
             More Details{" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -74,9 +72,8 @@ function ServiceCard(props) {
                 stroke-linejoin="round"
               />
             </svg>
-          </h4>
+          </button>
         </div>
-      </div>
     </div>
   );
 }

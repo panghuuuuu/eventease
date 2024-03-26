@@ -32,7 +32,12 @@ export default function Registration() {
       <div className="left_container">
         <div className="popup_container">
           <p>Ready to plan your dream event?</p>
-          <span>Continue without logging in </span>
+          <Link to="/" className="continue_btn">
+            Continue without logging in
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6.5 2L14.5 8.0531M6.5 14L14.5 8.0531M14.5 8.0531H1.5" stroke="#F07DEA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </Link>
         </div>
       </div>
       <div className="right_container">
@@ -43,7 +48,7 @@ export default function Registration() {
           <h3>Sign Up</h3>
           <div className="input">
             <p className="input_label">
-              First Name<span>*</span>
+              Given Name<span>*</span>
             </p>
             <input
               type="text"
@@ -123,7 +128,7 @@ export default function Registration() {
             <div className="bottom_text">
               <span>* Required fields</span>
               <Link to="/login" className="login_btn">
-                I already have an account
+                I already have an account.
               </Link>
             </div>
             <div className="signup_btn" onClick={submitForm}>

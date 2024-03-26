@@ -6,7 +6,7 @@ nav.navbar_container {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 56px 20px 56px;
+  padding: 20px 64px 20px 64px;
   width: 100%;
   background-color: white;
 }
@@ -19,30 +19,42 @@ nav .nav_right {
   display: flex;
   flex-direction: row;
   gap: 30px;
+  align-items: center;
 }
 
 nav .nav_right button {
-  padding: 10px;
+  padding: 12px;
   border-radius: 8px;
   color: #1e1e1e;
   cursor: pointer;
-}
-
-nav .nav_right button:not(.browse) {
   border: 1px solid rgba(30, 30, 30, 0.3);
 }
 
-nav .nav_right button.browse {
+nav .nav_right button a {
+  text-decoration: none;
+  display: block;
+  width: max-content;
+}
+
+nav .nav_right button.browse_btn, 
+nav .nav_right button.logout_btn, 
+nav .nav_right button.myevents_btn {
+  border: 0px;
+  font-size: 16px;
+  font-weight: 600;
   border-width: 0px;
   background-color: transparent;
   padding: 10px 0px;
 }
 
-nav .nav_right button.login {
+nav .nav_right button.login_btn {
+  font-size: 16px;
+  text-decoration: none;
   background-color: var(--color-primary-variant);
 }
 
-nav .nav_right button.register {
+nav .nav_right button.register_btn {
+  font-size: 16px;
   background-color: var(--color-primary);
   color: white;
 }
@@ -60,6 +72,7 @@ nav .searchbar {
   padding: 10px;
   width: 30%;
   max-width: 400px;
+  gap: 10px
 }
 
 nav .searchbar input {
@@ -68,4 +81,11 @@ nav .searchbar input {
   cursor: pointer;
   max-width: 400px;
   width: 100%;
+  font: 12px;
 }
+
+nav .searchbar input:focus {
+  outline: none;
+}
+
+

@@ -2,16 +2,23 @@
 
 #browse h1 {
   text-align: center;
+  margin-bottom: 1em;
 }
 
 .browse_container {
   display: flex;
   flex-direction: row;
-  gap: 70px;
+  gap: 20px;
 }
 
 .filter_panel {
   flex: 1;
+  max-width: 250px;
+}
+
+.filter_panel h2 {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .filter_panel ul {
@@ -20,7 +27,7 @@
 
 .filter_panel li {
   color: #1e1e1e;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   border-radius: 12px;
@@ -29,6 +36,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+  transition: 100ms;
 }
 
 .filter_panel li:hover,

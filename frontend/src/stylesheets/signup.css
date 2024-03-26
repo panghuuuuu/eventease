@@ -20,38 +20,53 @@
 }
 
 .popup_container {
-  display: inline-flex;
+  display: flex;
   padding: 20px;
   flex-direction: column;
+  gap: 10px;
   align-items: center;
   margin-top: auto;
   margin-left: auto;
-  margin-bottom: 25px;
-  margin-right: 25px;
+  margin-bottom: 72px;
+  margin-right: 72px;
   border-radius: 12px;
-  background: #fff;
+  background: #ffffff;
+  font-size: 18px;
 }
 
-.popup_container span {
+.popup_container .continue_btn {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
   color: #f07dea;
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   text-decoration-line: underline;
+  font-size: inherit;
 }
 
 .right_container {
   flex: 1;
-  padding: 70px 140px;
+  padding: 70px 120px 70px 90px;
   background: #fff;
   position: sticky;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
   top: 0;
   height: 100%;
 }
 
+.signup_header {
+  width: fit-content;
+  margin: 0px auto;
+}
+
 .signup_header img {
-  width: 75%;
+  width: 400px;
+  margin: auto;
 }
 
 .signup_fields h3 {
@@ -74,23 +89,44 @@
 .input {
   display: flex;
   flex-direction: column;
+  gap: 10px;
   width: 100%;
 }
+
+.input_label {
+  color: #000;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
 .signup_fields input {
   border-radius: 12px;
   border: 1px solid #474747;
   background: #fff;
-  height: 80px;
-  padding: 30px;
+  transition: 100ms;
+  font-size: 19px;
+  font-size: 18px;
+  height: 64px;
+  padding: 0px 30px;
 }
 
 .signup_fields input[type="date"] {
   display: flex;
-  padding: 30px;
+  min-height: 64px;
   justify-content: space-between;
   align-items: center;
   flex: 1 0 0;
   align-self: stretch;
+}
+
+.signup_fields input:focus {
+  border: 1px solid #ea3ab9;
+  outline-style: none;
+  box-shadow: none;
 }
 
 .signup_btn {
@@ -125,6 +161,8 @@
   margin-top: auto;
   margin-bottom: auto;
   height: 100%;
+  gap: 8px;
+  font-size: 18px;
 }
 
 .login_btn {
