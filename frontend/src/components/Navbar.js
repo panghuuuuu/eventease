@@ -46,21 +46,21 @@ function Navbar() {
         <input type="text" name="search"></input>
       </div>
       <div className="nav_right">
-        <button className="browse">
+        <button className="browse_btn">
           <Link to="/browse">Browse</Link>
         </button>
         {isLoggedIn ? (
           <>
-            <button className="logout" onClick={handleLogout}>
-              Logout
-            </button>
-            <button className="browse">
+            <button className="myevents_btn">
               <Link to="/myevents">My Events</Link>{" "}
             </button>
-            <svg
+            <button className="logout_btn" onClick={handleLogout}>
+              Logout
+            </button>
+            <svg className="acct_icon"
               xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
+              width="auto"
+              height="42"
               viewBox="0 0 64 65"
               fill="none"
             >
@@ -113,10 +113,10 @@ function Navbar() {
           </>
         ) : (
           <>
-            <button className="login">
+            <button className="login_btn">
               <Link to="/login">Log In</Link>
             </button>
-            <button className="register">
+            <button className="register_btn">
               <Link to="/register">Register</Link>
             </button>
           </>

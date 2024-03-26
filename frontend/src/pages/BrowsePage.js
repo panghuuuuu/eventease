@@ -37,7 +37,7 @@ const BrowsePage = () => {
       <h1>Browse</h1>
       <div className="container browse_container">
         <div className="filter_panel">
-          <h2>What are you looking for?</h2>
+          <h2>What are you<br/>looking for?</h2>
           <ul>
             {[
               "VENUES",
