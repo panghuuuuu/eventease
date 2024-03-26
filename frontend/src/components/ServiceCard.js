@@ -4,7 +4,7 @@ import StarRating from "./StarRating";
 
 function ServiceCard(props) {
   const { service, serviceDetails } = props;
-
+  console.log("service: ", serviceDetails);
   return (
     <div className="card">
       <div key={service}>
@@ -14,10 +14,11 @@ function ServiceCard(props) {
         />
         <div className="card_details">
           <h3>{service}</h3>
-          <p>
+          <div>
             <StarRating rating={serviceDetails.service_rating} />
             {serviceDetails.service_rating}
-          </p>
+          </div>
+
           <p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -49,10 +50,13 @@ function ServiceCard(props) {
             Packages:{" "}
           </p>
           <ul>
-            {serviceDetails.service_packages.map((package_name, index) => (
-              <li key={index}>{package_name}</li>
+            {serviceDetails.service_packages.map((packageItem, index) => (
+              <li key={index}>
+                {packageItem.package_name}: ${packageItem.package_price}
+              </li>
             ))}
           </ul>
+
           <h4>
             More Details{" "}
             <svg

@@ -59,11 +59,4 @@ def get_all_services(request):
 
     serializer = ServiceSerializer(services, many=True)
 
-    for service_data in serializer.data:
-        package_names = []
-        for package_id in service_data['service_packages']:
-            package = Package.objects.get(pk=package_id)
-            package_names.append(f"{package.package_name}: {package.package_price}")
-        service_data['service_packages'] = package_names
-
     return Response(serializer.data)
