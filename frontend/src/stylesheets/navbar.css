@@ -2,6 +2,8 @@
 @import "../constants/colors.css";
 
 nav.navbar_container {
+  position: fixed;
+  top: 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -9,6 +11,11 @@ nav.navbar_container {
   padding: 20px 64px 20px 64px;
   width: 100%;
   background-color: white;
+}
+
+/* Only for the Home page */
+.home_container  nav.navbar_container  {
+  position: absolute;
 }
 
 .eventease_logo {

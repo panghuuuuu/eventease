@@ -34,7 +34,7 @@ export const Eventedit = () => {
   };
 
   return (
-    <div className="eventedit_container">
+    <div className="eventedit_container" id="eventEdit">
       <div className="eventedit__left_container">
         <p className="eventedit_header">Create your dream event</p>
         <h1 className="eventedit_title">What event are you planning?</h1>
