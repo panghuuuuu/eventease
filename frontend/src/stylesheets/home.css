@@ -1,17 +1,32 @@
 @import "../constants/colors.css";
 
+#home {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
 .home_container {
   background-image: url(../assets/home_hero.png);
   background-repeat: no-repeat;
-  background-position: right 0px center;
+  background-size: cover;
+  background-position: center center;
   height: 100vh;
+
+  /* For snap scrolling */
+  scroll-snap-align: start;
+}
+
+#eventEdit {
+  /* For snap scrolling */
+  scroll-snap-align: start;
 }
 
 .hero {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  padding: 10% 10% 0px 10%;
+  padding: 20vh 10% 0px 10%;
   gap: 2em;
 }
 
@@ -49,6 +64,7 @@
 
 .hero_details .home_buttons_container button,
 .hero_details .home_buttons_container a {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
