@@ -4,14 +4,12 @@ import { Link } from "react-router-dom";
 import "../stylesheets/home.css";
 
 import Navbar from "../components/Navbar";
-import Eventedit from "./EventEdit";
-
-
+import Eventedit from "./Eventedit";
 
 export const Home = () => {
   const scrollToBottom = () => {
-    const eventEdit = document.getElementById('eventEdit');
-    eventEdit.scrollIntoView({ behavior: 'smooth' });
+    const eventEdit = document.getElementById("eventEdit");
+    eventEdit.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -75,28 +73,28 @@ export const Home = () => {
           <div className="hero_continue">
             <button onClick={scrollToBottom}>
               <p>Start Planning</p>
-                <div className="scroll_icon">
-                  <svg
-                    width="62"
-                    height="23"
-                    viewBox="0 0 62 23"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 4L31 19L58 4"
-                      stroke="#A460ED"
-                      stroke-width="7"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </div>
-              </button>
-            </div>
+              <div className="scroll_icon">
+                <svg
+                  width="62"
+                  height="23"
+                  viewBox="0 0 62 23"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4 4L31 19L58 4"
+                    stroke="#A460ED"
+                    stroke-width="7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
-      <Eventedit id="eventEdit"/>
+      <Eventedit id="eventEdit" />
     </section>
   );
 };
