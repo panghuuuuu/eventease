@@ -74,9 +74,7 @@ export const Eventedit = () => {
 
       console.log("Response: ", response);
 
-      if (response.status === 200) {
-        navigate("/myevents");
-      }
+      navigate("/myevents");
     } catch (error) {
       setError("Failed to add event");
       console.error("Error:", error);
