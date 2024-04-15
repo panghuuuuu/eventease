@@ -6,7 +6,6 @@ import "../stylesheets/eventcard.css";
 function EventCard(props) {
   const { event, eventDetails } = props;
   const eventId = eventDetails.id;
-  console.log(eventId);
   const startDate = new Date(eventDetails.event_start_date);
 
   const options = {
@@ -29,24 +28,24 @@ function EventCard(props) {
       </ul>
       <Link to={`/eventboard/${eventId}`}>
         {" "}
-          <button className="more_btn">
-            More Details{" "}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="31"
-              viewBox="0 0 20 31"
-              fill="none"
-            >
-              <path
-                d="M2.33325 29L17.3333 15.5L2.33325 2"
-                stroke="#A460ED"
-                stroke-width="4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
+        <button className="more_btn">
+          More Details{" "}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="31"
+            viewBox="0 0 20 31"
+            fill="none"
+          >
+            <path
+              d="M2.33325 29L17.3333 15.5L2.33325 2"
+              stroke="#A460ED"
+              stroke-width="4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
       </Link>
     </div>
   );

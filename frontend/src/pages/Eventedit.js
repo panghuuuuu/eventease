@@ -6,7 +6,7 @@ import SaveEdits from "../assets/SaveEdits.png";
 export const Eventedit = () => {
   const [formData, setFormData] = useState({
     event_name: "",
-    event_type: "WEDDING",
+    event_type: "",
     event_start_date: "",
     event_end_date: "",
     budget: "",
@@ -14,7 +14,6 @@ export const Eventedit = () => {
     services: [1],
   });
 
-  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -46,7 +45,9 @@ export const Eventedit = () => {
     const { name, value } = e.target;
     let formattedValue = value;
 
-    if (name === "budget" || name === "pax") {
+    if (name === "event_type") {
+      formattedValue = value.toUpperCase();
+    } else if (name === "budget" || name === "pax") {
       formattedValue = parseInt(value);
     }
 
@@ -56,6 +57,8 @@ export const Eventedit = () => {
   const submitForm = async () => {
     setLoading(true);
     setError(null);
+    console.log("Response: ", formData);
+
     try {
       const token = localStorage.getItem("token");
       console.log("token: ", token);
