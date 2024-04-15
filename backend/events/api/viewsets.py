@@ -12,18 +12,6 @@ User = get_user_model()
 
 class EventViewSet(viewsets.ViewSet):
     serializer_class = EventSerializer
-    @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated])
-    def create_event(self, request):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            user = request.user 
-            event = serializer.save()
-            user.events.add(event)
-            serialized_event = self.serializer_class(event)
-            return Response(serialized_event.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
     @action(detail=False, methods=['put'], permission_classes=[IsAuthenticated])
     def edit_event(self, request, pk=None):
         event = Event.objects.get(pk=pk)

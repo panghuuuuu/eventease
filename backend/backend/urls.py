@@ -45,7 +45,7 @@ urlpatterns = [
     path('api/login/', LoginViewSet.as_view({'post': 'login'}), name='login'),
 
     path('events', event_views.get_events),
-    path('event/add-event', EventViewSet.as_view({'post': 'create_event'}), name='create_event'),
+    path('event/add-event', event_views.add_event, name='create_event'),
     path('event/edit-event/<int:pk>/', EventViewSet.as_view({'put': 'edit_event'}), name='edit_event'),
     path('event/delete-event/<int:pk>/', EventViewSet.as_view({'delete': 'delete_event'}), name='delete_event'),
     path('event/<int:pk>/', event_views.get_event_details),

@@ -32,7 +32,11 @@ def get_event_details(request, pk):
     return Response(serializer.data)
 
 @api_view(['POST'])
+@authentication_classes([SessionAuthentication, TokenAuthentication]) 
+@permission_classes([IsAuthenticated])
 def add_event(request):
+    request.data['user'] = request.user.id
+    print("user: ", request.user.id)
     serializer = EventSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()

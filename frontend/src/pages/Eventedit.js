@@ -69,6 +69,8 @@ export const Eventedit = () => {
         },
       });
 
+      console.log("Response: ", response);
+
       if (response.status === 200) {
         navigate("/myevents");
       }
