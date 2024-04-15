@@ -1,29 +1,48 @@
 @import "../constants/colors.css";
 
+#home {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
 .home_container {
-  background-image: url(../assets/home_hero.png);
-  background-repeat: no-repeat;
-  background-position: right 0px center;
+  height: 100vh;
+
+  /* For snap scrolling */
+  scroll-snap-align: start;
+}
+
+#eventEdit {
+  /* For snap scrolling */
+  scroll-snap-align: start;
 }
 
 .hero {
+  background-image: url(../assets/home_hero.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  /* Height is 100vh - nav height */
+  height: calc(100vh - 86px);
+
+  position: static;
+  top: 0px;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  justify-content: center;
-  padding: 0px 10%;
+  padding: 20vh 10% 0px 10%;
   gap: 2em;
 }
 
 .hero_text h1 {
   font-size: 96px;
-  width: 60%;
+  width: 70%;
   font-weight: 900;
   line-height: 120%;
 }
 
 .hero_text {
-  margin-top: 100px;
   background: linear-gradient(
     95deg,
     #9fc9f3 -5.21%,
@@ -45,9 +64,12 @@
   display: flex;
   flex-direction: row;
   gap: 20px;
+  margin-top: 10px;
 }
 
-.hero_details .home_buttons_container button {
+.hero_details .home_buttons_container button,
+.hero_details .home_buttons_container a {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -58,21 +80,35 @@
   border-radius: 8px;
   font-weight: 500;
   color: white;
-}
-
-.hero_details .home_buttons_container button a {
   color: white;
+  font-size: 16px;
+  text-decoration: none;
 }
 
 .hero_continue {
   width: fit-content;
-  display: flex;
-  flex-direction: column;
-  margin: 2rem auto 2rem auto;
-  justify-content: center;
+  margin: 0px auto 8% auto;
+  color: var(--color-primary);
+  flex-grow: 1;
+  align-content: end;
 }
 
 .hero_continue .scroll_icon {
   width: fit-content;
   margin: 0px auto;
+}
+
+.hero_continue button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.hero_continue button:focus {
+  outline: none;
 }

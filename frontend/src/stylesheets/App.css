@@ -5,6 +5,7 @@
   padding: 0px;
   box-sizing: border-box;
   font-family: "Inter";
+  scroll-behavior: smooth;
 }
 
 .container {

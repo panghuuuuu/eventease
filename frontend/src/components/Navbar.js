@@ -44,6 +44,7 @@ function Navbar() {
           />
         </svg>
         <input type="text" name="search"></input>
+        <button className="search_btn">Search</button>
       </div>
       <div className="nav_right">
         <button className="browse_btn">
