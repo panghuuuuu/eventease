@@ -24,7 +24,6 @@ def get_event_details(request, pk):
     except Event.DoesNotExist:
         return Response({"error": "Event not found"}, status=status.HTTP_404_NOT_FOUND)
 
-    # Ensure the current user is among the participants of the event
     if request.user not in event.participants.all():
         return Response({"error": "You are not authorized to access this event"}, status=status.HTTP_403_FORBIDDEN)
 
@@ -36,13 +35,12 @@ def get_event_details(request, pk):
 @permission_classes([IsAuthenticated])
 def add_event(request):
     request.data['user'] = request.user.id
-    print("user: ", request.user.id)
     serializer = EventSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save()
+        event = serializer.save()  # Save the event
+        request.user.events.add(event)  # Associate the event with the current user
         return Response({"message": "Event added successfully", "data": serializer.data}, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 @api_view(['PUT'])
 def edit_event(request, pk):
     try:
