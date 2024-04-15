@@ -1,5 +1,9 @@
 @import "../constants/colors.css";
 
+#browse {
+  margin-top: 10vh;
+}
+
 #browse h1 {
   text-align: center;
   margin-bottom: 1em;

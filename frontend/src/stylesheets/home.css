@@ -7,10 +7,6 @@
 }
 
 .home_container {
-  background-image: url(../assets/home_hero.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
   height: 100vh;
 
   /* For snap scrolling */
@@ -23,9 +19,18 @@
 }
 
 .hero {
+  background-image: url(../assets/home_hero.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  /* Height is 100vh - nav height */
+  height: calc(100vh - 86px);
+
+  position: static;
+  top: 0px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   padding: 20vh 10% 0px 10%;
   gap: 2em;
 }

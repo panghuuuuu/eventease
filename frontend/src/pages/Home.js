@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "../stylesheets/home.css";
 
 import Navbar from "../components/Navbar";
-import Eventedit from "./Eventedit";
+import Eventedit from "./EventEdit";
 
 
 
