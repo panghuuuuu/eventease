@@ -4,13 +4,13 @@
   text-align: center;
   color: #1e1e1e;
   text-align: center;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   line-height: normal;
 }
 
-.addevent {
+.add_event {
   display: flex;
   align-items: center;
   width: 100%;
@@ -26,6 +26,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  text-decoration: none;
 }
 
 .myevents_container {
@@ -42,7 +43,8 @@
   align-content: flex-start;
   gap: 10px;
   align-self: stretch;
-  flex-wrap: wrap;display: flex;
+  flex-wrap: wrap;
+  display: flex;
   align-items: flex-start;
   align-content: flex-start;
   gap: 20px;

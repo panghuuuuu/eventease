@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosApi";
 import "../stylesheets/eventedit.css";
 import SaveEdits from "../assets/SaveEdits.png";
@@ -13,11 +14,38 @@ export const Eventedit = () => {
     services: [1],
   });
 
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          throw new Error("Token not found in localStorage");
+        }
+        setLoading(false);
+      } catch (error) {
+        setError("Failed to fetch user data");
+        setLoading(false);
+      }
+    };
+    fetchUserData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     let formattedValue = value;
 
-    // Convert budget and pax to integers
     if (name === "budget" || name === "pax") {
       formattedValue = parseInt(value);
     }
@@ -26,10 +54,29 @@ export const Eventedit = () => {
   };
 
   const submitForm = async () => {
+    setLoading(true);
+    setError(null);
     try {
-      await axiosInstance.post("/event/add-event", formData);
+      const token = localStorage.getItem("token");
+      console.log("token: ", token);
+      if (!token) {
+        throw new Error("Token not found in localStorage");
+      }
+
+      const response = await axiosInstance.post("event/add-event", formData, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+
+      if (response.status === 200) {
+        navigate("/myevents");
+      }
     } catch (error) {
+      setError("Failed to add event");
       console.error("Error:", error);
+    } finally {
+      setLoading(false);
     }
   };
 

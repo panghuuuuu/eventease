@@ -9,10 +9,11 @@ import Login from "./pages/Login";
 import Browse from "./pages/BrowsePage";
 import MyEvents from "./pages/MyEvents";
 import Eventboard from "./pages/Eventboard";
-
+import Eventedit from "./pages/Eventedit";
 const App = () => (
   <Router>
     <Routes>
+      <Route path="/create" element={<Eventedit />} />
       <Route path="/browse" element={<Browse />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Signup />} />
