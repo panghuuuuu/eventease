@@ -3,11 +3,22 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import StarRating from "../components/StarRating";
 import Navbar from "../components/Navbar.js";
+import Modal from "../components/PinModal.js";
+
 import "../stylesheets/serviceprovider.css";
+
 const ServiceProvider = () => {
   const { serviceId } = useParams();
   const [service, setService] = useState();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   useEffect(() => {
     const fetchServiceData = async () => {
       try {
@@ -28,37 +39,41 @@ const ServiceProvider = () => {
     <section id="service_provider" className="section_container">
       <Navbar />
       <div className="sp_container">
+        {isModalOpen && <Modal closeModal={closeModal} service={service} />}
+
         <div className="section_header">
           <img className=""></img>
         </div>
-        <div className="back-button">
-          {" "}
-          <svg
-            className="button-svg"
-            xmlns="http://www.w3.org/2000/svg"
-            width="19"
-            height="31"
-            viewBox="0 0 19 31"
-            fill="none"
-          >
-            <path
-              d="M17 29L2 15.5L17 2"
-              stroke="#A460ED"
-              stroke-width="4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <p className="button-text">Browse</p>
-        </div>
+        <Link to={`/browse`}>
+          <div className="back-button">
+            {" "}
+            <svg
+              className="button-svg"
+              xmlns="http://www.w3.org/2000/svg"
+              width="19"
+              height="31"
+              viewBox="0 0 19 31"
+              fill="none"
+            >
+              <path
+                d="M17 29L2 15.5L17 2"
+                stroke="#A460ED"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <p className="button-text">Browse</p>
+          </div>
+        </Link>
         <h1 className="service_name">{service.service_name}</h1>
         <div className="section_content">
           <div className="left_panel">
-            <div className="service_rating">
+            <p className="service_rating">
               {" "}
               <StarRating rating={service.service_rating} />
               {service.service_rating}
-            </div>
+            </p>
             <p className="service_location">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +119,7 @@ const ServiceProvider = () => {
           </div>
           <div className="right_panel">
             <p>Do you like this?</p>
-            <div className="pin_button">
+            <div className="pin_button" onClick={openModal}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

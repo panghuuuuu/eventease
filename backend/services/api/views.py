@@ -4,14 +4,6 @@ from rest_framework.decorators import api_view
 from services.models import Service, Package
 from .serializers import ServiceSerializer, PackageSerializer
 
-@api_view(['POST'])
-def add_service(request):
-    serializer = ServiceSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "Service added successfully", "data": serializer.data}, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 @api_view(['PUT'])
 def edit_service(request, pk):
     try:

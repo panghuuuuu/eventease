@@ -40,7 +40,7 @@
   line-height: normal;
 }
 
-.card_details .service_rating {
+.service_rating {
   display: flex;
   flex-direction: row;
   align-items: start;

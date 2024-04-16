@@ -5,7 +5,7 @@
 .back-button {
   margin-bottom: 27px;
 }
-.service_name {
+.sp_container .service_name {
   margin-bottom: 27px;
 }
 
@@ -74,4 +74,8 @@
   align-self: stretch;
   border-radius: 12px;
   border: 2px solid #f07dea;
+}
+
+.pin_button:hover {
+  cursor: pointer;
 }
