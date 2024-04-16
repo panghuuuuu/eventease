@@ -58,5 +58,18 @@ def get_all_services(request):
         services = Service.objects.all()
 
     serializer = ServiceSerializer(services, many=True)
+    data = serializer.data
+    for i, service in enumerate(services):
+        data[i]['id'] = service.pk
 
+    return Response(data)
+
+@api_view(['GET'])
+def get_service_details(request, pk):
+    try:
+        service = Service.objects.get(pk=pk)
+    except Service.DoesNotExist:
+        return Response({"error": "Service not found"}, status=status.HTTP_404_NOT_FOUND)
+
+    serializer = ServiceSerializer(service)
     return Response(serializer.data)

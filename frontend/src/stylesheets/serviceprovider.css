@@ -1,0 +1,77 @@
+.sp_container {
+  margin-left: 132px;
+  margin-right: 132px;
+}
+.back-button {
+  margin-bottom: 27px;
+}
+.service_name {
+  margin-bottom: 27px;
+}
+
+.section_content {
+  width: 100%;
+  display: flex;
+  gap: 40px;
+}
+
+.left_panel {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.right_panel {
+  flex: 1;
+}
+.package_price {
+  display: flex;
+}
+
+.service_package {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  align-self: stretch;
+  border-radius: 12px;
+  border: 2px solid #f07dea;
+}
+
+.package_items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section_tag {
+  color: #a460ed;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+.right_panel p {
+  color: #a460ed;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 150% */
+}
+.pin_button {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  align-self: stretch;
+  border-radius: 12px;
+  border: 2px solid #f07dea;
+}

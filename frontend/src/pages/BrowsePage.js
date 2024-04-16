@@ -33,46 +33,53 @@ const BrowsePage = () => {
   };
 
   return (
-    <section id="browse">
-      <Navbar />
-      <h1>Browse</h1>
-      <div className="container browse_container">
-        <div className="filter_panel">
-          <h2>What are you<br/>looking for?</h2>
-          <ul>
-            {[
-              "VENUES",
-              "CATERER",
-              "PARTY SUPPLIES",
-              "HOSTS",
-              "PHOTOGRAPHERS",
-              "ENTERTAINERS",
-              "FORMAL ATTIRE",
-              "COSTUMES",
-              "MAKEUP ARTISTS",
-            ].map((filter, index) => (
-              <li
+    <>
+      <section id="browse" className="section_container">
+        <Navbar />
+        <h1>Browse</h1>
+        <div className="container browse_container">
+          <div className="filter_panel">
+            <h2>
+              What are you
+              <br />
+              looking for?
+            </h2>
+            <ul>
+              {[
+                "VENUES",
+                "CATERER",
+                "PARTY SUPPLIES",
+                "HOSTS",
+                "PHOTOGRAPHERS",
+                "ENTERTAINERS",
+                "FORMAL ATTIRE",
+                "COSTUMES",
+                "MAKEUP ARTISTS",
+              ].map((filter, index) => (
+                <li
+                  key={index}
+                  onClick={() => handleFilterClick(filter, index)}
+                  className={activeFilterIndex === index ? "active" : ""}
+                >
+                  {filter.charAt(0).toUpperCase() +
+                    filter.slice(1).toLowerCase()}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="browse_panel">
+            {services.map((service, index) => (
+              <ServiceCard
                 key={index}
-                onClick={() => handleFilterClick(filter, index)}
-                className={activeFilterIndex === index ? "active" : ""}
-              >
-                {filter.charAt(0).toUpperCase() + filter.slice(1).toLowerCase()}
-              </li>
+                service={service.service_name}
+                serviceDetails={service}
+              />
             ))}
-          </ul>
+          </div>
         </div>
-        <div className="browse_panel">
-          {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              service={service.service_name}
-              serviceDetails={service}
-            />
-          ))}
-        </div>
-      </div>
+      </section>
       <Footer />
-    </section>
+    </>
   );
 };
 

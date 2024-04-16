@@ -10,6 +10,7 @@ import Browse from "./pages/BrowsePage";
 import MyEvents from "./pages/MyEvents";
 import Eventboard from "./pages/Eventboard";
 import Eventedit from "./pages/Eventedit";
+import ServiceProvider from "./pages/ServiceProvider";
 const App = () => (
   <Router>
     <Routes>
@@ -19,6 +20,7 @@ const App = () => (
       <Route path="/register" element={<Signup />} />
       <Route path="/myevents" element={<MyEvents />} />
       <Route path="/eventboard/:eventId" element={<Eventboard />} />{" "}
+      <Route path="/service/:serviceId" element={<ServiceProvider />} />{" "}
       <Route path="/" element={<Home />} />
     </Routes>
   </Router>

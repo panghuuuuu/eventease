@@ -1,10 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "../stylesheets/card.css";
 import StarRating from "./StarRating";
 import placeholderImage from "../assets/logo_header.png";
 
 function ServiceCard(props) {
   const { service, serviceDetails } = props;
+  const serviceId = serviceDetails.id;
   console.log(serviceDetails);
 
   return (
@@ -58,24 +61,26 @@ function ServiceCard(props) {
             </li>
           ))}
         </ul>
-        <button className="more_btn">
-          More Details{" "}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="31"
-            viewBox="0 0 20 31"
-            fill="none"
-          >
-            <path
-              d="M2.33325 29L17.3333 15.5L2.33325 2"
-              stroke="#A460ED"
-              stroke-width="4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
+        <Link to={`/service/${serviceId}`}>
+          <button className="more_btn">
+            More Details{" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="31"
+              viewBox="0 0 20 31"
+              fill="none"
+            >
+              <path
+                d="M2.33325 29L17.3333 15.5L2.33325 2"
+                stroke="#A460ED"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </Link>
       </div>
     </div>
   );

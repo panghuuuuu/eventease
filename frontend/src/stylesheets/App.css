@@ -22,3 +22,8 @@ h2 {
   line-height: normal;
   text-transform: uppercase;
 }
+
+.section_container {
+  margin-top: 15vh;
+  min-height: 75vh;
+}

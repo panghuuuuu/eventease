@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosApi";
 import "../stylesheets/eventedit.css";
 import SaveEdits from "../assets/SaveEdits.png";
+
 export const Eventedit = () => {
   const [formData, setFormData] = useState({
     event_name: "",
@@ -14,33 +15,22 @@ export const Eventedit = () => {
     services: [1],
   });
 
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  const setUserData = useEffect(() => {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem("token");
         if (!token) {
           throw new Error("Token not found in localStorage");
         }
-        setLoading(false);
       } catch (error) {
-        setError("Failed to fetch user data");
-        setLoading(false);
+        console.log(error);
       }
     };
     fetchUserData();
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     let formattedValue = value;
@@ -55,9 +45,7 @@ export const Eventedit = () => {
   };
 
   const submitForm = async () => {
-    setLoading(true);
-    setError(null);
-    console.log("Response: ", formData);
+    setUserData();
 
     try {
       const token = localStorage.getItem("token");
@@ -76,15 +64,12 @@ export const Eventedit = () => {
 
       navigate("/myevents");
     } catch (error) {
-      setError("Failed to add event");
       console.error("Error:", error);
-    } finally {
-      setLoading(false);
     }
   };
 
   return (
-    <div className="eventedit_container" id="eventEdit">
+    <div className="eventedit_container">
       <div className="eventedit__left_container">
         <p className="eventedit_header">Create your dream event</p>
         <h1 className="eventedit_title">What event are you planning?</h1>

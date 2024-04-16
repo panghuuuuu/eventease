@@ -54,7 +54,8 @@ urlpatterns = [
     path('service/add-service', ServiceViewSet.as_view({'post': 'service'}), name='service'),
     path('service/edit-service/<int:pk>/', service_views.edit_service),
     path('service/delete-service/<int:pk>/', service_views.delete_service),
-    
+    path('service/<int:pk>/', service_views.get_service_details),
+
     path('package', service_views.getPackagesData),
     path('package/add-package', PackageViewSet.as_view({'post': 'package'}), name='package'),
 ]
