@@ -12,12 +12,12 @@ export const Eventedit = () => {
     event_end_date: "",
     budget: "",
     pax: "",
-    services: [1],
+    services: [],
   });
 
   const navigate = useNavigate();
 
-  const setUserData = useEffect(() => {
+  useEffect(() => {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem("token");
@@ -37,6 +37,7 @@ export const Eventedit = () => {
 
     if (name === "event_type") {
       formattedValue = value.toUpperCase();
+      console.log(formattedValue);
     } else if (name === "budget" || name === "pax") {
       formattedValue = parseInt(value);
     }
@@ -45,11 +46,10 @@ export const Eventedit = () => {
   };
 
   const submitForm = async () => {
-    setUserData();
-
     try {
       const token = localStorage.getItem("token");
       console.log("token: ", token);
+      console.log(formData);
       if (!token) {
         throw new Error("Token not found in localStorage");
       }
@@ -103,6 +103,7 @@ export const Eventedit = () => {
                 value={formData.event_type}
                 onChange={handleInputChange}
               >
+                <option value="">Select Event Type</option>
                 <option value="Wedding">Wedding</option>
                 <option value="Birthday">Birthday</option>
                 <option value="Prom">Prom</option>

@@ -39,7 +39,13 @@ const ServiceProvider = () => {
     <section id="service_provider" className="section_container">
       <Navbar />
       <div className="sp_container">
-        {isModalOpen && <Modal closeModal={closeModal} service={service} />}
+        {isModalOpen && (
+          <Modal
+            closeModal={closeModal}
+            service={service}
+            serviceId={serviceId}
+          />
+        )}
 
         <div className="section_header">
           <img className=""></img>

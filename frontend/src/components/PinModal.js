@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "../axiosApi.js";
+import { useNavigate } from "react-router-dom";
 
 import "../stylesheets/modal.css";
 
-function Modal({ closeModal, service }) {
+function Modal({ closeModal, service, serviceId }) {
   const [events, setEvents] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState("");
+  const [selectedPackage, setSelectedPackage] = useState("");
+
   const { service_name, service_rating, service_address, service_packages } =
     service;
+  const navigate = useNavigate();
 
-  console.log(service_packages);
-
+  console.log(events);
+  console.log(selectedEvent);
   useEffect(() => {
     const fetchEventData = async () => {
       try {
@@ -30,13 +35,58 @@ function Modal({ closeModal, service }) {
     };
     fetchEventData();
   }, []);
+  const handleSubmit = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        console.error("Token not found in localStorage");
+        return;
+      }
+      const selectedEventObj = events.find(
+        (event) => event.event_name === selectedEvent
+      );
+      if (!selectedEventObj) {
+        console.error("Selected event not found");
+        return;
+      }
+      const selectedPackageObj = service_packages.find(
+        (pkg) => pkg.package_name === selectedPackage
+      );
+
+      console.log(selectedPackageObj);
+
+      const response = await axios.post(
+        `/event/${selectedEventObj.id}/add-service/`,
+        {
+          package_number: selectedPackageObj.package_id,
+          service_number: serviceId,
+        },
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+      console.log(response.data);
+      navigate(`/eventboard/${selectedEventObj.id}`);
+    } catch (error) {
+      console.error("Error adding service:", error);
+    }
+  };
 
   return (
     <div className="overlay_container">
       <div className="modal_container">
         <div className="input">
           <p className="input_label">What event is this for?</p>
-          <select className="dropdown" id="dropdown" name="event">
+          <select
+            className="dropdown"
+            id="dropdown"
+            name="event"
+            value={selectedEvent}
+            onChange={(e) => setSelectedEvent(e.target.value)}
+          >
+            <option value="">Select an event</option>
             {events.map((event, index) => (
               <option key={index} value={event.event_name}>
                 {event.event_name}
@@ -46,7 +96,15 @@ function Modal({ closeModal, service }) {
         </div>
         <div className="input">
           <p className="input_label">Which package are you interested in?</p>
-          <select className="dropdown" id="dropdown" name="event">
+          <select
+            className="dropdown"
+            id="dropdown"
+            name="event"
+            value={selectedPackage}
+            onChange={(e) => setSelectedPackage(e.target.value)}
+          >
+            <option value="">Select a package</option>
+
             {service_packages.map((packageItem, index) => (
               <option key={index} value={packageItem.package_name}>
                 {packageItem.package_name}
@@ -58,7 +116,7 @@ function Modal({ closeModal, service }) {
           <div className="cancel_btn" onClick={closeModal}>
             Cancel
           </div>
-          <div className="save_btn">
+          <div className="save_btn" onClick={handleSubmit}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="15"

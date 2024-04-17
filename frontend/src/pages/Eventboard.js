@@ -11,7 +11,6 @@ import Footer from "../components/Footer.js";
 export const Eventboard = () => {
   const { eventId } = useParams();
   const [event, setEvent] = useState();
-
   useEffect(() => {
     const fetchEventData = async () => {
       try {
@@ -44,7 +43,11 @@ export const Eventboard = () => {
   };
 
   const formattedStartDate = startDate.toLocaleDateString("en-US", options);
-  const services = event.services;
+  const services = event.services.map((item) => item.service);
+  const uniqueServiceTypes = Array.from(
+    new Set(services.map((item) => item.service_type))
+  );
+
   return (
     <>
       <section id="eventboard" className="section_container">
@@ -136,8 +139,8 @@ export const Eventboard = () => {
                 <div className="details_frame">
                   <p className="details_head">REQUIREMENTS</p>
                   <ul>
-                    {services.map((service, index) => (
-                      <li key={index}>{service.service_type}</li>
+                    {uniqueServiceTypes.map((service_type, index) => (
+                      <li key={index}>{service_type}</li>
                     ))}
                   </ul>
                 </div>
@@ -174,7 +177,7 @@ export const Eventboard = () => {
                 <h1 className="pin-name">CATERERS</h1>
                 <div className="pin_section">
                   {services.filter(
-                    (service) => service.service_type === "CATERERS"
+                    (service) => service.service_type === "CATERER"
                   ).length === 0 ? (
                     <p>
                       Aw. You haven’t found any caterers yet.{" "}
@@ -187,7 +190,7 @@ export const Eventboard = () => {
                     </p>
                   ) : (
                     services
-                      .filter((service) => service.service_type === "CATERERS")
+                      .filter((service) => service.service_type === "CATERER")
                       .map((service, index) => (
                         <EventBoardCard
                           key={index}

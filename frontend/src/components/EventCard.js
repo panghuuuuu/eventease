@@ -6,6 +6,7 @@ import "../stylesheets/eventcard.css";
 function EventCard(props) {
   const { event, eventDetails } = props;
   const eventId = eventDetails.id;
+  console.log(eventDetails);
   const startDate = new Date(eventDetails.event_start_date);
 
   const options = {
@@ -15,6 +16,11 @@ function EventCard(props) {
   };
 
   const formattedStartDate = startDate.toLocaleDateString("en-US", options);
+  const services = eventDetails.services.map((item) => item.service);
+  const uniqueServiceTypes = Array.from(
+    new Set(services.map((item) => item.service_type))
+  );
+
   return (
     <div className="event_card">
       <div key={event}></div>
@@ -22,8 +28,8 @@ function EventCard(props) {
       <p className="event_type">{eventDetails.event_type}</p>
       <p className="event_date">{formattedStartDate}</p>
       <ul>
-        {eventDetails.services.map((service, index) => (
-          <li key={index}>{service.service_type}</li>
+        {uniqueServiceTypes.map((service_type, index) => (
+          <li key={index}>{service_type}</li>
         ))}
       </ul>
       <Link to={`/eventboard/${eventId}`}>
