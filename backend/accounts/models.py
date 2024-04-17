@@ -8,6 +8,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import Group, Permission
 
 from events.models import Event
+from services.models import Review
 
 import datetime
 # Create your models here.
