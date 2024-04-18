@@ -31,6 +31,9 @@ export const Eventedit = () => {
     fetchUserData();
   }, []);
 
+  
+  const [selectedOption, setSelectedOption] = useState("");
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     let formattedValue = value;
@@ -38,12 +41,24 @@ export const Eventedit = () => {
     if (name === "event_type") {
       formattedValue = value.toUpperCase();
       console.log(formattedValue);
+      setSelectedOption(formattedValue);
+      setSelectedOption(e.target.value);
     } else if (name === "budget" || name === "pax") {
-      formattedValue = parseInt(value);
+      formattedValue = /^\d+$/.test(value) ? parseInt(value) : "";
     }
-
+    
     setFormData({ ...formData, [name]: formattedValue });
   };
+
+  const handleSliderChange1 = (e) => {
+    setFormData({ ...formData, budget: e.target.value });
+  };
+
+  const handleSliderChange2 = (e) => {
+    setFormData({ ...formData, pax: e.target.value });
+  };
+
+
 
   const submitForm = async () => {
     try {
@@ -100,7 +115,7 @@ export const Eventedit = () => {
                 className="dropdown"
                 id="dropdown"
                 name="event_type"
-                value={formData.event_type}
+                value={selectedOption}
                 onChange={handleInputChange}
               >
                 <option value="">Select Event Type</option>
@@ -142,25 +157,6 @@ export const Eventedit = () => {
           </div>
 
           <div className="eventedit__event_details">
-            <div className="input">
-              <p className="input_label">
-                What services are you looking for?<span>*</span>
-              </p>
-              <div className="services_buttons">
-                <div className="service_btn">Venues</div>
-                <div className="service_btn">Caterers</div>
-                <div className="service_btn">Party Suppliers</div>
-                <div className="service_btn">Hosts</div>
-                <div className="service_btn">Entertainers</div>
-                <div className="service_btn">Photographers</div>
-                <div className="service_btn">Formal Attire</div>
-                <div className="service_btn">Costumes</div>
-                <div className="service_btn">Makeup Artists</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="eventedit__event_details">
             <div className="range_container">
               <div className="input">
                 <p className="input_label">
@@ -177,13 +173,15 @@ export const Eventedit = () => {
               <div className="slidecontainer">
                 <input
                   type="range"
-                  min="1"
-                  max="250"
+                  min="100"
+                  max="500000"
                   className="slider"
-                  id="myRange"
+                  id="budgetRange"
+                  onChange={handleSliderChange1}
+                  value={formData.budget}
                 />
                 <div className="range_text">
-                  <p>0 PHP</p>
+                  <p>100 PHP</p>
                   <p>500000+ PHP</p>{" "}
                 </div>
               </div>
@@ -207,10 +205,12 @@ export const Eventedit = () => {
               <div className="slidecontainer">
                 <input
                   type="range"
-                  min="1"
+                  min="2"
                   max="250"
                   className="slider"
-                  id="myRange"
+                  id="paxRange"
+                  onChange={handleSliderChange2}
+                  value={formData.pax}
                 />
                 <div className="range_text">
                   <p>0 PAX</p>

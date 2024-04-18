@@ -47,6 +47,8 @@ export const Eventboard = () => {
   const uniqueServiceTypes = Array.from(
     new Set(services.map((item) => item.service_type))
   );
+  console.log("hello", services);
+  let totalPrice = 0;
 
   return (
     <>
@@ -318,29 +320,36 @@ export const Eventboard = () => {
 
               {/* EVENT BUDGET */}
               <div className="eventboard__budget">
-                <h1>BUDGET</h1>
-                <p className="budget_interact">
-                  Interact with the check boxes to see your total cost.
-                </p>
-                <p className="budget_php">PHP</p>
+                <h1>BUDGET</h1>              
                 <div className="budget_receipt">
-                  <h2>Venue</h2>
                   <div className="receipt_frame">
-                    <p>Midlands Verdana</p>
-                    <p>160,000</p>
+                    <h2>Services</h2>
+                    <p className="budget_php">PHP</p>
                   </div>
-
-                  <h2>Caterer</h2>
+                  {services.map((service, index) => (
+                    <div key={index} className="receipt_frame">
+                      <p>{service.service_name}</p>
+                      {service.service_packages.map((selected_package, packageIndex) => {
+                        totalPrice += selected_package.package_price; 
+                        return (
+                          <div key={packageIndex}>
+                            <p>{selected_package.package_price}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ))}
                   <div className="receipt_frame">
-                    <p>Hizon's Catering</p>
-                    <p>110,000</p>
+                    <h2>Total</h2>
+                    <p>{totalPrice}</p>
                   </div>
-
                   <div className="receipt_frame">
-                    <p>Total</p>
-                    <p>270,000</p>
+                    <h2>Balance</h2>
+                    <p>{event.budget - totalPrice}</p>
                   </div>
                 </div>
+
+
               </div>
             </div>{" "}
           </div>{" "}

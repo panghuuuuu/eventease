@@ -7,6 +7,9 @@ from rest_framework.authentication import TokenAuthentication, SessionAuthentica
 from rest_framework.permissions import IsAuthenticated
 from services.models import Service, Package
 
+from django.shortcuts import render
+
+
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication, SessionAuthentication]) 
 @permission_classes([IsAuthenticated])
