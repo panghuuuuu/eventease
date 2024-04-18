@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db import models
 
 # Create your models here.
@@ -20,7 +21,6 @@ class Service(models.Model):
         ('COSTUMES', 'Costumes'),
         ('MAKEUP ARTISTS', 'Makeup Artists')
     )
-    
     service_name = models.CharField(max_length=200)
     service_rating = models.DecimalField(max_digits=3, decimal_places=2, default=0)
     service_type = models.CharField(max_length=20, choices=LOOKING_FOR)
@@ -35,8 +35,9 @@ class Review(models.Model):
         primary_key=True
     )
     review_service = models.ForeignKey(Service, on_delete=models.CASCADE)
-    review_datetime = models.DateTimeField(auto_now_add=True)
+    review_datetime = models.DateTimeField(default=timezone.now)
     review_rating = models.DecimalField(max_digits=3, decimal_places=2, default=0)
-    review_body = models.CharField(max_length=10000)
+    review_body = models.TextField(max_length=10000)
+
     def __str__(self):
-        return self.review_id
+        return str(self.review_id)

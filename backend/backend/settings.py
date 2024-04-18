@@ -32,6 +32,9 @@ ALLOWED_HOSTS = [
     'localhost'
 ]
 
+# Setting the timezone
+TIME_ZONE = 'Asia/Manila'
+USE_TZ= True
 
 # Application definition
 
@@ -61,6 +64,10 @@ INSTALLED_APPS = [
 
 CORS_ORIGIN_WHITELIST = ["http://localhost:3000"]
 CORS_ALLOW_CREDENTIALS = True
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -103,6 +110,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
+        "TIME_ZONE": TIME_ZONE
     }
 }
 
