@@ -57,6 +57,7 @@ urlpatterns = [
     path('service/delete-service/<int:pk>/', service_views.delete_service),
     path('service/<int:pk>/', service_views.get_service_details),
     path('service/<int:pk>/add-review', service_views.add_review),
+    path('service/<int:pk>/get-reviews', service_views.get_service_reviews),
 
     path('package', service_views.getPackagesData),
     path('package/add-package', PackageViewSet.as_view({'post': 'package'}), name='package'),
