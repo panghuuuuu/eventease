@@ -1,10 +1,11 @@
 from rest_framework import serializers
-from services.models import Package, Service
+from services.models import Package, Service, Review
 
 class PackageSerializer(serializers.ModelSerializer):    
     class Meta:
         model = Package
         fields = '__all__'
+        
 class ServicesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
@@ -23,3 +24,10 @@ class ServiceSerializer(serializers.ModelSerializer):
         for package_data in packages_data:
             Package.objects.create(service=service, **package_data)
         return service
+    
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = ['review_id', 'review_user', 'review_service', 'review_datetime', 'review_rating', 'review_body']
+
+
