@@ -47,7 +47,7 @@ urlpatterns = [
     path('events', event_views.get_events),
     path('event/add-event', event_views.add_event, name='create_event'),
     path('event/edit-event/<int:pk>/', EventViewSet.as_view({'put': 'edit_event'}), name='edit_event'),
-    path('event/delete-event/<int:pk>/', EventViewSet.as_view({'delete': 'delete_event'}), name='delete_event'),
+    path('event/delete-event/<int:pk>/', event_views.delete_event, name='delete_event'),
     path('event/<int:pk>/', event_views.get_event_details),
     path('event/<int:event_id>/add-service/', event_views.add_service, name='add_service'),
 

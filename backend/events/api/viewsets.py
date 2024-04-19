@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 
 from rest_framework import mixins, viewsets, status
-from rest_framework.decorators import action
+from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from events.models import Event
@@ -35,9 +35,3 @@ class EventViewSet(mixins.RetrieveModelMixin,
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    @action(detail=True, methods=['delete'], permission_classes=[IsAuthenticated])
-    def delete_event(self, request, pk=None):
-        event = Event.objects.get(pk=pk)
-        event.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)

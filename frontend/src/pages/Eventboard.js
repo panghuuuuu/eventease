@@ -7,10 +7,19 @@ import EventBoardCard from "../components/EventBoardCard.js";
 
 import "../stylesheets/eventboard.css";
 import Footer from "../components/Footer.js";
-
+import Modal from "../components/DeleteEventModal.js";
 export const Eventboard = () => {
   const { eventId } = useParams();
   const [event, setEvent] = useState();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   useEffect(() => {
     const fetchEventData = async () => {
       try {
@@ -53,6 +62,8 @@ export const Eventboard = () => {
   return (
     <>
       <section id="eventboard" className="section_container">
+        {isModalOpen && <Modal closeModal={closeModal} eventId={eventId} />}
+
         <div className="eventboard__container">
           <Navbar />
           <div className="eventboard_mainframe">
@@ -103,7 +114,7 @@ export const Eventboard = () => {
                   <p>Edit Event</p>
                 </div>
 
-                <div className="button-edit">
+                <div className="button-edit" onClick={openModal}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -116,7 +127,7 @@ export const Eventboard = () => {
                       fill="#474747"
                     />
                   </svg>
-                  <p>Delete Event</p>
+                  Delete Event
                 </div>
               </div>
             </div>
@@ -320,7 +331,7 @@ export const Eventboard = () => {
 
               {/* EVENT BUDGET */}
               <div className="eventboard__budget">
-                <h1>BUDGET</h1>              
+                <h1>BUDGET</h1>
                 <div className="budget_receipt">
                   <div className="receipt_frame">
                     <h2>Services</h2>
@@ -329,14 +340,16 @@ export const Eventboard = () => {
                   {services.map((service, index) => (
                     <div key={index} className="receipt_frame">
                       <p>{service.service_name}</p>
-                      {service.service_packages.map((selected_package, packageIndex) => {
-                        totalPrice += selected_package.package_price; 
-                        return (
-                          <div key={packageIndex}>
-                            <p>{selected_package.package_price}</p>
-                          </div>
-                        );
-                      })}
+                      {service.service_packages.map(
+                        (selected_package, packageIndex) => {
+                          totalPrice += selected_package.package_price;
+                          return (
+                            <div key={packageIndex}>
+                              <p>{selected_package.package_price}</p>
+                            </div>
+                          );
+                        }
+                      )}
                     </div>
                   ))}
                   <div className="receipt_frame">
@@ -348,8 +361,6 @@ export const Eventboard = () => {
                     <p>{event.budget - totalPrice}</p>
                   </div>
                 </div>
-
-
               </div>
             </div>{" "}
           </div>{" "}

@@ -60,15 +60,19 @@ def edit_event(request, pk):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['DELETE'])
+@authentication_classes([SessionAuthentication, TokenAuthentication]) 
+@permission_classes([IsAuthenticated])
 def delete_event(request, pk):
     try:
-        event = Event.objects.get(pk=pk)    
+        event = Event.objects.get(pk=pk)
     except Event.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-    event.delete()
-    return Response(status=status.HTTP_204_NO_CONTENT)
-
+    if event in request.user.events.all():
+        event.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    else:
+        return Response({"error": "You are not authorized to delete this event"}, status=status.HTTP_403_FORBIDDEN)
 
 @api_view(['POST'])
 @authentication_classes([SessionAuthentication, TokenAuthentication]) 
