@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import axiosInstance from "../axiosApi";
 import signupHeader from "../assets/logo_header.png";
@@ -13,6 +13,7 @@ export default function Registration() {
     last_name: "",
     birthday: "",
   });
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +23,7 @@ export default function Registration() {
   const submitForm = async () => {
     try {
       await axiosInstance.post("/api/register/", formData);
+      navigate("/login");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -34,8 +36,20 @@ export default function Registration() {
           <p>Ready to plan your dream event?</p>
           <Link to="/" className="continue_btn">
             Continue without logging in
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6.5 2L14.5 8.0531M6.5 14L14.5 8.0531M14.5 8.0531H1.5" stroke="#F07DEA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.5 2L14.5 8.0531M6.5 14L14.5 8.0531M14.5 8.0531H1.5"
+                stroke="#F07DEA"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
           </Link>
         </div>
