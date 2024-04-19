@@ -69,51 +69,14 @@ def get_service_details(request, pk):
 #############################################################################################
 
 # FOR Reviews
-# views.py continued
 
 @api_view(['POST'])
-def add_review(request, pk):
-    try:
-        service = Service.objects.get(pk=pk)
-    except Service.DoesNotExist:
-        return Response({"error": "Service not found"}, status=status.HTTP_404_NOT_FOUND)
+def add_report(request,pk):
+    return True
 
-    serializer = ReviewSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save(review_service=service)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+def edit_report(request,pk):
+    return True
 
-@api_view(['PUT'])
-def edit_review(request, service_id, review_id):
-    try:
-        service = Service.objects.get(pk=service_id)
-        review = Review.objects.get(pk=review_id, review_service=service)
-    except (Service.DoesNotExist, Review.DoesNotExist):
-        return Response({"error": "Service or Review not found"}, status=status.HTTP_404_NOT_FOUND)
+def delete_report(request,pk):
+    return True
 
-    serializer = ReviewSerializer(review, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-@api_view(['DELETE'])
-def delete_review(request, service_id, review_id):
-    try:
-        service = Service.objects.get(pk=service_id)
-        review = Review.objects.get(pk=review_id, review_service=service)
-    except (Service.DoesNotExist, Review.DoesNotExist):
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    review.delete()
-    return Response(status=status.HTTP_204_NO_CONTENT)
-
-@api_view(['GET'])
-def all_reviews(request):
-    # Retrieve all reviews from the database
-    reviews = Review.objects.all()
-    # Serialize the reviews
-    serializer = ReviewSerializer(reviews, many=True)
-    # Return the serialized reviews as a response
-    return Response(serializer.data)

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from services.models import Package, Service, Review
+from services.models import Package, Service, Review, Reports
 
 class PackageSerializer(serializers.ModelSerializer):    
     class Meta:
@@ -30,5 +30,10 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = Review
         fields = ['review_id', 'review_user', 'review_service', 'review_datetime', 'review_rating', 'review_body']
 
+
+class ReportsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reports
+        field = '__all__'
 
 
