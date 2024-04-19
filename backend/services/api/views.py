@@ -1,8 +1,8 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
-from services.models import Service, Package, Review
-from .serializers import ServiceSerializer, PackageSerializer, ReviewSerializer
+from services.models import Service, Package, Review, Reports
+from .serializers import ServiceSerializer, PackageSerializer, ReviewSerializer, ReportsSerializer
 
 @api_view(['PUT'])
 def edit_service(request, pk):
@@ -68,15 +68,24 @@ def get_service_details(request, pk):
 
 #############################################################################################
 
-# FOR Reviews
+# FOR Reports
 
+# @api_view(['POST'])
 @api_view(['POST'])
-def add_report(request,pk):
-    return True
+def add_report(request, pk):
+    try:
+        service = Service.objects.get(pk=pk)
+    except Service.DoesNotExist:
+        return Response({"error": "Service not found"}, status=status.HTTP_404_NOT_FOUND)
 
-def edit_report(request,pk):
-    return True
+    serializer = ReportsSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save(reported_service=service)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-def delete_report(request,pk):
-    return True
-
+@api_view(['GET'])
+def get_all_reports(request):
+    reports = Reports.objects.all()
+    serializer = ReportsSerializer(reports, many=True)
+    return Response(serializer.data)

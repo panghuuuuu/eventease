@@ -48,7 +48,9 @@ class Reports(models.Model):
     reporting_user = models.ForeignKey('accounts.User', on_delete=models.CASCADE, default=0)
     reported_service = models.ForeignKey(Service, on_delete=models.CASCADE)
     report_datetime = models.DateTimeField(auto_now_add=True)
+    report_title = models.TextField(max_length=50)
     report_body = models.TextField(max_length=2000)
 
     def __str__(self):
         return self.report_id
+    
