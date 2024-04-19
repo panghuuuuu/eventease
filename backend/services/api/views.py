@@ -69,6 +69,8 @@ def get_service_details(request, pk):
 #############################################################################################
 
 # FOR Reviews
+# views.py continued
+
 @api_view(['POST'])
 def add_review(request, pk):
     try:
