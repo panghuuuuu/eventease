@@ -51,6 +51,13 @@ const ServiceProvider = () => {
   };
   // END REVIEW FORM METHODS
 
+  const scrollToBottom = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth'
+    });
+  };
+
   useEffect(() => {
     const fetchServiceData = async () => {
       try {
