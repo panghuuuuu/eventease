@@ -77,6 +77,11 @@ const ServiceProvider = () => {
     return <div>Loading...</div>;
   }
 
+  const scrollToBottom = () => {
+    const eventEdit = document.getElementById("eventEdit");
+    eventEdit.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section id="service_provider" className="section_container">
       <Navbar />

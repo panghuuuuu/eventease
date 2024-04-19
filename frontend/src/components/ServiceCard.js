@@ -12,12 +12,12 @@ function ServiceCard(props) {
 
   return (
     <div className="card" key={service}>
-      <img
+      {/* <img
         className="service_image"
         src={serviceDetails.service_image}
         alt={serviceDetails.service_name}
         onerror="this.style.display='none';"
-      />
+      /> */}
       <div className="card_details">
         <h3 className="service_name">{service}</h3>
         <p className="service_rating">
