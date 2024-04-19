@@ -23,7 +23,6 @@ const ServiceProvider = () => {
 
   // FOR HANDLING SUBMITTING THE REVIEW FORM
   const [reviewData, setReviewData] = useState({
-    // TO-DO! Add User?
     review_rating: "",
     review_body: "",
   });
@@ -37,6 +36,7 @@ const ServiceProvider = () => {
   };
 
   const handleReviewSubmit = (e) => {
+    const token = localStorage.getItem("token");
     console.log("The submit botton was clicked!");
     console.log("Trying to submit: ", reviewData);
     // e.preventDefault();
@@ -167,10 +167,10 @@ const ServiceProvider = () => {
             <hr class="divider" />
             <div className="reviews_header_container">
               <h2 className="reviews_header">Reviews ({reviews.length})</h2>
-              <button className="write-review">
+              <button className="write-review" onClick={scrollToBottom}>
                 <svg
-                  width="34"
-                  height="23"
+                  width="24"
+                  height="auto"
                   viewBox="0 0 34 23"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -187,15 +187,76 @@ const ServiceProvider = () => {
               {/* TO-DO! Style this and note that a User is not yet connected to the Review */}
               {reviews.map((reviewItem, index) => (
                 <div className="review">
-                  {reviewItem.review_rating}
-                  {reviewItem.review_datetime}
-                  {reviewItem.review_body}
+                  <div className="review_left">
+                    <svg
+                      width="32"
+                      height="32"
+                      viewBox="0 0 50 50"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_68_174)">
+                        <rect
+                          width="50"
+                          height="50"
+                          fill="url(#paint0_linear_68_174)"
+                        />
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M29.6804 26.0936C32.4865 24.4736 34.375 21.4417 34.375 17.9688C34.375 12.7911 30.1777 8.59375 25 8.59375C19.8223 8.59375 15.625 12.7911 15.625 17.9688C15.625 21.4417 17.5135 24.4736 20.3196 26.0936C14.9882 30.0812 11.7188 36.4074 11.7188 43.2692V49.9998H38.2812V43.2692C38.2812 36.4074 35.0118 30.0812 29.6804 26.0936Z"
+                          fill="white"
+                        />
+                      </g>
+                      <rect
+                        x="0.5"
+                        y="0.5"
+                        width="49"
+                        height="49"
+                        rx="24.5"
+                        stroke="#1E1E1E"
+                        stroke-opacity="0.3"
+                      />
+                      <defs>
+                        <linearGradient
+                          id="paint0_linear_68_174"
+                          x1="6.25"
+                          y1="-8.98438"
+                          x2="39.4531"
+                          y2="56.6406"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop offset="0.0354981" stop-color="#9FC9F3" />
+                          <stop offset="1" stop-color="#A460ED" />
+                        </linearGradient>
+                        <clipPath id="clip0_68_174">
+                          <rect width="50" height="50" rx="25" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div className="review_right">
+                    <div className="name_date_container">
+                      <p className="username">Some User</p>
+                      <p className="datetime">{reviewItem.review_datetime}</p>
+                    </div>
+                    <div className="rating">
+                      <StarRating rating={reviewItem.review_rating} />
+                      {reviewItem.review_rating}
+                    </div>
+                    {reviewItem.review_body}
+                  </div>
                 </div>
               ))}
             </div>
+            <hr class="divider" />
             <div className="add_review">
-              <form className="review_form" onSubmit={handleReviewSubmit}>
-                <h3>Write a Review</h3>
+              <form
+                className="review_form"
+                onSubmit={handleReviewSubmit}
+                method="post"
+              >
+                <h3 className="review_form_header">Write a Review</h3>
                 <div className="review_field">
                   <label for="review_rating">Overall Rating:</label>
                   <input
@@ -219,7 +280,9 @@ const ServiceProvider = () => {
                     required
                   />
                 </div>
-                <button type="submit">Submit Review</button>
+                <button className="submit_review_button" type="submit">
+                  Submit Review
+                </button>
               </form>
             </div>
           </div>
