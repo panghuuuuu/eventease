@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "../axiosApi.js";
+
 import axiosInstance from "../axiosApi";
 import "../stylesheets/eventedit.css";
 import SaveEdits from "../assets/SaveEdits.png";
@@ -58,6 +60,29 @@ export const Eventedit = () => {
     setFormData({ ...formData, pax: e.target.value });
   };
 
+  const { eventId } = useParams();
+  const [event, setEvent] = useState();
+  useEffect(() => {
+    const fetchEventData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          console.error("Token not found in localStorage");
+          return;
+        }
+        const response = await axios.get(`/event/${eventId}`, {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        });
+        setEvent(response.data);
+      } catch (error) {
+        console.error("Error fetching event data:", error);
+      }
+    };
+    fetchEventData();
+  }, [eventId]);
+
   const submitForm = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -67,13 +92,21 @@ export const Eventedit = () => {
         throw new Error("Token not found in localStorage");
       }
 
-      const response = await axiosInstance.post("event/add-event", formData, {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      });
-
-      console.log("Response: ", response);
+      if (event) {
+        console.log("Event ID:", eventId);
+        console.log("data", formData);
+        await axiosInstance.put(`event/edit-event/${eventId}/`, formData, {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        });
+      } else {
+        await axiosInstance.post(`event/add-event`, formData, {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        });
+      }
 
       navigate("/myevents");
     } catch (error) {
