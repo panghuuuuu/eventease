@@ -7,15 +7,15 @@
 }
 
 .home_container {
+  display: inline-block;
   height: 100vh;
-
-  /* For snap scrolling */
-  scroll-snap-align: start;
+  scroll-snap-align: center;
 }
 
-#eventEdit {
-  /* For snap scrolling */
-  scroll-snap-align: start;
+.eventedit_container {
+  display: inline-block;
+  height: 100vh;
+  scroll-snap-align: center;
 }
 
 .hero {

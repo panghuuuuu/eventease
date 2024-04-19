@@ -7,14 +7,10 @@ import Navbar from "../components/Navbar";
 import Eventedit from "./Eventedit";
 
 export const Home = () => {
-  const scrollToBottom = () => {
-    const eventEdit = document.getElementById("eventEdit");
-    eventEdit.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <section id="home">
-      <div className="home_container">
+      <div className="home_container" id="home_container">
         <Navbar />
         <div className="hero">
           <div className="hero_text">
@@ -23,7 +19,7 @@ export const Home = () => {
           <div className="hero_details">
             <p>Where do you want to start?</p>
             <div className="home_buttons_container">
-              <button onClick={scrollToBottom}>
+              <button>
                 <svg
                   width="25"
                   height="27"
@@ -71,7 +67,7 @@ export const Home = () => {
             </div>
           </div>
           <div className="hero_continue">
-            <button onClick={scrollToBottom}>
+            <button>
               <p>Start Planning</p>
               <div className="scroll_icon">
                 <svg
