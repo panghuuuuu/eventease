@@ -87,7 +87,9 @@ export const Eventboard = () => {
                 <p>{event.event_type}</p>
               </div>
               <div className="header__buttons">
+              <Link to={`/event/edit/${eventId}`}>
                 <div className="button-edit">
+                  
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="21"
@@ -102,7 +104,7 @@ export const Eventboard = () => {
                   </svg>
                   <p>Edit Event</p>
                 </div>
-
+                </Link>
                 <div className="button-edit">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
