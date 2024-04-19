@@ -31,8 +31,6 @@ from services.api.viewsets import ServiceViewSet, PackageViewSet
 
 router = routers.DefaultRouter()
 
-
-
 urlpatterns = [
     path("admin/", admin.site.urls),
     # path("api/me", GetMe.as_view(), name="current-user"),
@@ -48,14 +46,20 @@ urlpatterns = [
     path('event/add-event', event_views.add_event, name='create_event'),
     path('event/edit-event/<int:pk>/', EventViewSet.as_view({'put': 'edit_event'}), name='edit_event'),
     path('event/delete-event/<int:pk>/', EventViewSet.as_view({'delete': 'delete_event'}), name='delete_event'),
-    path('event/<int:pk>/', event_views.get_event_details),
-    path('event/<int:event_id>/add-service/', event_views.add_service, name='add_service'),
+    path('event/<int:pk>/', event_views.get_event_details)  ,
 
     path('services', service_views.get_all_services),
     path('service/add-service', ServiceViewSet.as_view({'post': 'service'}), name='service'),
     path('service/edit-service/<int:pk>/', service_views.edit_service),
     path('service/delete-service/<int:pk>/', service_views.delete_service),
     path('service/<int:pk>/', service_views.get_service_details),
+
+    # for reviews
+    path('reviews/', service_views.all_reviews, name='all_reviews'), # to display all reviews across all services
+    path('service/<int:pk>/add-review', service_views.add_review, name='add_review'), # add a review for chosen service 
+    path('service/<int:pk>/delete-review', service_views.delete_review, name='delete_review'), # delete a review for chosen service 
+    path('service/<int:pk>/edit-review', service_views.edit_review, name='edit_review'), # edit a review for chosen service 
+
 
     path('package', service_views.getPackagesData),
     path('package/add-package', PackageViewSet.as_view({'post': 'package'}), name='package'),

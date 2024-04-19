@@ -70,9 +70,9 @@ def get_service_details(request, pk):
 
 # FOR Reviews
 @api_view(['POST'])
-def add_review(request, service_id):
+def add_review(request, pk):
     try:
-        service = Service.objects.get(pk=service_id)
+        service = Service.objects.get(pk=pk)
     except Service.DoesNotExist:
         return Response({"error": "Service not found"}, status=status.HTTP_404_NOT_FOUND)
 
@@ -107,3 +107,11 @@ def delete_review(request, service_id, review_id):
     review.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
 
+@api_view(['GET'])
+def all_reviews(request):
+    # Retrieve all reviews from the database
+    reviews = Review.objects.all()
+    # Serialize the reviews
+    serializer = ReviewSerializer(reviews, many=True)
+    # Return the serialized reviews as a response
+    return Response(serializer.data)
