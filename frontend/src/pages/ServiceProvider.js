@@ -54,7 +54,7 @@ const ServiceProvider = () => {
   const scrollToBottom = () => {
     window.scrollTo({
       top: document.documentElement.scrollHeight,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   };
 
@@ -83,11 +83,6 @@ const ServiceProvider = () => {
   if (!service) {
     return <div>Loading...</div>;
   }
-
-  const scrollToBottom = () => {
-    const eventEdit = document.getElementById("eventEdit");
-    eventEdit.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <section id="service_provider" className="section_container">
