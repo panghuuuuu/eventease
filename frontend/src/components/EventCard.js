@@ -34,7 +34,7 @@ function EventCard(props) {
       </ul>
       <Link to={`/eventboard/${eventId}`}>
         {" "}
-        <button className="more_btn">
+        <div className="more_btn">
           More Details{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +51,7 @@ function EventCard(props) {
               stroke-linejoin="round"
             />
           </svg>
-        </button>
+        </div>
       </Link>
     </div>
   );
