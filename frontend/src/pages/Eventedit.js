@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosApi";
 import "../stylesheets/eventedit.css";
 import SaveEdits from "../assets/SaveEdits.png";
+import { Link } from "react-router-dom";
 
 export const Eventedit = () => {
   const [formData, setFormData] = useState({
@@ -31,9 +32,8 @@ export const Eventedit = () => {
     fetchUserData();
   }, []);
 
-  
   const [selectedOption, setSelectedOption] = useState("");
-  
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     let formattedValue = value;
@@ -46,7 +46,7 @@ export const Eventedit = () => {
     } else if (name === "budget" || name === "pax") {
       formattedValue = /^\d+$/.test(value) ? parseInt(value) : "";
     }
-    
+
     setFormData({ ...formData, [name]: formattedValue });
   };
 
@@ -57,8 +57,6 @@ export const Eventedit = () => {
   const handleSliderChange2 = (e) => {
     setFormData({ ...formData, pax: e.target.value });
   };
-
-
 
   const submitForm = async () => {
     try {
@@ -222,7 +220,9 @@ export const Eventedit = () => {
 
           <div className="eventedit__event_details">
             <div className="eventedit_buttons">
-              <div className="cancel_btn">Cancel</div>
+              <Link to="/myevents">
+                <div className="cancel_btn">Cancel</div>
+              </Link>
               <div className="save_btn" onClick={submitForm}>
                 <img src={SaveEdits} alt="SaveEdits"></img>
                 Save Edits

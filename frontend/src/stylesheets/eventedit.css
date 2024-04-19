@@ -172,7 +172,9 @@
   border-radius: 12px;
   border: 1px solid rgba(30, 30, 30, 0.3);
   background: var(--color-primary-variant);
+  text-decoration: none;
 }
+
 .save_btn {
   display: inline-flex;
   padding: 12px;
