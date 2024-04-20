@@ -12,7 +12,9 @@ const ServiceProvider = () => {
   const [service, setService] = useState();
   const [reviews, setReviews] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const handleReload = () => {
+    window.location.reload();
+  };
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -45,6 +47,7 @@ const ServiceProvider = () => {
         `/service/${serviceId}/add-review`,
         reviewData
       );
+      handleReload();
     } catch (error) {
       console.error("Error submitting review:", error);
     }
@@ -258,11 +261,7 @@ const ServiceProvider = () => {
             </div>
             <hr class="divider" />
             <div className="add_review">
-              <form
-                className="review_form"
-                onSubmit={handleReviewSubmit}
-                method="post"
-              >
+              <form className="review_form" onSubmit={handleReviewSubmit}>
                 <h3 className="review_form_header">Write a Review</h3>
                 <div className="review_field">
                   <label for="review_rating">Overall Rating:</label>
