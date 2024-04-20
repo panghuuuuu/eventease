@@ -57,6 +57,7 @@ export const Eventboard = () => {
     new Set(services.map((item) => item.service_type))
   );
   console.log("hello", services);
+  console.log("event",event);
   let totalPrice = 0;
 
   return (
@@ -338,21 +339,13 @@ export const Eventboard = () => {
                     <h2>Services</h2>
                     <p className="budget_php">PHP</p>
                   </div>
-                  {services.map((service, index) => (
+                  {event.services.map((service, index) => (
                     <div key={index} className="receipt_frame">
-                      <p>{service.service_name}</p>
-                      {service.service_packages.map(
-                        (selected_package, packageIndex) => {
-                          totalPrice += selected_package.package_price;
-                          return (
-                            <div key={packageIndex}>
-                              <p>{selected_package.package_price}</p>
-                            </div>
-                          );
-                        }
-                      )}
+                    <p>{service.service.service_name}</p>
+                    <p>{service.package.package_price}</p>
                     </div>
                   ))}
+
                   <div className="receipt_frame">
                     <h2>Total</h2>
                     <p>{totalPrice}</p>
