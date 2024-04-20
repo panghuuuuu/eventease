@@ -76,7 +76,7 @@
 .eventboard__frame {
   grid-row: 3;
   display: grid;
-  grid-template-columns: 15% 65% 20%;
+  grid-template-columns: 15% 60% 20%;
   gap: 40px;
   width: 90vw;
   margin-bottom: 150px;

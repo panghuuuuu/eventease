@@ -12,7 +12,9 @@ const ServiceProvider = () => {
   const [service, setService] = useState();
   const [reviews, setReviews] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const handleReload = () => {
+    window.location.reload();
+  };
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -45,11 +47,19 @@ const ServiceProvider = () => {
         `/service/${serviceId}/add-review`,
         reviewData
       );
+      handleReload();
     } catch (error) {
       console.error("Error submitting review:", error);
     }
   };
   // END REVIEW FORM METHODS
+
+  const scrollToBottom = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth",
+    });
+  };
 
   useEffect(() => {
     const fetchServiceData = async () => {
@@ -76,11 +86,6 @@ const ServiceProvider = () => {
   if (!service) {
     return <div>Loading...</div>;
   }
-
-  const scrollToBottom = () => {
-    const eventEdit = document.getElementById("eventEdit");
-    eventEdit.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <section id="service_provider" className="section_container">
@@ -256,11 +261,7 @@ const ServiceProvider = () => {
             </div>
             <hr class="divider" />
             <div className="add_review">
-              <form
-                className="review_form"
-                onSubmit={handleReviewSubmit}
-                method="post"
-              >
+              <form className="review_form" onSubmit={handleReviewSubmit}>
                 <h3 className="review_form_header">Write a Review</h3>
                 <div className="review_field">
                   <label for="review_rating">Overall Rating:</label>

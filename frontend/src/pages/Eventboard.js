@@ -116,7 +116,7 @@ export const Eventboard = () => {
                     <p>Edit Event</p>
                   </div>
                 </Link>
-                <div className="button-edit">
+                <div className="button-edit" onClick={openModal}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
