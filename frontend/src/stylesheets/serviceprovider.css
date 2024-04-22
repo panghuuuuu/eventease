@@ -76,6 +76,17 @@
   border: 2px solid #f07dea;
 }
 
+.report_button {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  align-self: stretch;
+  border-radius: 12px;
+  border: 2px solid #ff2626;
+}
+
 .pin_button:hover {
   cursor: pointer;
 }
