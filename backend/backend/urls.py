@@ -54,14 +54,8 @@ urlpatterns = [
     path('service/delete-service/<int:pk>/', service_views.delete_service),
     path('service/<int:pk>/', service_views.get_service_details),
 
-    # # for reviews
-    # path('reviews/', service_views.all_reviews, name='all_reviews'), # to display all reviews across all services
-    # path('service/<int:pk>/add-review', service_views.add_review, name='add_review'), # add a review for chosen service 
-    # path('service/<int:pk>/delete-review', service_views.delete_review, name='delete_review'), # delete a review for chosen service 
-    # path('service/<int:pk>/edit-review', service_views.edit_review, name='edit_review'), # edit a review for chosen service 
-
     path('service/<int:pk>/add-report', service_views.add_report, name='create_report'),
-    path('reports', service_views.get_all_reports, name='reports'),
+    path('reports', service_views.get_all_reports, name='reports'), # show the reports here
 
     path('package', service_views.getPackagesData),
     path('package/add-package', PackageViewSet.as_view({'post': 'package'}), name='package'),

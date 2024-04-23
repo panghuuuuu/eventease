@@ -34,7 +34,6 @@ class ReviewSerializer(serializers.ModelSerializer):
 class ReportsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reports
-        # fields = ['report_id', 'reporting_user', 'reported_service', 'report_datetime', 'report_title', 'report_body']
         fields = '__all__'
 
 
