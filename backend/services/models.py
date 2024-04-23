@@ -45,7 +45,6 @@ class Review(models.Model):
     
 class Review(models.Model):
     review_id = models.AutoField(primary_key=True)
-    review_user = models.ForeignKey('accounts.User', on_delete=models.CASCADE, default=0)
     review_service = models.ForeignKey(Service, on_delete=models.CASCADE)
     review_datetime = models.DateTimeField(auto_now_add=True)
     review_rating = models.DecimalField(max_digits=3, decimal_places=2, default=0)        
