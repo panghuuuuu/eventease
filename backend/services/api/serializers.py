@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from services.models import Package, Service, Review
+from services.models import Package, Service, Review, Reports
 
 class PackageSerializer(serializers.ModelSerializer):    
     class Meta:
@@ -29,3 +29,14 @@ class ReviewSerializer(serializers.ModelSerializer):
             review_service = validated_data.pop('review_service')
             review = Review.objects.create(review_service=review_service, **validated_data)
             return review
+
+class ReportsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reports
+        fields = ['report_id','reported_service', 'report_datetime', 'report_title', 'report_body']
+
+        def create(self, validated_data):
+            reported_service = validated_data.pop('reported_service')
+            report = Report.objects.create(reported_service=reported_service, **validated_data)
+            return report
+

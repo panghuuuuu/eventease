@@ -2,8 +2,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
-from services.models import Service, Package, Review
-from .serializers import ServiceSerializer, PackageSerializer, ReviewSerializer
+from services.models import Service, Package, Review, Reports
+from .serializers import ServiceSerializer, PackageSerializer, ReviewSerializer, ReportsSerializer
 
 @api_view(['PUT'])
 def edit_service(request, pk):
@@ -95,4 +95,29 @@ def get_service_reviews(request, pk):
     reviews = Review.objects.filter(review_service=service.id)
 
     serializer = ReviewSerializer(reviews, many=True)
+    return Response(serializer.data)
+#############################################################################################
+
+# FOR Reports
+
+@api_view(['POST'])
+def add_report(request, pk):
+    try:
+        service = Service.objects.get(pk=pk)
+    except Service.DoesNotExist:
+        return Response({"error": "Service not found"}, status=status.HTTP_404_NOT_FOUND)
+    
+    mutable_data = request.data.copy()
+    mutable_data['reported_service'] = service.id
+
+    serializer = ReportsSerializer(data=mutable_data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def get_all_reports(request):
+    reports = Reports.objects.all()
+    serializer = ReportsSerializer(reports, many=True)
     return Response(serializer.data)

@@ -11,3 +11,6 @@ class EventAdmin(admin.ModelAdmin):
     inlines = [UserInline]
 
 admin.site.register(Event, EventAdmin)
+
+
+

@@ -5,7 +5,7 @@ from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from services.models import Service
-from .serializers import ServiceSerializer, PackageSerializer
+from .serializers import ServiceSerializer, PackageSerializer, ReportsSerializer
 
 User = get_user_model()
         
@@ -29,3 +29,8 @@ class PackageViewSet(viewsets.ViewSet):
             package = serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+# class ReportsViewSet(viewsets.ModelViewSet):
+#     serializer_class = ReportsSerializer
+#     queryset = Reports.objects.all()

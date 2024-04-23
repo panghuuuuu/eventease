@@ -31,8 +31,6 @@ from services.api.viewsets import ServiceViewSet, PackageViewSet
 
 router = routers.DefaultRouter()
 
-
-
 urlpatterns = [
     path("admin/", admin.site.urls),
     # path("api/me", GetMe.as_view(), name="current-user"),
@@ -48,8 +46,7 @@ urlpatterns = [
     path('event/add-event', event_views.add_event, name='create_event'),
     path('event/edit-event/<int:pk>/', EventViewSet.as_view({'put': 'edit_event'}), name='edit_event'),
     path('event/delete-event/<int:pk>/', event_views.delete_event, name='delete_event'),
-    path('event/<int:pk>/', event_views.get_event_details),
-    path('event/<int:event_id>/add-service/', event_views.add_service, name='add_service'),
+    path('event/<int:pk>/', event_views.get_event_details)  ,
 
     path('services', service_views.get_all_services),
     path('service/add-service', ServiceViewSet.as_view({'post': 'service'}), name='service'),
@@ -58,6 +55,14 @@ urlpatterns = [
     path('service/<int:pk>/', service_views.get_service_details),
     path('service/<int:pk>/add-review', service_views.add_review),
     path('service/<int:pk>/get-reviews', service_views.get_service_reviews),
+
+    path('service/<int:pk>/report/', service_views.add_report, name='create_report'),
+    # path('service/add-report', something here({'post': 'report'}), name='report'),
+    # path('reports', service_views.get_all_reports, name='reports'), # show the reports here
+
+    path('service/add-report', service_views.add_report, name='create_report'),  # Fixed URL
+    path('reports', service_views.get_all_reports, name='reports'),  # show the reports here
+
 
     path('package', service_views.getPackagesData),
     path('package/add-package', PackageViewSet.as_view({'post': 'package'}), name='package'),

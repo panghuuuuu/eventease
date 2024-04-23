@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import StarRating from "../components/StarRating";
 import Navbar from "../components/Navbar.js";
 import Modal from "../components/PinModal.js";
-
+import ReportModal from "../components/ReportModal.js"; // for_report
 import "../stylesheets/serviceprovider.css";
 
 const ServiceProvider = () => {
@@ -15,6 +15,8 @@ const ServiceProvider = () => {
   const handleReload = () => {
     window.location.reload();
   };
+  const [isReportModalOpen, setIsReportModalOpen] = useState(false); // for_report
+
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -61,6 +63,16 @@ const ServiceProvider = () => {
     });
   };
 
+  const openReportModal = () => {
+    // for_report
+    setIsReportModalOpen(true);
+  };
+
+  const closeReportModal = () => {
+    // for_report
+    setIsReportModalOpen(false);
+  };
+
   useEffect(() => {
     const fetchServiceData = async () => {
       try {
@@ -95,6 +107,13 @@ const ServiceProvider = () => {
           <Modal
             closeModal={closeModal}
             service={service}
+            serviceId={serviceId}
+          />
+        )}
+
+        {isReportModalOpen && ( // Render the report modal conditionally
+          <ReportModal
+            closeReportModal={closeReportModal}
             serviceId={serviceId}
           />
         )}
@@ -308,6 +327,11 @@ const ServiceProvider = () => {
                 />
               </svg>
               Pin to Your Event Board{" "}
+            </div>
+
+            <p>Report this service?</p>
+            <div className="report_button" onClick={openReportModal}>
+              Report!
             </div>
           </div>
         </div>
