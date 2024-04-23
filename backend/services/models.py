@@ -45,7 +45,6 @@ class Review(models.Model):
     
 class Reports(models.Model):
     report_id = models.AutoField(primary_key=True)
-    reporting_user = models.ForeignKey('accounts.User', on_delete=models.CASCADE, default=0)
     reported_service = models.ForeignKey(Service, on_delete=models.CASCADE)
     report_datetime = models.DateTimeField(auto_now_add=True)
     report_title = models.TextField(max_length=50)

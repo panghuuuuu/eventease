@@ -21,11 +21,13 @@ const ServiceProvider = () => {
     setIsModalOpen(false);
   };
 
-  const openReportModal = () => { // for_report
+  const openReportModal = () => {
+    // for_report
     setIsReportModalOpen(true);
   };
 
-  const closeReportModal = () => { // for_report
+  const closeReportModal = () => {
+    // for_report
     setIsReportModalOpen(false);
   };
 
@@ -49,14 +51,12 @@ const ServiceProvider = () => {
     <section id="service_provider" className="section_container">
       <Navbar />
       <div className="sp_container">
-        
         {isModalOpen && (
           <Modal
             closeModal={closeModal}
             service={service}
             serviceId={serviceId}
           />
-          
         )}
 
         {isReportModalOpen && ( // Render the report modal conditionally
@@ -142,30 +142,28 @@ const ServiceProvider = () => {
               </ul>{" "}
             </div>
           </div>
-            <div className="right_panel">
-              
-              <p>Do you like this?</p>
-              <div className="pin_button" onClick={openModal}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="24"
-                  viewBox="0 0 16 24"
-                  fill="none"
-                >
-                  <path
-                    d="M1.90457 24C2.48356 24 2.85883 23.6939 3.77019 22.7863L7.90886 18.6096C7.95175 18.5549 8.04825 18.5549 8.09114 18.6096L12.2405 22.7863C13.1519 23.6939 13.5164 24 14.1061 24C14.9639 24 15.5 23.3986 15.5 22.4146V3.32392C15.5 1.14806 14.3849 0 12.2727 0H3.72731C1.61508 0 0.5 1.14806 0.5 3.32392V22.4146C0.5 23.3986 1.0361 24 1.90457 24Z"
-                    fill="#A460ED"
-                  />
-                </svg>
-                Pin to Your Event Board{" "}
-              </div>
-              
-              <p>Report this service?</p>
-              <div className="report_button" onClick={openReportModal}>
-                Report!
-              </div>
+          <div className="right_panel">
+            <p>Do you like this?</p>
+            <div className="pin_button" onClick={openModal}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="24"
+                viewBox="0 0 16 24"
+                fill="none"
+              >
+                <path
+                  d="M1.90457 24C2.48356 24 2.85883 23.6939 3.77019 22.7863L7.90886 18.6096C7.95175 18.5549 8.04825 18.5549 8.09114 18.6096L12.2405 22.7863C13.1519 23.6939 13.5164 24 14.1061 24C14.9639 24 15.5 23.3986 15.5 22.4146V3.32392C15.5 1.14806 14.3849 0 12.2727 0H3.72731C1.61508 0 0.5 1.14806 0.5 3.32392V22.4146C0.5 23.3986 1.0361 24 1.90457 24Z"
+                  fill="#A460ED"
+                />
+              </svg>
+              Pin to Your Event Board{" "}
+            </div>
 
+            <p>Report this service?</p>
+            <div className="report_button" onClick={openReportModal}>
+              Report!
+            </div>
           </div>
         </div>
       </div>

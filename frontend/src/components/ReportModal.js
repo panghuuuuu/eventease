@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "../axiosApi.js";
 import "../stylesheets/modal.css";
 
-function ReportModal({ closeModal, serviceId }) {
+function ReportModal({ closeReportModal, serviceId }) {
   const [reportTitle, setReportTitle] = useState("");
   const [reportBody, setReportBody] = useState("");
 
@@ -10,17 +10,22 @@ function ReportModal({ closeModal, serviceId }) {
     try {
       const reportData = {
         report_title: reportTitle,
-        report_body: reportBody
+        report_body: reportBody,
       };
 
-      const response = await axios.post(`/service/${serviceId}/report/`, reportData );
+      const response = await axios.post(
+        `/service/${serviceId}/report/`,
+        reportData
+      );
 
       console.log("Service reported:", response.data);
-
-      closeModal();
     } catch (error) {
       console.error("Error reporting service:", error);
     }
+    handleCloseModal();
+  };
+  const handleCloseModal = () => {
+    closeReportModal(); // Call closeReportModal function passed as prop
   };
 
   return (
@@ -44,7 +49,7 @@ function ReportModal({ closeModal, serviceId }) {
         </div>
 
         <div className="modal_buttons">
-          <button className="cancel_btn" onClick={closeModal}>
+          <button className="cancel_btn" onClick={closeReportModal}>
             Cancel
           </button>
           <button className="report_btn" onClick={handleReport}>

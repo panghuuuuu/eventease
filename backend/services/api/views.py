@@ -70,18 +70,19 @@ def get_service_details(request, pk):
 
 # FOR Reports
 
-# @api_view(['POST'])
 @api_view(['POST'])
 def add_report(request, pk):
     try:
         service = Service.objects.get(pk=pk)
     except Service.DoesNotExist:
         return Response({"error": "Service not found"}, status=status.HTTP_404_NOT_FOUND)
+    
+    mutable_data = request.data.copy()
+    mutable_data['reported_service'] = service.id
 
-    serializer = ReportsSerializer(data=request.data)
+    serializer = ReportsSerializer(data=mutable_data)
     if serializer.is_valid():
-        print(service)
-        serializer.save(reported_service=service)
+        serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
