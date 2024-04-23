@@ -54,8 +54,13 @@ urlpatterns = [
     path('service/delete-service/<int:pk>/', service_views.delete_service),
     path('service/<int:pk>/', service_views.get_service_details),
 
-    path('service/<int:pk>/add-report', service_views.add_report, name='create_report'),
-    path('reports', service_views.get_all_reports, name='reports'), # show the reports here
+    path('service/<int:pk>/report/', service_views.add_report, name='create_report'),
+    # path('service/add-report', something here({'post': 'report'}), name='report'),
+    # path('reports', service_views.get_all_reports, name='reports'), # show the reports here
+
+    path('service/add-report', service_views.add_report, name='create_report'),  # Fixed URL
+    path('reports', service_views.get_all_reports, name='reports'),  # show the reports here
+
 
     path('package', service_views.getPackagesData),
     path('package/add-package', PackageViewSet.as_view({'post': 'package'}), name='package'),

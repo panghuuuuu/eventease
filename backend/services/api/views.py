@@ -80,6 +80,7 @@ def add_report(request, pk):
 
     serializer = ReportsSerializer(data=request.data)
     if serializer.is_valid():
+        print(service)
         serializer.save(reported_service=service)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

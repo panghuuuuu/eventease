@@ -16,7 +16,7 @@ axiosInstance.interceptors.response.use(
       error.response &&
       error.response.status === 401 &&
       error.response.statusText === "Unauthorized"
-    ) {
+    ) { 
       const refresh_token = localStorage.getItem("refresh_token");
 
       return axiosInstance
