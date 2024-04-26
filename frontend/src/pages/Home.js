@@ -7,13 +7,12 @@ import Navbar from "../components/Navbar";
 import Eventedit from "./Eventedit";
 
 export const Home = () => {
-
   const scrollToBottom = () => {
-    const element = document.getElementById('home');
+    const element = document.getElementById("home");
     console.log(element.scrollHeight);
     element.scrollTo({
       top: element.scrollHeight,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
@@ -42,7 +41,7 @@ export const Home = () => {
                   />
                 </svg>
                 Create Your Dream Event
-              </Link>
+              </button>
               <Link to="/browse">
                 <svg
                   width="24"
