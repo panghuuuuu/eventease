@@ -28,18 +28,8 @@ const BrowsePage = () => {
   }, [selectedFilter]);
 
   const handleFilterClick = (filter, index) => {
-    if (activeFilterIndex === index) {
-      clearFilter();
-      setSelectedFilter(null);
-    } else {
-      setSelectedFilter(filter);
-      setActiveFilterIndex(index);
-    }
-  };
-
-  const clearFilter = () => {
-    setSelectedFilter(null);
-    setActiveFilterIndex(null);
+    setSelectedFilter(filter);
+    setActiveFilterIndex(index);
   };
 
   return (
@@ -76,11 +66,6 @@ const BrowsePage = () => {
                 </li>
               ))}
             </ul>
-            {selectedFilter && (
-              <button onClick={clearFilter} className="clear_filter">
-                Clear Filter
-              </button>
-            )}
           </div>
           <div className="browse_panel">
             {services.map((service, index) => (

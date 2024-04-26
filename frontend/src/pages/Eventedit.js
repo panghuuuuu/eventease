@@ -107,7 +107,6 @@ export const Eventedit = () => {
           },
         });
       }
-
       navigate("/myevents");
     } catch (error) {
       console.error("Error:", error);
