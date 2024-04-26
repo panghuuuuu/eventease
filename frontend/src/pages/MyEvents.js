@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "../stylesheets/myevents.css";
 import axios from "../axiosApi.js";
@@ -9,6 +9,20 @@ import Footer from "../components/Footer.js";
 
 const MyEvents = () => {
   const [events, setEvents] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkLoggedIn = async () => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        setIsLoggedIn(true);
+      } else {
+        navigate("/login");
+      }
+    };
+    checkLoggedIn();
+  }, [navigate]);
 
   useEffect(() => {
     const fetchEventData = async () => {

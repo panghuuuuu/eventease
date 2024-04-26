@@ -18,7 +18,7 @@ export const Home = () => {
           <div className="hero_details">
             <p>Where do you want to start?</p>
             <div className="home_buttons_container">
-              <button>
+              <Link to="/myevents">
                 <svg
                   width="25"
                   height="27"
@@ -32,7 +32,7 @@ export const Home = () => {
                   />
                 </svg>
                 Create Your Dream Event
-              </button>
+              </Link>
               <Link to="/browse">
                 <svg
                   width="24"
