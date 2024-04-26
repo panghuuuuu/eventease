@@ -148,6 +148,10 @@
   background: var(--color-primary);
 }
 
+.signup_btn:hover {
+  cursor: pointer;
+}
+
 .bottom_links {
   display: flex;
   justify-content: space-between;

@@ -75,3 +75,8 @@
   margin-left: auto;
   text-decoration: none !important;
 }
+
+.right_align_btn {
+  display: flex;
+  margin-left: auto;
+}

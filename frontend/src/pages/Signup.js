@@ -35,7 +35,7 @@ export default function Registration() {
         <div className="popup_container">
           <p>Ready to plan your dream event?</p>
           <Link to="/" className="continue_btn">
-            Continue without logging in
+            Browse without logging in
             <svg
               width="16"
               height="16"
@@ -55,9 +55,11 @@ export default function Registration() {
         </div>
       </div>
       <div className="right_container">
-        <div className="signup_header">
-          <img src={signupHeader} alt="EventEase Header" />
-        </div>
+        <Link to="/">
+          <div className="signup_header">
+            <img src={signupHeader} alt="EventEase Header" />
+          </div>
+        </Link>
         <div className="signup_fields">
           <h3>Sign Up</h3>
           <div className="input">

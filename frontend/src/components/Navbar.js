@@ -31,7 +31,7 @@ function Navbar() {
           <img className="eventease_logo" src={logo} alt="EventEase logo" />
         </Link>
       </div>
-      <div className="searchbar">
+      {/* <div className="searchbar">
         <svg
           width="14"
           viewBox="0 0 18 17"
@@ -45,7 +45,7 @@ function Navbar() {
         </svg>
         <input type="text" name="search"></input>
         <button className="search_btn">Search</button>
-      </div>
+      </div> */}
       <div className="nav_right">
         <button className="browse_btn">
           <Link to="/browse">Browse</Link>

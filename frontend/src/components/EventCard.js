@@ -32,9 +32,9 @@ function EventCard(props) {
           <li key={index}>{service_type}</li>
         ))}
       </ul>
-      <Link to={`/eventboard/${eventId}`}>
-        {" "}
-        <div className="more_btn">
+      <div className="right_align_btn">
+        <Link to={`/eventboard/${eventId}`} className="more_btn">
+          {" "}
           More Details{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -51,8 +51,8 @@ function EventCard(props) {
               stroke-linejoin="round"
             />
           </svg>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 }

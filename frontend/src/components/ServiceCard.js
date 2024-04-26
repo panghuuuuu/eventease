@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import "../stylesheets/card.css";
 import StarRating from "./StarRating";
-import placeholderImage from "../assets/logo_header.png";
 
 function ServiceCard(props) {
   const { service, serviceDetails } = props;
@@ -12,12 +11,6 @@ function ServiceCard(props) {
 
   return (
     <div className="card" key={service}>
-      {/* <img
-        className="service_image"
-        src={serviceDetails.service_image}
-        alt={serviceDetails.service_name}
-        onerror="this.style.display='none';"
-      /> */}
       <div className="card_details">
         <h3 className="service_name">{service}</h3>
         <p className="service_rating">
@@ -61,8 +54,8 @@ function ServiceCard(props) {
             </li>
           ))}
         </ul>
-        <Link to={`/service/${serviceId}`}>
-          <div className="more_btn">
+        <div className="right_align_btn">
+          <Link to={`/service/${serviceId}`} className="more_btn">
             More Details{" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -79,8 +72,8 @@ function ServiceCard(props) {
                 stroke-linejoin="round"
               />
             </svg>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </div>
     </div>
   );

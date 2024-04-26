@@ -49,7 +49,7 @@ function ReportModal({ closeReportModal, serviceId }) {
           />
         </div>
 
-        <div className="eventedit_buttons">
+        <div className="eventedit_buttons ">
           <div className="cancel_btn" onClick={closeReportModal}>
             Cancel
           </div>
