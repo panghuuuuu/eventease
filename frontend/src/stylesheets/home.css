@@ -27,16 +27,18 @@
   /* Height is 100vh - nav height */
   height: calc(100vh - 86px);
 
+  width: 100vw;
   position: static;
   top: 0px;
   display: flex;
   flex-direction: column;
-  padding: 20vh 10% 0px 10%;
+  padding: 5vw 10% 3vw 10%;
   gap: 2em;
+  overflow: scroll;
 }
 
 .hero_text h1 {
-  font-size: 96px;
+  font-size: 70px;
   width: 70%;
   font-weight: 900;
   line-height: 120%;
