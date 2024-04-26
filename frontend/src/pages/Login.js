@@ -40,9 +40,9 @@ const Login = () => {
     <div className="signup_container">
       <div className="left_container"></div>
       <div className="right_container">
-        <div className="signup_header">
+        <Link to="/" className="signup_header">
           <img src={signupHeader} alt="EventEase Header" />
-        </div>
+        </Link>
         <div className="signup_fields">
           <h3>Login</h3>
 
