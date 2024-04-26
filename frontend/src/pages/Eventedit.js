@@ -159,7 +159,7 @@ export const Eventedit = () => {
             </div>
           </div>
 
-          <div className="dates_container">
+          <div className="input">
             <p className="input_label">
               When do you want to celebrate?<span>*</span>
             </p>
