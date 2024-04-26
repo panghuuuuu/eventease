@@ -36,6 +36,7 @@ function ReportModal({ closeReportModal, serviceId }) {
           <textarea
             value={reportTitle}
             onChange={(e) => setReportTitle(e.target.value)}
+            className="title_textarea"
           />
         </div>
 
@@ -48,13 +49,13 @@ function ReportModal({ closeReportModal, serviceId }) {
           />
         </div>
 
-        <div className="modal_buttons">
-          <button className="cancel_btn" onClick={closeReportModal}>
+        <div className="eventedit_buttons">
+          <div className="cancel_btn" onClick={closeReportModal}>
             Cancel
-          </button>
-          <button className="report_btn" onClick={handleReport}>
+          </div>
+          <div className="save_btn" onClick={handleReport}>
             Report
-          </button>
+          </div>
         </div>
       </div>
     </div>

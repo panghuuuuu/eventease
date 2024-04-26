@@ -31,3 +31,7 @@
 .cancel_btn:hover {
   cursor: pointer;
 }
+
+textarea {
+  padding: 10px;
+}
