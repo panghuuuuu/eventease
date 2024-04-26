@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./stylesheets/App.css";
 
 import Home from "./pages/Home";
+import AboutUs from "./pages/AboutUsPage";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Browse from "./pages/BrowsePage";
@@ -22,6 +23,7 @@ const App = () => (
       <Route path="/myevents" element={<MyEvents />} />
       <Route path="/eventboard/:eventId" element={<Eventboard />} />{" "}
       <Route path="/service/:serviceId" element={<ServiceProvider />} />{" "}
+      <Route path="/aboutus" element={<AboutUs />} />
       <Route path="/" element={<Home />} />
     </Routes>
   </Router>
