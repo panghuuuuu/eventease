@@ -155,7 +155,6 @@
   align-items: flex-start;
   flex-shrink: 0;
   align-self: stretch;
-  max-width: 40%;
 }
 
 .spcard_img {

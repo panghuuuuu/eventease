@@ -215,7 +215,36 @@ export const Eventboard = () => {
                       ))
                   )}
                 </div>
-
+                <div className="eventboard__pins">
+                  <h1 className="pin-name">Party Suppliers</h1>
+                  <div className="pin_section">
+                    {services.filter(
+                      (service) => service.service_type === "PARTY SUPPLIES"
+                    ).length === 0 ? (
+                      <p>
+                        Aw. You haven’t found any venues yet.{" "}
+                        <Link to="/browse">
+                          <span className="browse-link">
+                            Click here to browse
+                          </span>
+                          .
+                        </Link>
+                      </p>
+                    ) : (
+                      services
+                        .filter(
+                          (service) => service.service_type === "PARTY SUPPLIES"
+                        )
+                        .map((service, index) => (
+                          <EventBoardCard
+                            key={index}
+                            service={service.service_name}
+                            serviceDetails={service}
+                          />
+                        ))
+                    )}
+                  </div>
+                </div>
                 <h1 className="pin-name">HOSTS</h1>
                 <div className="pin_section">
                   {services.filter(
