@@ -28,8 +28,20 @@ const BrowsePage = () => {
   }, [selectedFilter]);
 
   const handleFilterClick = (filter, index) => {
-    setSelectedFilter(filter);
-    setActiveFilterIndex(index);
+    // Check if the clicked filter is already active
+    if (activeFilterIndex === index) {
+      // If it is active, clear the filter
+      clearFilter();
+    } else {
+      // If it is not active, set the filter
+      setSelectedFilter(filter);
+      setActiveFilterIndex(index);
+    }
+  };
+
+  const clearFilter = () => {
+    setSelectedFilter(null);
+    setActiveFilterIndex(null);
   };
 
   return (
