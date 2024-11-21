@@ -17,7 +17,7 @@ RUN npm install
 
 # Expose the port your app runs on
 EXPOSE 3000
-
+ENV CI=true
 # Start the development server
 CMD ["npm", "start"]
 
