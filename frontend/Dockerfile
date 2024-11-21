@@ -14,11 +14,13 @@ COPY public/ /app-frontend/public/
 RUN npm install
 
 # Copy the rest of the application code to the container
+COPY . .
 
 # Expose the port your app runs on
-EXPOSE 3000
-ENV CI=true
-# Start the development server
-CMD ["npm", "start"]
+EXPOSE 4200
+RUN npm install -g serve
+RUN npm run build
+
+CMD ["serve", "-s", "-l", "4200", "./build"]
 
 
