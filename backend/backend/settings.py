@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Quick-start development settings - unsuitable for production
@@ -29,7 +30,8 @@ ALLOWED_HOSTS = [
     '188.166.76.163',
     '127.0.0.1',
     'localhost:8000',
-    'localhost'
+    'localhost',
+    '0.0.0.0',
 ]
 
 # Setting the timezone
