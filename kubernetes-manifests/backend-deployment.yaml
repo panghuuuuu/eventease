@@ -13,7 +13,7 @@ spec:
         app: backend
     spec:
       containers:
-      - name: frontend
+      - name: backend
         image: caryngo/iscs3023group2:backend-v1
         ports:
         - containerPort: 80
