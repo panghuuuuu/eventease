@@ -16,4 +16,4 @@ spec:
       - name: backend
         image: caryngo/iscs3023group2:backend-v1
         ports:
-        - containerPort: 80
+        - containerPort: 4200
