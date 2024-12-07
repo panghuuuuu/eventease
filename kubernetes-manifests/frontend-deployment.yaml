@@ -16,4 +16,4 @@ spec:
       - name: frontend
         image: caryngo/iscs3023group2:frontend-v1
         ports:
-        - containerPort: 80
+        - containerPort: 4200
