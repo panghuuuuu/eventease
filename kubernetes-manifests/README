@@ -1,0 +1,19 @@
+#Create a kubernetes cluster in Google Cloud Terminal
+gcloud container clusters create eventease-clust --num-nodes=3 --zone asia-east1-a --enable-autoscaling  --machine-type=e2-medium --disk-type=pd-standard
+
+#install kubectl, authenticate to use the cluster
+sudo apt-get install kubectl
+gcloud container clusters get-credentials eventease-clust --zone asia-east1-a
+
+#apply the .yaml file from github
+kubectl apply -f https://raw.githubusercontent.com/panghuuuuu/eventease/master/kubernetes-manifests/frontend-deployment.yaml
+
+gcloud container node-pools create arm-pool \
+  --cluster=eventease-clust \
+  --zone=asia-east1-a \
+  --machine-type=e2-arm \
+  --image-type=UBUNTU \
+  --num-nodes=3
+
+#expose the service
+kubectl expose deployment frontend-deployment --type=NodePort --port=80
