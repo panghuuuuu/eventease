@@ -1,19 +1,58 @@
-#Create a kubernetes cluster in Google Cloud Terminal
-gcloud container clusters create eventease-clust --num-nodes=3 --zone asia-east1-a --enable-autoscaling  --machine-type=e2-medium --disk-type=pd-standard
+For both the frontend and the backend, to deploy on Kubernetes, use the Google Cloud Shell terminal. 
+
+=================================
+FOR FRONTEND:
+#Create a kubernetes cluster in Google Cloud Terminal. use machine type e2 for linux support
+gcloud container clusters create eventease-frontend --num-nodes=3 --zone asia-east1-a --enable-autoscaling  --machine-type=e2-medium --disk-type=pd-standard
 
 #install kubectl, authenticate to use the cluster
 sudo apt-get install kubectl
-gcloud container clusters get-credentials eventease-clust --zone asia-east1-a
+gcloud container clusters get-credentials eventease-frontend --zone asia-east1-a
 
 #apply the .yaml file from github
 kubectl apply -f https://raw.githubusercontent.com/panghuuuuu/eventease/master/kubernetes-manifests/frontend-deployment.yaml
 
-gcloud container node-pools create arm-pool \
-  --cluster=eventease-clust \
-  --zone=asia-east1-a \
-  --machine-type=e2-arm \
-  --image-type=UBUNTU \
-  --num-nodes=3
+#(OPTIONAL) verify the deployment
+kubectl get deployments
+kubectl get pods
 
 #expose the service
-kubectl expose deployment frontend-deployment --type=NodePort --port=80
+kubectl expose deployment frontend-deployment \
+  --type=LoadBalancer \
+  --port=80 \
+  --target-port=4200
+
+#wait for service, retrieve the external IP
+kubectl get services
+
+#use the EXTERNAL-IP
+http://<EXTERNAL-IP>
+
+=================================
+FOR BACKEND:
+#Create a kubernetes cluster in Google Cloud Terminal. use machine type e2 for linux support
+gcloud container clusters create eventease-backend --num-nodes=3 --zone asia-east1-a --enable-autoscaling  --machine-type=e2-medium --disk-type=pd-standard
+
+#install kubectl, authenticate to use the cluster
+sudo apt-get install kubectl
+gcloud container clusters get-credentials eventease-backend --zone asia-east1-a
+
+#apply the .yaml file from github
+kubectl apply -f https://raw.githubusercontent.com/panghuuuuu/eventease/master/kubernetes-manifests/backend-deployment.yaml
+
+#(OPTIONAL) verify the deployment
+kubectl get deployments
+kubectl get pods
+
+#expose the service
+kubectl expose deployment backend-deployment \
+  --type=LoadBalancer \
+  --port=4200 \
+  --target-port=4200
+
+#wait for service, retrieve the external IP
+kubectl get services
+
+#use the EXTERNAL-IP
+http://<EXTERNAL-IP>
+
